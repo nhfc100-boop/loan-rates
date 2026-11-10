@@ -243,10 +243,17 @@
             <option value="15">15년 이상·180회 이상 (0.5%p)</option>
           </select>
         </label>
+        <label class="field"><span class="lbl">디딤돌 금리유형 (주택도시기금 기준, 우대 상한·지방 차감과 별도)</span>
+          <select id="rateType">
+            <option value="v5">5년 단위 변동금리 (+0.1%p)</option>
+            <option value="f10">10년 고정 후 변동 (+0.2%p, 대출기간 10년이면 +0.3%p)</option>
+            <option value="fixed" selected>순수 고정금리 (+0.3%p)</option>
+          </select>
+        </label>
         <label class="toggle"><input id="eContract" type="checkbox"> 국토부 전자계약으로 매매계약 (디딤돌 0.1%p, 2026.12.31.까지 신규접수, 실행일부터 5년)</label>
         <label class="toggle"><input id="smallShare" type="checkbox"> 대출가능금액 30% 이하 신청 (디딤돌 0.1%p, 실행일부터 5년)</label>
         <label class="toggle"><input id="unsoldLocal" type="checkbox"> 지방 준공후 미분양 주택 (디딤돌 0.2%p, 적용일부터 5년)</label>
-        <label class="toggle"><input id="prepay40" type="checkbox"> 중도상환 40% 이상 (디딤돌 0.2%p, 실행 1년 후 조건)</label>
+        <label class="toggle"><input id="prepay40" type="checkbox"> 중도상환 40% 이상 (디딤돌 0.2%p, 사후 적용 · 실행 1년 후)</label>
         <label class="toggle"><input id="newborn" type="checkbox"> 신청일 기준 2년 이내 출산 (보금자리론 0.2%p, 신혼 우대와 중복 불가)</label>
         <label class="toggle"><input id="singleParent" type="checkbox"> 한부모 가구 (디딤돌 0.5%p·소득 6천만 이하 / 보금자리론 0.7%p·소득 7천만 이하)</label>
         <label class="toggle"><input id="multicultural" type="checkbox"> 다문화 가구 (디딤돌 0.2%p 택1 / 보금자리론 0.7%p, 배려층 최대 2개)</label>
@@ -284,8 +291,14 @@
           <select id="lookupYears"></select>
         </label>
         <div class="pref-group" id="lookupDidimPrefs">
-          <p class="hint">디딤돌 가구 우대(다자녀·한부모·자녀·다문화·장애인·생애최초·신혼)는 택1입니다. 청약·전자계약·30% 이하 신청·중도상환·지방 미분양은 중복됩니다. 우대 상한은 일반 0.5%p, 다자녀 0.7%p이며 지방 차감과 고정금리 가산(+0.3%p)은 상한에 넣지 않습니다.</p>
-          <label class="toggle"><input id="lookupFirstNewly" type="checkbox"> 생애최초 신혼가구 (전용 금리표)</label>
+          <p class="hint">디딤돌 가구우대는 중복 불가, 가장 큰 1개만 적용합니다(주택도시기금). 청약·전자계약·30% 이하 신청·중도상환(사후)·지방 미분양은 중복됩니다. 우대 상한은 일반 0.5%p, 다자녀 0.7%p이며 지방 차감과 금리유형 가산은 상한에 넣지 않습니다.</p>
+          <label class="field"><span class="lbl">금리유형 (주택도시기금 기준)</span>
+            <select id="lookupRateType">
+              <option value="v5">5년 단위 변동금리 (+0.1%p)</option>
+              <option value="f10">10년 고정 후 변동 (+0.2%p, 대출기간 10년이면 +0.3%p)</option>
+              <option value="fixed" selected>순수 고정금리 (+0.3%p)</option>
+            </select>
+          </label>
           <label class="toggle"><input id="lookupLocal" type="checkbox"> 지방 소재 주택 (기준금리 −0.2%p, 우대 상한과 별도)</label>
           <label class="field"><span class="lbl">만 19세 미만 자녀 수 (자녀 1명당 5년, 최대 15년)</span>
             <select id="lookupDidimChildren">
@@ -296,8 +309,8 @@
             </select>
           </label>
           <label class="toggle"><input id="lookupDidimParent" type="checkbox"> 한부모 가구 (연소득 6천만 원 이하, 0.5%p, 택1)</label>
-          <label class="toggle"><input id="lookupDidimNewlywed" type="checkbox"> 신혼가구 (0.2%p, 혼인 7년 이내 또는 3개월 내 결혼예정, 실행일부터 5년, 전용표와 중복 안 됨)</label>
-          <label class="toggle"><input id="lookupDidimFirst" type="checkbox"> 생애최초 주택구입 (0.2%p, 실행일부터 5년, 전용표와 중복 안 됨)</label>
+          <label class="toggle"><input id="lookupDidimNewlywed" type="checkbox"> 신혼가구 (0.2%p, 혼인 7년 이내 또는 3개월 내 결혼예정, 실행일부터 최대 5년, 택1)</label>
+          <label class="toggle"><input id="lookupDidimFirst" type="checkbox"> 생애최초 주택구입 (0.2%p, 실행일부터 최대 5년, 택1)</label>
           <label class="toggle"><input id="lookupDidimMulti" type="checkbox"> 다문화 가구 (0.2%p, 택1)</label>
           <label class="toggle"><input id="lookupDidimDisabled" type="checkbox"> 장애인 가구 (0.2%p, 택1)</label>
           <label class="field"><span class="lbl">청약(종합)저축 납입 (중복, 예금·부금 제외, 실행일부터 5년)</span>
@@ -311,7 +324,7 @@
           <label class="toggle"><input id="lookupEContract" type="checkbox"> 국토부 전자계약 (0.1%p, 2026.12.31.까지 신규접수, 실행일부터 5년)</label>
           <label class="toggle"><input id="lookupSmallShare" type="checkbox"> 대출가능금액 30% 이하 신청 (0.1%p, 실행일부터 5년)</label>
           <label class="toggle"><input id="lookupUnsoldLocal" type="checkbox"> 지방 준공후 미분양 주택 (0.2%p, 적용일부터 5년)</label>
-          <label class="toggle"><input id="lookupPrepay40" type="checkbox"> 중도상환 40% 이상 (0.2%p, 실행 1년 후 조건)</label>
+          <label class="toggle"><input id="lookupPrepay40" type="checkbox"> 중도상환 40% 이상 (0.2%p, 사후 적용 · 실행 1년 후)</label>
         </div>
         <div class="pref-group" id="lookupBogeumPrefs" hidden>
           <p class="hint">보금자리론 우대는 최대 1.0%p까지 중복됩니다. 아낌e 전자약정 0.1%p와 규제지역 가산 0.2%p는 이 한도와 별도입니다. 신혼과 신생아 우대는 중복할 수 없고, 사회적 배려층(한부모·장애인·다문화)은 최대 2가지입니다.</p>
@@ -344,13 +357,13 @@
       <div class="card" id="lookupBreakdown"></div>
 
       <div class="card">
-        <h2>디딤돌 일반 가구 금리</h2>
-        <p class="hint">고정금리 기준(주택도시기금 순수 고정 +0.3%p 포함). 공시일 2026년 11월 1일, 단위 %.</p>
+        <h2>디딤돌 공시 기본금리</h2>
+        <p class="hint">주택도시기금 기준, 공시일 2026년 11월 1일, 단위 %. 아래 표는 공시 기본금리이며, 선택한 금리유형 가산(5년 변동 +0.1%p, 10년 고정 후 변동 +0.2%p, 기간 10년이면 +0.3%p, 순수 고정 +0.3%p)은 별도입니다.</p>
         <div class="table-wrap" id="tblDidim"></div>
       </div>
       <div class="card">
-        <h2>디딤돌 생애최초 신혼가구 금리</h2>
-        <p class="hint">고정금리 기준(주택도시기금 순수 고정 +0.3%p 포함). 같은 공시일, 단위 %.</p>
+        <h2>참고: 주금공 생애최초 신혼 전용표</h2>
+        <p class="hint">한국주택금융공사 금리안내에는 전용표가 남아 있으나, 이 계산은 주택도시기금 페이지를 따르므로 적용하지 않습니다. 단위 %.</p>
         <div class="table-wrap" id="tblDidimNF"></div>
       </div>
       <div class="card">
@@ -361,12 +374,12 @@
       <div class="card">
         <h2>우대조건 비교</h2>
         <ul class="fine">
-          <li>우대 구조: 디딤돌은 가구 우대 택1 + 청약·전자계약·30% 신청·중도상환·지방 미분양 중복. 보금자리론은 항목 중복, 최대 1.0%p(아낌e 0.1%p는 한도 밖).</li>
-          <li>상한·최저: 디딤돌 일반 0.5%p(다자녀 0.7%p), 최저 일반 1.5%·생애최초 신혼 1.2%. 보금자리론 상한 1.0%p, 공시에 최저금리 없음.</li>
+          <li>우대 구조: 디딤돌 가구우대는 중복 불가(가장 큰 1개) + 청약·전자계약·30% 신청·중도상환(사후)·지방 미분양 중복. 보금자리론은 항목 중복, 최대 1.0%p(아낌e 0.1%p는 한도 밖).</li>
+          <li>상한·최저: 디딤돌 일반 0.5%p(다자녀 0.7%p), 최저 1.5%(주택도시기금). 보금자리론 상한 1.0%p, 공시에 최저금리 없음.</li>
           <li>자녀: 둘 다 만 19세 미만. 디딤돌은 1/2/3명 0.3·0.5·0.7%p(택1, 자녀당 5년·최대 15년). 보금자리론은 2명 0.5%p·3명 이상 0.7%p(소득 1억 이하), 1자녀 우대 없음.</li>
           <li>한부모: 디딤돌 0.5%p·소득 6천만 이하(택1). 보금자리론 0.7%p·소득 7천만 이하(배려층 최대 2개).</li>
           <li>신혼: 디딤돌 0.2%p(택1, 혼인 7년 또는 3개월 내 결혼예정, 실행일부터 5년). 보금자리론 0.3%p(소득 7천만 이하, 혼인 7년). 자격 소득과 우대 소득이 다름.</li>
-          <li>지방·규제·유형: 디딤돌 지방 −0.2%p는 우대 상한과 별도. 디딤돌은 고정금리 기준(주택도시기금 순수 고정 +0.3%p)을 항상 적용하며 상한 밖입니다. 보금자리론은 고정금리이며, 규제지역 +0.2%p는 우대 한도와 별도(전세사기 미적용).</li>
+          <li>지방·규제·유형: 디딤돌 지방 −0.2%p는 우대 상한과 별도. 금리유형 가산(5년 변동 +0.1%p, 10년 고정 후 변동 +0.2%p, 기간 10년이면 +0.3%p, 순수 고정 +0.3%p)도 상한 밖입니다. 보금자리론은 고정금리이며, 규제지역 +0.2%p는 우대 한도와 별도(전세사기 미적용).</li>
           <li>디딤돌 한도: 일반 2억 / 생애최초 2.4억 / 신혼·2자녀 3.2억 원. 보금자리론 한도: 일반 3.6억 / 다자녀·전세사기 4억 / 생애최초 4.2억 원.</li>
         </ul>
       </div>
@@ -374,25 +387,26 @@
 
     <footer class="sources card">
       <h2>확인하지 못한 항목과 출처</h2>
-      <p>요건·금리는 한국주택금융공사 상품소개·금리안내 페이지를 2026년 11월 10일(서울 시간) 기준으로 확인했습니다. 추측하지 않았습니다.</p>
+      <p>디딤돌 금리·우대는 주택도시기금 홈페이지 내집마련디딤돌대출 페이지를 2026년 11월 10일(서울 시간) 기준으로 확인했습니다. 보금자리론은 한국주택금융공사 상품소개·금리안내를 따릅니다.</p>
       <ul class="fine">
-        <li>주택도시기금(nhuf.molit.go.kr) 내집마련디딤돌대출 상품 페이지는 이번 조회에서 열리지 못했습니다. 요건·한도는 기금 상품을 안내하는 주금공 디딤돌 상품소개로 대체 확인했습니다.</li>
-        <li>디딤돌 금리표는 주택도시기금 홈페이지 표 기준입니다(4천만~7천만 원·30년 연 3.80%).</li>
+        <li>디딤돌 기본금리·금리유형 가산·가구우대(택1)·추가우대·상한 0.5%p(다자녀 0.7%p)·최저 1.5%는 주택도시기금 페이지 기준입니다. 4천만~7천만 원·30년 공시 기본금리는 연 3.80%입니다.</li>
+        <li>주금공 디딤돌 금리안내에는 생애최초 신혼 전용금리표(최저 1.2%)가 있으나, 기금 페이지에는 없어 이 계산에서는 적용하지 않습니다.</li>
         <li>국토교통부(molit.go.kr) 최신 보도자료 원문의 한도·소득 변경 여부는 이번에 재확인하지 못했습니다. 한도는 주금공 상품소개(일반 2억, 생애최초 2.4억, 신혼·2자녀 3.2억 원)를 따랐습니다.</li>
         <li>일반 디딤돌에 만 34세 이하 전용 우대금리는 확인되지 않았습니다. 보금자리론 저소득청년 우대는 만 40세 미만·소득 7천만 원 이하 0.1%p입니다.</li>
         <li>정책모기지 DSR 미적용의 금융위·금감원 고시 원문은 이번에 보지 못했습니다. 상품 안내는 DTI만 명시하므로 DSR은 참고용으로만 표시합니다.</li>
-        <li>소액임차보증금 공제, 선순위채권, 거치 1년 선택 시 월상환액 차이는 미반영입니다. 대출가능금액 30% 이하 신청·중도상환 40% 이상·지방 준공후 미분양·녹색건축·미분양관리지역 우대는 선택 항목으로 넣었습니다. 디딤돌은 고정금리 기준(주택도시기금 순수 고정 +0.3%p)을 우대 상한·지방 차감과 별도로 항상 반영합니다.</li>
-        <li>보금자리론 인정소득·저신용 LTV 추가 차감, 신혼 합산소득 8,500만 원 초과 특례에 우대·지방 차감이 붙는지는 확인 필요라 적용하지 않았습니다.</li>
+        <li>소액임차보증금 공제, 선순위채권, 거치 1년 선택 시 월상환액 차이는 미반영입니다. 중도상환 40% 이상은 사후 적용 항목으로 표시합니다. 디딤돌 금리유형 가산은 우대 상한·지방 차감과 별도입니다.</li>
+        <li>신혼 합산 8,500만 원 초과·신청인 1인 6,000만 원 이하 특례는 기금 기준 만기별 최고금리+0.3%p만 반영하고, 우대·지방 차감은 붙이지 않습니다. 토지임대부 분양주택의 최고구간 초과 +0.3%p는 드물어 계산에 넣지 않았습니다.</li>
+        <li>보금자리론 인정소득·저신용 LTV 추가 차감은 이 계산기에 넣지 않았습니다.</li>
         <li>담보평가의 공시가격·분양가액·감정평가액 경로, 아파트 최저층 하한가, 접수일 이후 시세 상승 예외는 이 계산기에 넣지 않았습니다.</li>
       </ul>
       <p>출처</p>
       <ul class="fine">
-        <li>디딤돌 금리안내 (2026-11-01) https://www.hf.go.kr/ko/sub01/sub01_02_03.do</li>
+        <li>주택도시기금 내집마련디딤돌대출 https://nhuf.molit.go.kr</li>
+        <li>디딤돌 금리안내(주금공, 참고) https://www.hf.go.kr/ko/sub01/sub01_02_03.do</li>
         <li>디딤돌 상품소개 https://hf.go.kr/ko/sub01/sub01_02_01.do</li>
         <li>보금자리론 금리안내 (2026-11-09) https://www.hf.go.kr/ko/sub01/sub01_01_04.do</li>
         <li>보금자리론 일반 상품소개 https://hf.go.kr/ko/sub01/sub01_01_01.do</li>
         <li>11월 보금자리론 금리 0.10%p 인상 (2026-11-02) https://www.hf.go.kr/_custom/hf/_common/board/index/21.do?articleNo=600738&mode=view</li>
-        <li>주택도시기금 https://nhuf.molit.go.kr</li>
       </ul>
     </footer>
   </div>
@@ -423,8 +437,6 @@
     didimCap3: 0.7,
     bogeumCap: 1.0
   };
-  var DIDIM_FIXED_ADD = 0.3; // 주택도시기금 순수 고정금리 가산, 우대 상한·지방 차감과 별도
-  var DIDIM_FIXED_LABEL = "고정금리 기준(주택도시기금 순수 고정 +0.3%p 포함)";
   var DIDIM_GENERAL = DEFAULT_RATES.didimGeneral;
   var DIDIM_NEWLY_FIRST = DEFAULT_RATES.didimNewlyFirst;
   var BOGEUM_E = DEFAULT_RATES.bogeumE;
@@ -646,6 +658,35 @@
     return draft;
   }
 
+  function typeAdjFor(rateType, years) {
+    if (rateType === "v5") return 0.1;
+    if (rateType === "f10") return years === 10 ? 0.3 : 0.2;
+    if (rateType === "fixed") return 0.3;
+    return 0;
+  }
+  function typeShortLabel(rateType) {
+    if (rateType === "v5") return "5년 변동";
+    if (rateType === "f10") return "10년 고정 후 변동";
+    return "순수 고정";
+  }
+  function pickDidimHousehold(input, incomeMan) {
+    var opts = [];
+    if (input.singleParent && incomeMan <= 6000) opts.push({ v: 0.5, label: "한부모 0.50%p" });
+    if (input.disabled) opts.push({ v: 0.2, label: "장애인 0.20%p" });
+    if (input.multicultural) opts.push({ v: 0.2, label: "다문화 0.20%p" });
+    if (input.newlywed) opts.push({ v: 0.2, label: "신혼 0.20%p (최대 5년)" });
+    if (input.firstHome) opts.push({ v: 0.2, label: "생애최초 0.20%p (최대 5년)" });
+    if (input.children >= 3) opts.push({ v: 0.7, label: "다자녀 0.70%p" });
+    else if (input.children === 2) opts.push({ v: 0.5, label: "2자녀 0.50%p" });
+    else if (input.children === 1) opts.push({ v: 0.3, label: "1자녀 0.30%p" });
+    if (!opts.length) return { v: 0, label: "해당 우대 없음" };
+    var best = opts[0];
+    for (var i = 1; i < opts.length; i++) {
+      if (opts[i].v > best.v) best = opts[i];
+    }
+    return best;
+  }
+
   function computeDidim(input) {
     var incomeMan = input.income / 10000;
     var applicantMan = input.applicantIncome / 10000;
@@ -681,37 +722,23 @@
     }
 
     var tableYears = input.years === 10 || input.years === 15 || input.years === 20 || input.years === 30;
-    var useSpecialTable = input.firstHome && input.newlywed && !specialNewly;
     var baseRate = null;
     if (tableYears) {
       if (specialNewly) {
         baseRate = DIDIM_GENERAL.b85[input.years] + 0.3;
-        notes.push("신혼 합산 8,500만 원 초과 특례는 만기별 최고금리에 0.3%p를 가산합니다. 우대금리·지방 차감 적용 여부는 확인 필요라 적용하지 않았습니다.");
+        notes.push("신혼 합산 8,500만 원 초과·신청인 1인 6,000만 원 이하 특례는 주택도시기금 기준 만기별 최고금리에 0.3%p를 가산합니다. 우대·지방 차감은 적용하지 않았습니다.");
       } else {
-        var table = useSpecialTable ? DIDIM_NEWLY_FIRST : DIDIM_GENERAL;
-        baseRate = table[didimBracket(incomeMan)][input.years];
+        baseRate = DIDIM_GENERAL[didimBracket(incomeMan)][input.years];
       }
     }
 
     var householdPref = 0;
     var householdBits = [];
     if (!specialNewly) {
-      if (input.children >= 3) {
-        householdPref = 0.7; householdBits.push("다자녀 0.7%p");
-      } else if (!useSpecialTable && input.singleParent && incomeMan <= 6000) {
-        householdPref = 0.5; householdBits.push("한부모 0.5%p");
-      } else if (input.children === 2) {
-        householdPref = 0.5; householdBits.push("2자녀 0.5%p");
-      } else if (input.children === 1) {
-        householdPref = 0.3; householdBits.push("1자녀 0.3%p");
-      } else if (!useSpecialTable && (input.multicultural || input.disabled || input.firstHome || input.newlywed)) {
-        householdPref = 0.2;
-        if (input.multicultural) householdBits.push("다문화 0.2%p");
-        else if (input.disabled) householdBits.push("장애인 0.2%p");
-        else if (input.firstHome) householdBits.push("생애최초 0.2%p");
-        else householdBits.push("신혼 0.2%p");
-      }
-      if (useSpecialTable) notes.push("생애최초 신혼가구는 전용 금리표를 쓰며, 자녀·청약·전자계약·대출가능금액 30% 이하 신청·중도상환 40% 이상·지방 준공후 미분양 우대만 추가합니다.");
+      var hh = pickDidimHousehold(input, incomeMan);
+      householdPref = hh.v;
+      if (hh.v > 0) householdBits.push(hh.label);
+      if (input.singleParent && incomeMan > 6000) notes.push("디딤돌 한부모 우대는 연소득 6천만 원 이하일 때 적용됩니다.");
     }
 
     var stackPref = 0;
@@ -724,8 +751,8 @@
       if (input.smallShare) { stackPref += 0.1; stackBits.push("대출가능금액 30% 이하 신청 0.1%p"); }
       if (input.unsoldLocal) { stackPref += 0.2; stackBits.push("지방 준공후 미분양 0.2%p"); }
       if (input.prepay40) {
-        stackPref += 0.2; stackBits.push("중도상환 40% 이상 0.2%p");
-        notes.push("중도상환 우대는 실행일로부터 1년 경과 후, 2024.7.31. 이후 조기상환 금액이 최초 원금의 40% 이상일 때 잔액에 적용됩니다.");
+        stackPref += 0.2; stackBits.push("중도상환 40% 이상 0.2%p (사후)");
+        notes.push("중도상환 우대 0.20%p는 실행 1년 후, 2024.7.31. 이후 조기상환분이 최초 원금의 40% 이상일 때 사후 적용됩니다.");
       }
     }
     var prefCap = input.children >= 3 ? DIDIM_CAP3 : DIDIM_CAP;
@@ -734,9 +761,11 @@
     var localAdj = (!specialNewly && input.local) ? -0.2 : 0;
     if (input.local && !specialNewly) notes.push("지방 소재 주택은 기준금리에서 0.2%p를 차감합니다 (2025.3.24. 이후 신규 접수분, 우대 상한과 별도).");
     if (!specialNewly && prefRaw > prefCap) notes.push("우대금리 상한 " + prefCap.toFixed(1) + "%p를 적용했습니다.");
-    var typeAdj = DIDIM_FIXED_ADD;
-    notes.push(DIDIM_FIXED_LABEL + ". 우대 상한·지방 차감과 별도로 더했습니다.");
-    var floor = useSpecialTable ? DIDIM_FLOOR_NF : DIDIM_FLOOR;
+    var rateType = input.rateType || "fixed";
+    var typeAdj = typeAdjFor(rateType, input.years);
+    var typeLabel = typeShortLabel(rateType);
+    notes.push("금리유형 " + typeLabel + " 가산 " + typeAdj.toFixed(2) + "%p를 우대 상한·지방 차감과 별도로 더했습니다. (주택도시기금)");
+    var floor = DIDIM_FLOOR;
     var rate = baseRate == null ? null : Math.max(floor, Number((baseRate + localAdj + typeAdj - pref).toFixed(4)));
 
     var productCap = 200000000;
@@ -768,7 +797,7 @@
     return finalize({
       eligible: reasons.length === 0 && rate != null && prices.hasAny,
       reasons: houseMissing ? ["KB시세 또는 매매가격을 입력해 주세요"] : reasons,
-      notes: notes, baseRate: baseRate, pref: pref, extraAdj: localAdj, typeAdj: typeAdj, prefDetail: prefDetail, rate: rate,
+      notes: notes, baseRate: baseRate, pref: pref, extraAdj: localAdj, typeAdj: typeAdj, typeLabel: typeLabel, prefDetail: prefDetail, rate: rate,
       productCap: productCap, ltv: ltv, ltvCap: ltvCap, ltvBase: prices.ltvBase,
       ltvBaseLabel: prices.hasAny ? prices.ltvBaseLabel : "-", dtiLimit: dtiLimit, dtiCap: dtiCap,
       limit: 0, binding: "-", monthly: 0, dtiRatio: null, dsrRatio: null
@@ -902,6 +931,7 @@
       disabled: checked("disabled"),
       newborn: checked("newborn"),
       fraudVictim: checked("fraudVictim"),
+      rateType: val("rateType") || "fixed",
       smallShare: checked("smallShare"),
       unsoldLocal: checked("unsoldLocal"),
       prepay40: checked("prepay40"),
@@ -922,7 +952,7 @@
     var d = computeDidim(input);
     var b = computeBogeum(input);
     el("metrics").innerHTML =
-      metricHtml("디딤돌 적용금리", d.eligible ? formatRate(d.rate) : "불가", d.eligible ? (DIDIM_FIXED_LABEL + (d.prefDetail ? " · " + d.prefDetail : "")) : d.reasons[0], !d.eligible) +
+      metricHtml("디딤돌 적용금리", d.eligible ? formatRate(d.rate) : "불가", d.eligible ? ((d.typeLabel || "순수 고정") + (d.prefDetail ? " · " + d.prefDetail : "")) : d.reasons[0], !d.eligible) +
       metricHtml("디딤돌 추정 한도", d.eligible ? formatWon(d.limit) : "불가", d.eligible ? d.binding : d.reasons[0], !d.eligible) +
       metricHtml("보금자리론 적용금리", b.eligible ? formatRate(b.rate) : "불가", b.eligible ? ("고정금리" + (b.prefDetail ? " · " + b.prefDetail : "")) : b.reasons[0], !b.eligible) +
       metricHtml("보금자리론 추정 한도", b.eligible ? formatWon(b.limit) : "불가", b.eligible ? b.binding : b.reasons[0], !b.eligible);
@@ -930,7 +960,7 @@
     var rows = [
       ["자격", d.eligible ? "가능" : ("불가 · " + (d.reasons[0] || "")), b.eligible ? "가능" : ("불가 · " + (b.reasons[0] || "")), d.eligible, b.eligible],
       ["기본금리", formatRate(d.baseRate), formatRate(b.baseRate)],
-      ["고정금리 가산", "+0.30%p (순수 고정, 상한 밖)", "고정금리 (가산 없음)"],
+      ["금리유형 가산", d.typeAdj ? ("+" + d.typeAdj.toFixed(2) + "%p · " + (d.typeLabel || "순수 고정")) : "-", "고정금리 (가산 없음)"],
       ["우대·차감", d.prefDetail, b.prefDetail],
       ["적용금리", formatRate(d.rate), formatRate(b.rate)],
       ["상품 최대한도", formatWon(d.productCap), formatWon(b.productCap)],
@@ -964,7 +994,7 @@
     return "<div class='table-wrap'><table><tbody>" +
       "<tr><td>자격</td><td>" + esc(x.eligible ? "가능" : (x.reasons.join(" / ") || "불가")) + "</td></tr>" +
       "<tr><td>기본금리</td><td>" + esc(formatRate(x.baseRate)) + "</td></tr>" +
-      (x.typeAdj ? "<tr><td>고정금리 가산</td><td>" + esc("+" + x.typeAdj.toFixed(2) + "%p · " + DIDIM_FIXED_LABEL) + "</td></tr>" : "<tr><td>금리유형</td><td>고정금리</td></tr>") +
+      (x.typeAdj ? "<tr><td>금리유형 가산</td><td>" + esc("+" + x.typeAdj.toFixed(2) + "%p · " + (x.typeLabel || "순수 고정") + " (주택도시기금)") + "</td></tr>" : "<tr><td>금리유형</td><td>고정금리</td></tr>") +
       "<tr><td>우대금리</td><td>" + esc(x.prefDetail) + "</td></tr>" +
       "<tr><td>적용금리</td><td>" + esc(formatRate(x.rate)) + "</td></tr>" +
       "<tr><td>LTV 기준</td><td>" + esc(x.ltvBaseLabel ? formatWon(x.ltvBase) + " · " + x.ltvBaseLabel : "-") + "</td></tr>" +
@@ -1020,6 +1050,7 @@
     el("smallShare").checked = false;
     el("unsoldLocal").checked = false;
     el("prepay40").checked = false;
+    el("rateType").value = "fixed";
     el("greenBuild").checked = false;
     el("unsoldManaged").checked = false;
     el("bogeumProduct").value = "e";
@@ -1060,46 +1091,43 @@
     }).join("");
   }
 
-  function lookupDidimRate(income, years, firstNewly, local, children, singleParent, newlywed, firstHome, multicultural, disabled, subscription, eContract, smallShare, unsoldLocal, prepay40) {
+  function lookupDidimRate(income, years, rateType, local, children, singleParent, newlywed, firstHome, multicultural, disabled, subscription, eContract, smallShare, unsoldLocal, prepay40) {
     var notes = [];
     var lines = [];
-    var typeAdj = DIDIM_FIXED_ADD;
+    var typeAdj = typeAdjFor(rateType || "fixed", years);
+    var typeLabel = typeShortLabel(rateType || "fixed");
     if (income === "special") {
       var published = DIDIM_GENERAL.b85[years] + 0.3;
       var rateS = Number((published + typeAdj).toFixed(4));
-      notes.push("신혼 합산소득 8,500만 원 초과·신청인 1인 6,000만 원 이하 특례는 만기별 최고금리에 0.3%p를 가산합니다. 우대금리·지방 차감 적용 여부는 공시에 명시되지 않아 적용하지 않았습니다.");
-      notes.push(DIDIM_FIXED_LABEL + ". 우대 상한·지방 차감과 별도로 더했습니다.");
+      notes.push("신혼 합산소득 8,500만 원 초과·신청인 1인 6,000만 원 이하 특례는 주택도시기금 기준 만기별 최고금리에 0.3%p를 가산합니다. 우대·지방 차감은 적용하지 않았습니다.");
+      notes.push("금리유형 " + typeLabel + " 가산 " + typeAdj.toFixed(2) + "%p를 우대 상한·지방 차감과 별도로 더했습니다. (주택도시기금)");
       lines.push({ label: "기본금리", amount: published.toFixed(2) + "%", note: "7천만~8,500만 구간 금리 + 0.30%p 특례" });
-      lines.push({ label: "고정금리 가산", amount: fmtPp(typeAdj), note: DIDIM_FIXED_LABEL });
-      lines.push({ label: "우대·지방", amount: "0.00%p", note: "확인 필요로 미적용" });
-      lines.push({ label: "최종금리", amount: rateS.toFixed(2) + "%", note: "특례 가산 + 고정금리 가산" });
-      return { base: published, pref: 0, extra: 0, typeAdj: typeAdj, rate: rateS, lines: lines, notes: notes, baseLabel: "특례 가산 금리" };
+      lines.push({ label: "금리유형 가산", amount: fmtPp(typeAdj), note: typeLabel + " (주택도시기금)" });
+      lines.push({ label: "우대·지방", amount: "0.00%p", note: "특례는 우대·지방 차감 미적용" });
+      lines.push({ label: "최종금리", amount: rateS.toFixed(2) + "%", note: "특례 가산 + 금리유형 가산" });
+      return { base: published, pref: 0, extra: 0, typeAdj: typeAdj, typeLabel: typeLabel, rate: rateS, lines: lines, notes: notes, baseLabel: "특례 가산 금리" };
     }
-    var useSpecialTable = firstNewly;
-    var table = useSpecialTable ? DIDIM_NEWLY_FIRST : DIDIM_GENERAL;
-    var base = table[income][years];
+    var base = DIDIM_GENERAL[income][years];
     var incomeLabel = "소득 구간";
     DIDIM_INCOME_OPTS.forEach(function (o) { if (o[0] === income) incomeLabel = o[1]; });
     lines.push({
       label: "기본금리",
       amount: base.toFixed(2) + "%",
-      note: (useSpecialTable ? "생애최초 신혼 전용표" : "일반 가구 표") + " · " + incomeLabel + " · " + years + "년"
+      note: "주택도시기금 공시 기본금리 · " + incomeLabel + " · " + years + "년"
     });
-    var household = 0;
-    var householdNote = "없음";
-    if (children === "3") { household = 0.7; householdNote = "다자녀 0.70%p"; }
-    else if (!useSpecialTable && singleParent && (income === "b20" || income === "b40")) { household = 0.5; householdNote = "한부모 0.50%p"; }
-    else if (children === "2") { household = 0.5; householdNote = "2자녀 0.50%p"; }
-    else if (children === "1") { household = 0.3; householdNote = "1자녀 0.30%p"; }
-    else if (!useSpecialTable && (multicultural || disabled || firstHome || newlywed)) {
-      household = 0.2;
-      if (multicultural) householdNote = "다문화 0.20%p";
-      else if (disabled) householdNote = "장애인 0.20%p";
-      else if (firstHome) householdNote = "생애최초 0.20%p";
-      else householdNote = "신혼 0.20%p";
-    }
-    if (useSpecialTable) notes.push("생애최초 신혼가구는 전용 금리표를 쓰며, 자녀·청약·전자계약·대출가능금액 30% 이하 신청·중도상환 40% 이상·지방 준공후 미분양 우대만 추가합니다.");
-    if (singleParent && income === "b70") notes.push("한부모 우대는 연소득 6천만 원 이하일 때 적용됩니다. 4천만~7천만 구간은 6천만 초과 여부가 불확실해 이 조회에서는 적용하지 않았습니다.");
+    var hhInput = {
+      singleParent: singleParent && (income === "b20" || income === "b40"),
+      disabled: disabled,
+      multicultural: multicultural,
+      newlywed: newlywed,
+      firstHome: firstHome,
+      children: children === "3" ? 3 : Number(children)
+    };
+    var incomeMan = income === "b20" ? 2000 : income === "b40" ? 4000 : income === "b70" ? 7000 : 8500;
+    var hh = pickDidimHousehold(hhInput, incomeMan);
+    var household = hh.v;
+    var householdNote = hh.v ? hh.label : "없음";
+    if (singleParent && (income === "b70" || income === "b85")) notes.push("한부모 우대는 연소득 6천만 원 이하일 때 적용됩니다. 4천만~7천만 구간은 6천만 초과 여부가 불확실해 이 조회에서는 적용하지 않았습니다.");
     var stack = 0;
     var stackBits = [];
     if (subscription === "5") { stack += 0.3; stackBits.push("청약 5년 0.30%p"); }
@@ -1109,8 +1137,8 @@
     if (smallShare) { stack += 0.1; stackBits.push("대출가능금액 30% 이하 신청 0.10%p"); }
     if (unsoldLocal) { stack += 0.2; stackBits.push("지방 준공후 미분양 0.20%p"); }
     if (prepay40) {
-      stack += 0.2; stackBits.push("중도상환 40% 이상 0.20%p");
-      notes.push("중도상환 우대는 실행일로부터 1년 경과 후, 2024.7.31. 이후 조기상환 금액이 최초 원금의 40% 이상일 때 잔액에 적용됩니다.");
+      stack += 0.2; stackBits.push("중도상환 40% 이상 0.20%p (사후)");
+      notes.push("중도상환 우대 0.20%p는 실행 1년 후, 2024.7.31. 이후 조기상환분이 최초 원금의 40% 이상일 때 사후 적용됩니다.");
     }
     var prefCap = children === "3" ? DIDIM_CAP3 : DIDIM_CAP;
     var prefRaw = household + stack;
@@ -1118,18 +1146,18 @@
     var extra = local ? -0.2 : 0;
     if (local) notes.push("지방 소재 주택은 기준금리에서 0.2%p를 차감합니다 (2025.3.24. 이후 신규 접수분, 우대 상한과 별도).");
     if (prefRaw > prefCap) notes.push("우대금리 상한 " + prefCap.toFixed(1) + "%p를 적용했습니다.");
-    notes.push(DIDIM_FIXED_LABEL + ". 우대 상한·지방 차감과 별도로 더했습니다.");
-    lines.push({ label: "고정금리 가산", amount: fmtPp(typeAdj), note: "우대 상한과 별도" });
+    notes.push("금리유형 " + typeLabel + " 가산 " + typeAdj.toFixed(2) + "%p를 우대 상한·지방 차감과 별도로 더했습니다. (주택도시기금)");
+    lines.push({ label: "금리유형 가산", amount: fmtPp(typeAdj), note: typeLabel + " (우대 상한과 별도)" });
     if (extra !== 0) lines.push({ label: "지방 차감", amount: fmtPp(extra), note: "기준금리에서 차감, 우대 상한과 별도" });
     lines.push({ label: "가구 우대 (택1)", amount: household ? fmtPp(-household) : "0.00%p", note: householdNote });
     lines.push({ label: "중복 우대", amount: stack ? fmtPp(-stack) : "0.00%p", note: stackBits.length ? stackBits.join(", ") : "없음" });
     lines.push({ label: "적용 우대", amount: pref ? fmtPp(-pref) : "0.00%p", note: "상한 " + prefCap.toFixed(1) + "%p" });
-    var floor = useSpecialTable ? DIDIM_FLOOR_NF : DIDIM_FLOOR;
+    var floor = DIDIM_FLOOR;
     var raw = Number((base + extra + typeAdj - pref).toFixed(4));
     var rate = Math.max(floor, raw);
     if (raw < floor) notes.push("최저금리 " + floor.toFixed(1) + "%를 적용했습니다.");
-    lines.push({ label: "최종금리", amount: rate.toFixed(2) + "%", note: "최저금리 일반 1.5%, 생애최초 신혼 1.2%" });
-    return { base: base, pref: pref, extra: extra, typeAdj: typeAdj, rate: rate, lines: lines, notes: notes, baseLabel: useSpecialTable ? "생애최초 신혼 표" : "일반 표" };
+    lines.push({ label: "최종금리", amount: rate.toFixed(2) + "%", note: "최저금리 1.5% (주택도시기금)" });
+    return { base: base, pref: pref, extra: extra, typeAdj: typeAdj, typeLabel: typeLabel, rate: rate, lines: lines, notes: notes, baseLabel: "공시 기본금리" };
   }
 
   function lookupBogeumRate(income, years, product, young, newlywed, newborn, children, singleParent, disabled, multicultural, fraudVictim, regulated, greenBuild, unsoldManaged) {
@@ -1204,7 +1232,7 @@
     var result;
     if (isDidim) {
       result = lookupDidimRate(
-        val("lookupIncome"), y, checked("lookupFirstNewly"), checked("lookupLocal"),
+        val("lookupIncome"), y, val("lookupRateType") || "fixed", checked("lookupLocal"),
         val("lookupDidimChildren"), checked("lookupDidimParent"), checked("lookupDidimNewlywed"),
         checked("lookupDidimFirst"), checked("lookupDidimMulti"), checked("lookupDidimDisabled"),
         val("lookupSubscription"), checked("lookupEContract"),
@@ -1222,13 +1250,12 @@
     var extraLabel = isDidim ? "지방 차감" : "규제지역 가산";
     var extraStr = result.extra === 0 ? "0.00%p" : fmtPp(result.extra);
     var prefStr = result.pref ? "−" + result.pref.toFixed(2) + "%p" : "0.00%p";
-    var typeStr = isDidim ? " → 고정금리 가산 +0.30%p" : " · 고정금리";
+    var typeStr = isDidim ? (" → 금리유형 가산 " + fmtPp(result.typeAdj) + " · " + (result.typeLabel || "순수 고정")) : " · 고정금리";
     el("lookupOut").innerHTML =
       "<div>최종금리</div><div class='big'>" + result.rate.toFixed(2) + "%</div><p>" +
       "기본금리 " + result.base.toFixed(2) + "% (" + result.baseLabel + ")" + typeStr +
       " → 적용 우대 " + prefStr +
-      " → " + extraLabel + " " + extraStr + " → 최종 " + result.rate.toFixed(2) + "%" +
-      (isDidim ? " · " + DIDIM_FIXED_LABEL : "") + "</p>";
+      " → " + extraLabel + " " + extraStr + " → 최종 " + result.rate.toFixed(2) + "%</p>";
     var rows = result.lines.map(function (line) {
       return "<tr><td>" + line.label + "</td><td>" + line.amount + "</td><td>" + line.note + "</td></tr>";
     }).join("");
@@ -1239,7 +1266,7 @@
       "<h2>우대·가산 내역</h2><div class='table-wrap'><table><thead><tr><th>구분</th><th>금액</th><th>설명</th></tr></thead><tbody>" +
       rows + "</tbody></table></div>" + notes;
     var hl = isDidim
-      ? { product: "didim", bracket: val("lookupIncome"), year: y, firstNewly: checked("lookupFirstNewly") && val("lookupIncome") !== "special" }
+      ? { product: "didim", bracket: val("lookupIncome"), year: y }
       : { product: "bogeum", year: y, kind: val("lookupBogeum") };
     paintRateTables(hl);
   }
@@ -1267,15 +1294,14 @@
     var ys = [10, 15, 20, 30];
     function didimRows(src) {
       return brackets.map(function (b) {
-        return [b[1]].concat(ys.map(function (y) { return (Number((src[b[0]][y] + DIDIM_FIXED_ADD).toFixed(4))).toFixed(2); }));
+        return [b[1]].concat(ys.map(function (y) { return src[b[0]][y].toFixed(2); }));
       });
     }
     function hlDidim(srcName) {
       return function (ri, ci) {
         if (!hl || hl.product !== "didim") return false;
-        if (hl.bracket === "special") return srcName === "g" && brackets[ri][0] === "b85" && ci === ys.indexOf(hl.year) + 1;
-        if (srcName === "nf" && !hl.firstNewly) return false;
-        if (srcName === "g" && hl.firstNewly) return false;
+        if (srcName !== "g") return false;
+        if (hl.bracket === "special") return brackets[ri][0] === "b85" && ci === ys.indexOf(hl.year) + 1;
         return brackets[ri][0] === hl.bracket && ci === ys.indexOf(hl.year) + 1;
       };
     }
@@ -1304,7 +1330,7 @@
   el("tab-calc").addEventListener("click", function () { showTab("calc"); });
   el("tab-rate").addEventListener("click", function () { showTab("rate"); });
   el("resetBtn").addEventListener("click", resetForm);
-  ["age","houseCount","children","income","applicantIncome","kbPrice","salePrice","existingDebt","firstHome","newlywed","region","regulated","houseType","singleHousehold","assetsOk","areaOk","subscription","eContract","bogeumProduct","singleParent","multicultural","disabled","newborn","fraudVictim","smallShare","unsoldLocal","prepay40","greenBuild","unsoldManaged"].forEach(function (id) {
+  ["age","houseCount","children","income","applicantIncome","kbPrice","salePrice","existingDebt","firstHome","newlywed","region","regulated","houseType","singleHousehold","assetsOk","areaOk","subscription","rateType","eContract","bogeumProduct","singleParent","multicultural","disabled","newborn","fraudVictim","smallShare","unsoldLocal","prepay40","greenBuild","unsoldManaged"].forEach(function (id) {
     el(id).addEventListener("input", renderCalc);
     el(id).addEventListener("change", renderCalc);
   });
@@ -1317,7 +1343,7 @@
       renderLookup();
     });
   });
-  ["lookupIncome","lookupYears","lookupFirstNewly","lookupLocal","lookupBogeum","lookupDidimChildren","lookupDidimParent","lookupDidimNewlywed","lookupDidimFirst","lookupDidimMulti","lookupDidimDisabled","lookupSubscription","lookupEContract","lookupSmallShare","lookupUnsoldLocal","lookupPrepay40","lookupYoung","lookupBogeumNewlywed","lookupNewborn","lookupBogeumChildren","lookupBogeumParent","lookupBogeumDisabled","lookupBogeumMulti","lookupFraudVictim","lookupRegulated","lookupGreenBuild","lookupUnsoldManaged"].forEach(function (id) {
+  ["lookupIncome","lookupYears","lookupRateType","lookupLocal","lookupBogeum","lookupDidimChildren","lookupDidimParent","lookupDidimNewlywed","lookupDidimFirst","lookupDidimMulti","lookupDidimDisabled","lookupSubscription","lookupEContract","lookupSmallShare","lookupUnsoldLocal","lookupPrepay40","lookupYoung","lookupBogeumNewlywed","lookupNewborn","lookupBogeumChildren","lookupBogeumParent","lookupBogeumDisabled","lookupBogeumMulti","lookupFraudVictim","lookupRegulated","lookupGreenBuild","lookupUnsoldManaged"].forEach(function (id) {
     el(id).addEventListener("change", renderLookup);
     el(id).addEventListener("input", renderLookup);
   });
@@ -1333,7 +1359,11 @@
   window.__loanApp = {
     rateStatus: function () { return { kind: rateLoadKind, text: rateStatusText }; },
     asOf: function () { return { didim: DIDIM_ASOF, bogeum: BOGEUM_ASOF }; },
-    tables: function () { return { didimGeneral: DIDIM_GENERAL, didimNewlyFirst: DIDIM_NEWLY_FIRST, bogeumE: BOGEUM_E, bogeumU: BOGEUM_U }; }
+    tables: function () { return { didimGeneral: DIDIM_GENERAL, didimNewlyFirst: DIDIM_NEWLY_FIRST, bogeumE: BOGEUM_E, bogeumU: BOGEUM_U }; },
+    computeDidim: computeDidim,
+    lookupDidimRate: lookupDidimRate,
+    typeAdjFor: typeAdjFor,
+    readInput: readInput
   };
 })();
   </script>
