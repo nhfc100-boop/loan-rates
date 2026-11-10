@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#1b3a5f">
+  <meta name="application-name" content="KB시세·실거래가 LTV 계산기">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="KB시세·실거래가 LTV 계산기">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="description" content="단지명과 평형으로 KB부동산·국토부 실거래가 페이지를 열고, KB시세와 실거래가 중 낮은 금액으로 디딤돌·보금자리론 LTV 한도를 참고 계산합니다.">
+  <link rel="icon" href="data:image/png;base64,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">
+  <link rel="apple-touch-icon" href="data:image/png;base64,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">
+  <link rel="manifest" href="data:application/manifest+json,%7B%22name%22%3A%20%22KB%EC%8B%9C%EC%84%B8%C2%B7%EC%8B%A4%EA%B1%B0%EB%9E%98%EA%B0%80%20LTV%20%EA%B3%84%EC%82%B0%EA%B8%B0%22%2C%20%22short_name%22%3A%20%22LTV%20%EA%B3%84%EC%82%B0%EA%B8%B0%22%2C%20%22description%22%3A%20%22KB%EC%8B%9C%EC%84%B8%EC%99%80%20%EC%8B%A4%EA%B1%B0%EB%9E%98%EA%B0%80%20%EC%A4%91%20%EB%82%AE%EC%9D%80%20%EA%B8%88%EC%95%A1%EC%9D%84%20%EA%B8%B0%EC%A4%80%EC%9C%BC%EB%A1%9C%20%EB%94%94%EB%94%A4%EB%8F%8C%C2%B7%EB%B3%B4%EA%B8%88%EC%9E%90%EB%A6%AC%EB%A1%A0%20LTV%20%ED%95%9C%EB%8F%84%EB%A5%BC%20%EC%B0%B8%EA%B3%A0%20%EA%B3%84%EC%82%B0%ED%95%A9%EB%8B%88%EB%8B%A4.%22%2C%20%22start_url%22%3A%20%22.%22%2C%20%22scope%22%3A%20%22.%22%2C%20%22display%22%3A%20%22standalone%22%2C%20%22orientation%22%3A%20%22portrait%22%2C%20%22background_color%22%3A%20%22%23eef2f6%22%2C%20%22theme_color%22%3A%20%22%231b3a5f%22%2C%20%22lang%22%3A%20%22ko%22%2C%20%22icons%22%3A%20%5B%7B%22src%22%3A%20%22data%3Aimage%2Fpng%3Bbase64%2CiVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAAImklEQVR42u2dW2wUVRjHd09XqBWU0IBiEQMiNAhYrGhbiuHaVRsjF980wcQHExNJfCuS%2BGBiaGLkQR9MTDDR%2BCSgDaYXgkCgXaDQYoNIKhIQsdCUUBBKL6BdH5qseGZnOpczM%2Bf7zv%2F%2F1Jzuzplzvt%2F8v2%2FOXDZZUrUpAUH5JDAFEOCAAAcEOCDAAQEOCHBAgAMCHBDggAAHBMlKxb4H3Y3bEAY7ldZuibH3ZPQX3kADFVaigwNMkKMkCjiABVFEwoUDWJBGJCw4gAUDREKBwxMZ8RbkmivemVQPh5vxAAgSE6sSjnH3HkzQmmdlcDjvMbCIGBElE64GDocdBRZxIRJ85gXI4HqSEvyEUYAM8BFKWrHrG1holWJ8h0NECTIUl4VEDUdeTkGGhnz4Ti4%2B0woPMjrrS9x8rLyuh0F%2B8RGdlKq%2BOdHg%2FC1yrOSi5pUPZXeC6Wwb%2FpgYd2vaUlJau0XJAew5rdBKKGqxoJV0gkdKcPWMzvqSCMiIsqPo45IKDiNdt3B50LvZ4Nhn9C9HPFUeKU624SaKPuJ371ecu9ANkYDFR4qNbTiHTVXActtx6K6zvkRnC3FvHikGthENFnk3a9e1PhYSxDzIP%2FHmQEZ5XU%2FY4XHuQs9CVT0ceuYUu9mPAAuX3enJh8to%2BneO2HNK3nmPGAs3XcfOh0ZXZeMlI%2FYd05MPg%2BDQlgxmfAgGZChMJapCmHeXyPHhCg5r%2FRJXwZGXDIUbL6%2FrURhCffiwxstNTSqoe4ZaMsa2yZIPzmklGjJyWwYfCbz2aeyaqjV%2BavkgKmGybYxhYbepMT6UIELUPIThZLg56TCWD3ppJTIylKcYcjefCnK2ETEZoZYgmpuHMM02fN9soYQPWuYhjLKNgLfhhOEfOpuHMMc2lNygFZwPQuYhDLENhbfuKfcPbc1DsLcNu2WuGPmgYh6Ct204L3MF50PhfgKOSA%2B1sO8CD7JERsI82F5biez5AMZXYYSecaVChkI%2BNCSMgHN4DXMszxT54EP%2FzMItrcT4tBm%2F%2FCJABvjgD4cmT6hy4kNoGGOviTmMZa5o%2BJD2WTeqUjCMUPkg%2BgIxDmlF55cdKLyLDHCwIoNHCSJABvhgBQchMkjzIUAG%2BGACB1EyiPIhQAb4oA2HbstchvCRIkEGDyysfGg%2BrhTIiIuPBB5qUjKJXKX56ITm88X7PQia%2F5JLitwMQoDDiMyCmgOiKoHDC%2BOiBAfvMxRCo0ZagYjDwS%2Bz4IVxyCy0xytwqGEs9OAwxzy0HanAAYdRkITDBPPQeYwChx32nyocuGQPOIwwD9x9HsXhRZGPUH8vxmjnoM4HRTISuLYCcYCDrnkQtY0E9Xef688HXTISDH5SQ2c%2BSJOR4PFLTQpfM60QC%2BpkUC1INf89cM1%2FTZ3%2F2Yq2fLAhg%2FaprB0fcSFi1zXdKwC01zns5j1iRBy6w9sEdeQjGkScu6B%2B1ZD8e0gT4z2xHtLLDpyx43ExmQMcuXg4BCz3r%2BC%2FIhjEzACHphZija7LKLrPTczuPmEFh3tElJ%2F6srwpiSEcXhEBFsbBEQEi7O9%2FZg6HFEUllJjzQE0qYZL8vVPKzKf%2BjYMDUfck3CYIcXGOHfWb08ufkRoXv%2Fxu%2F1%2B3pMYD33w0b7aCCmPzh1%2Bsqli8rqZCal%2F5%2Bvu%2F%2FX553K%2Bvrnr6q4%2Ffkxq372jY%2FmUDnIODvm1qtTZufLHKzXc3pOWPZbPZXc0ZpBUmaus8c7mvX2pcX1OZTCadvzipqDC9fInU2N716x9XrgIOJhodze5ukY%2F1koeLK8rmO3%2BxduXSwokTLD7UhoKUlXY2ZfJllmXO37KmnsHhkcaDHShIY9aqN7bmbZ8xfeqJ77dLjXv2t7%2FzwecOWzt%2Fqbfz9LnyhXP%2FbwzPbv3k65E7d%2B06qigrlRqbDnbcHhqGc%2FArS%2BV0MPmB%2B2uql9h9fn1NpRBJujkFcHjQnv3tVpNwOGfZmK6UWv7svXb0p27AwVC3BoZaDp%2BUGldULJr60GTrhxfOe3z%2BnJlS467mTDabBRymZJZUQcGra57Pt7xRmaeqbW6jNV7A4UGtJ073Xr0%2BbmYpEGLdWnlF9fipsxd7%2BgAH5wWP7%2FYekRrLFsx5YtYj97ZUL31qevEU2TYa28iNF3AEzSwJyxr5axYvGRq%2B88OB44CDuc5dvNJ15rx81pr%2Bbym9qHBi%2BgX50mDzoY6BwWHAYaJ5zJoxbemiJ8f%2BfmlFeVHhREspmqE4UsDhWQ37jt25%2B7ddWWpdU7%2Fc15%2FpPAM4jNDNgcG9rfKCxyurn5twX2p68ZTq8gXW5Y3R0SzgMEU7LZnlwUlFa5aVbUjnWTLfRTOnJAy%2Fh9S3DrWf7rt2Qzpf3ZCumvXoNOmTHT%2BfO3%2Bpl%2Bgw4Rx%2B9M%2Fo6O69R6XGtdVlC%2BY%2BZqleW%2BkOE3AoyywFQp7M4RGSyxus0sqpps%2BcPzA4PDJv9dtqOz17oedU94XFpbMdPtNy%2BOStgSE4h4ka9%2BaMnU1tpAfoCo7S2i1SS3fjNsDRsO%2FYXcuCR069V6%2B3dvyiya5a42WNKZxDpW7cvL0v02X3390tR4gubwCO0DML6fMUkgXpW3WfBtzClb7%2BmcveVLU%2FP2a6FG6Nj3Og7KAi35FyC4eb%2BgWiIpfRRM0BhQMHMgvjnOINDmQWo3KKgrQC8%2BBqG57hgHmYYxtqClKYB0vb8ANHXvTABwkyvBq%2F0IdTSLdY%2BIEDlQf7aiOQcyC58E4oQdMK%2BOBNRiKM5XPwQb3UyClZUrUppB1CaaIDFkGiENQ5HPqGhZAmQ01aAR8syVCQVlxygBQTcYWhZMKVweHGJ4AIrXlWCYf7VAJKSEyseji8lhoARduZDAUOlKLRK4xjLCw4gAhpLKKAA4gQxSI6OIAIOSyihgOUUGEiTjjACpVTufjhgLQVnniDAAcEOCDAAQEOCHBAgAMCHBDggAAHZK7%2BBZikVCoIcpHJAAAAAElFTkSuQmCC%22%2C%20%22sizes%22%3A%20%22180x180%22%2C%20%22type%22%3A%20%22image%2Fpng%22%2C%20%22purpose%22%3A%20%22any%22%7D%5D%7D">
+  <title>KB시세·실거래가 LTV 계산기</title>
+  <style>
+    :root {
+      --bg: #eef2f6;
+      --paper: #ffffff;
+      --ink: #1a2332;
+      --muted: #5b6573;
+      --line: #d5dde6;
+      --brand: #1b3a5f;
+      --brand-2: #2a5483;
+      --accent: #c05621;
+      --ok: #1b6b43;
+      --bad: #b42318;
+      --warn: #8a5a00;
+      --chip: #e8eef6;
+      --shadow: 0 1px 2px rgba(27,58,95,.06);
+      --radius: 16px;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.5;
+      padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+    }
+    .wrap { max-width: 480px; margin: 0 auto; padding: 16px 16px 56px; }
+    header.appbar { padding: 8px 0 4px; }
+    header.appbar h1 {
+      font-size: 1.22rem; margin: 0 0 4px; letter-spacing: -0.03em; color: var(--brand);
+    }
+    header.appbar p { margin: 0; color: var(--muted); font-size: 0.86rem; }
+    .note {
+      background: #eef4fb; border: 1px solid #d3e0ef; color: #24364d;
+      border-radius: var(--radius); padding: 12px 14px; font-size: 0.86rem; margin: 14px 0 16px;
+    }
+    .note strong { display: block; margin-bottom: 4px; }
+    .card {
+      background: var(--paper); border: 1px solid var(--line);
+      border-radius: var(--radius); padding: 14px; margin-bottom: 12px;
+      box-shadow: var(--shadow);
+    }
+    .card h2 {
+      font-size: 0.98rem; margin: 0 0 12px; color: var(--brand);
+    }
+    label.field { display: block; margin: 0 0 12px; }
+    label.field:last-child { margin-bottom: 0; }
+    label.field span.lbl {
+      display: block; font-size: 0.8rem; color: var(--muted); margin-bottom: 6px; font-weight: 600;
+    }
+    input[type="number"], input[type="text"], select {
+      width: 100%; font: inherit; color: var(--ink);
+      background: #fff; border: 1px solid var(--line); border-radius: 12px;
+      padding: 11px 12px; appearance: none; -webkit-appearance: none;
+    }
+    input:focus, select:focus {
+      outline: 2px solid var(--brand-2); outline-offset: 1px;
+    }
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .hint { font-size: 0.8rem; color: var(--muted); margin: -4px 0 12px; }
+    .live { font-size: 0.78rem; color: var(--brand-2); margin-top: 6px; }
+    .btns { display: flex; flex-direction: column; gap: 8px; }
+    .btns a, .btns button.linkish {
+      display: block; text-align: center; text-decoration: none;
+      font: inherit; font-weight: 650; font-size: 0.92rem;
+      border-radius: 12px; padding: 12px 14px; cursor: pointer;
+      border: 1px solid var(--brand); background: var(--brand); color: #fff;
+    }
+    .btns a.secondary, .btns button.linkish.secondary {
+      background: #fff; color: var(--brand);
+    }
+    .toast {
+      display: none; margin-top: 8px; font-size: 0.82rem; color: var(--ok);
+    }
+    .toast.show { display: block; }
+    .seg {
+      display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px;
+    }
+    .seg button {
+      border: 1px solid var(--line); background: #fff; color: var(--ink);
+      font: inherit; font-size: 0.84rem; padding: 8px 11px; border-radius: 999px; cursor: pointer;
+    }
+    .seg button[aria-pressed="true"] {
+      background: var(--brand); color: #fff; border-color: var(--brand);
+    }
+    .toggle {
+      display: flex; align-items: flex-start; gap: 10px;
+      margin: 0 0 10px; font-size: 0.9rem;
+    }
+    .toggle input { margin-top: 3px; width: 18px; height: 18px; accent-color: var(--brand); flex: 0 0 auto; }
+    .result {
+      background: var(--brand); color: #fff; border-radius: 16px; padding: 16px; margin-bottom: 12px;
+    }
+    .result .k { font-size: 0.78rem; opacity: .85; }
+    .result .big { font-size: 1.55rem; font-weight: 750; letter-spacing: -0.03em; margin: 4px 0 2px; }
+    .result .sub { font-size: 0.86rem; opacity: .92; margin: 0; }
+    .metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px; }
+    .metric {
+      background: var(--paper); border: 1px solid var(--line); border-radius: 14px; padding: 12px;
+    }
+    .metric .k { font-size: 0.75rem; color: var(--muted); margin-bottom: 4px; }
+    .metric .v { font-size: 1.02rem; font-weight: 700; letter-spacing: -0.02em; word-break: keep-all; }
+    .metric .d { font-size: 0.75rem; color: var(--muted); margin-top: 4px; word-break: keep-all; }
+    .metric.warn .v { color: var(--warn); }
+    .metric.ok .v { color: var(--ok); }
+    .empty { color: var(--muted); font-size: 0.9rem; padding: 8px 2px 4px; }
+    .warnbox {
+      background: #fff7e8; border: 1px solid #efd7a5; color: #6b4a00;
+      border-radius: 12px; padding: 10px 12px; font-size: 0.84rem; margin-bottom: 12px;
+    }
+    ul.fine { margin: 8px 0 0; padding-left: 1.15em; color: var(--muted); font-size: 0.84rem; }
+    ul.fine li { margin: 0 0 6px; }
+    footer.sources { font-size: 0.8rem; color: var(--muted); margin-top: 8px; }
+    footer.sources a { color: var(--brand); word-break: break-all; }
+    footer.sources h2 { font-size: 0.95rem; color: var(--brand); margin: 16px 0 8px; }
+    .hidden { display: none !important; }
+    #selftest { display: none; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="appbar">
+      <h1>KB시세·실거래가 LTV 계산기</h1>
+      <p>2026년 11월 10일 기준 · 참고용 계산기</p>
+    </header>
+
+    <div class="note">
+      <strong>KB시세는 이 앱이 자동으로 불러오지 않습니다</strong>
+      KB부동산은 일반인용 단지 시세 API를 공개하지 않고, 이용약관에서 웹 크롤링을 포함한 무단 도용을 금지합니다. 단지명·면적을 입력한 뒤 아래 버튼으로 공식 사이트에서 확인한 값을 직접 넣어 주세요.
+    </div>
+
+    <section class="card">
+      <h2>1. 단지명·면적</h2>
+      <label class="field">
+        <span class="lbl">아파트 단지명</span>
+        <input type="text" id="complex" placeholder="예: 래미안원베일리" autocomplete="off" enterkeyhint="search">
+      </label>
+      <div class="row">
+        <label class="field">
+          <span class="lbl">전용면적 (㎡)</span>
+          <input type="number" id="exclu" inputmode="decimal" min="0" step="0.01" placeholder="예: 84.97">
+          <div class="live" id="excluPyeong"></div>
+        </label>
+        <label class="field">
+          <span class="lbl">공급면적 (㎡)</span>
+          <input type="number" id="supply" inputmode="decimal" min="0" step="0.01" placeholder="예: 110.47">
+          <div class="live" id="supplyPyeong"></div>
+        </label>
+      </div>
+      <p class="hint">면적은 공식 사이트에서 같은 평형(전용·공급)을 고를 때 참고하세요. 1평 ≈ 3.3058㎡.</p>
+    </section>
+
+    <section class="card">
+      <h2>2. 공식 사이트에서 시세·실거래가 확인</h2>
+      <div class="btns">
+        <button type="button" class="linkish" id="btnKb">KB부동산에서 시세 확인</button>
+        <button type="button" class="linkish secondary" id="btnMolit">국토부 실거래가 공개시스템</button>
+      </div>
+      <p class="toast" id="copied" role="status"></p>
+      <p class="hint" style="margin:10px 0 0">KB부동산에서 일반가·하한가(하위평균)·상한가(상위평균)를 확인한 뒤 아래 칸에 만원 단위로 입력하세요. 실거래가는 국토부 공개시스템 또는 매매계약서 금액을 넣으면 됩니다.</p>
+    </section>
+
+    <section class="card">
+      <h2>3. 가격 입력 <span style="font-weight:500;color:var(--muted)">(단위: 만 원)</span></h2>
+      <label class="field">
+        <span class="lbl">KB시세 일반가 (평균 매매가)</span>
+        <input type="number" id="kbAvg" inputmode="numeric" min="0" step="1" placeholder="예: 85000">
+        <div class="live" id="kbAvgLive"></div>
+      </label>
+      <div class="row">
+        <label class="field">
+          <span class="lbl">KB 하한가 (하위평균)</span>
+          <input type="number" id="kbLow" inputmode="numeric" min="0" step="1" placeholder="선택">
+          <div class="live" id="kbLowLive"></div>
+        </label>
+        <label class="field">
+          <span class="lbl">KB 상한가 (상위평균)</span>
+          <input type="number" id="kbHigh" inputmode="numeric" min="0" step="1" placeholder="선택">
+          <div class="live" id="kbHighLive"></div>
+        </label>
+      </div>
+      <label class="field">
+        <span class="lbl">계산에 쓸 KB시세</span>
+        <select id="kbWhich">
+          <option value="avg">일반가</option>
+          <option value="low">하한가 (하위평균)</option>
+          <option value="high">상한가 (상위평균)</option>
+        </select>
+      </label>
+      <label class="field">
+        <span class="lbl">실거래가격 (매매가)</span>
+        <input type="number" id="deal" inputmode="numeric" min="0" step="1" placeholder="예: 82000">
+        <div class="live" id="dealLive"></div>
+      </label>
+      <p class="hint">둘 다 있으면 더 작은 금액을 기준가격으로 씁니다. 하나만 있으면 그 값을 씁니다.</p>
+    </section>
+
+    <section class="card">
+      <h2>4. 상품·LTV</h2>
+      <label class="field">
+        <span class="lbl">상품</span>
+        <select id="product">
+          <option value="didim_general">디딤돌 일반 (LTV 70% · 한도 2억 원)</option>
+          <option value="didim_first">디딤돌 생애최초 (LTV 80% · 한도 2.4억 원)</option>
+          <option value="didim_family">디딤돌 신혼·2자녀 이상 (LTV 70% · 한도 3.2억 원)</option>
+          <option value="bogeum_apt">보금자리론 아파트 (LTV 70% · 한도 선택)</option>
+          <option value="bogeum_other">보금자리론 기타주택 (LTV 65% · 한도 선택)</option>
+          <option value="custom">직접 입력</option>
+        </select>
+      </label>
+      <div id="bogeumMaxWrap" class="hidden">
+        <label class="field">
+          <span class="lbl">보금자리론 상품 최대한도</span>
+          <select id="bogeumMax">
+            <option value="36000">일반 3.6억 원</option>
+            <option value="40000">다자녀·전세사기피해자 4억 원</option>
+            <option value="42000">생애최초 4.2억 원</option>
+          </select>
+        </label>
+      </div>
+      <div id="customWrap" class="hidden">
+        <div class="row">
+          <label class="field">
+            <span class="lbl">직접 입력 LTV (%)</span>
+            <input type="number" id="customLtv" inputmode="decimal" min="0" max="100" step="0.1" placeholder="예: 70">
+          </label>
+          <label class="field">
+            <span class="lbl">상품 최대한도 (만 원)</span>
+            <input type="number" id="customMax" inputmode="numeric" min="0" step="1" placeholder="없으면 비움">
+          </label>
+        </div>
+      </div>
+      <label class="toggle">
+        <input type="checkbox" id="metro">
+        <span>수도권 (서울·인천·경기)</span>
+      </label>
+      <label class="toggle">
+        <input type="checkbox" id="regulated">
+        <span>규제지역 (조정대상지역·투기지역·투기과열지구)</span>
+      </label>
+      <label class="toggle" id="exemptWrap">
+        <input type="checkbox" id="exempt">
+        <span>보금자리론 실수요자·생애최초·전세사기피해자 (규제지역이어도 LTV 10%p 미차감)</span>
+      </label>
+      <label class="field">
+        <span class="lbl">소액임차보증금(방공제) 차감 · 선택 (만 원)</span>
+        <input type="number" id="deduct" inputmode="numeric" min="0" step="1" placeholder="없으면 0">
+        <div class="live" id="deductLive"></div>
+      </label>
+      <p class="hint" id="ltvHint"></p>
+    </section>
+
+    <section id="outEmpty" class="card">
+      <p class="empty">KB시세 또는 실거래가 중 하나 이상을 입력하면 기준가격과 LTV 한도가 여기에 나타납니다.</p>
+    </section>
+
+    <section id="outBox" class="hidden">
+      <div class="result">
+        <div class="k">최종 참고 한도 (LTV 한도와 상품 최대한도 중 작은 값)</div>
+        <div class="big" id="finalAmt">—</div>
+        <p class="sub" id="finalNote"></p>
+      </div>
+      <div class="metrics">
+        <div class="metric ok">
+          <div class="k">기준가격</div>
+          <div class="v" id="baseAmt">—</div>
+          <div class="d" id="baseWhy"></div>
+        </div>
+        <div class="metric">
+          <div class="k">적용 LTV</div>
+          <div class="v" id="ltvPct">—</div>
+          <div class="d" id="ltvWhy"></div>
+        </div>
+        <div class="metric">
+          <div class="k">기준가격 × LTV</div>
+          <div class="v" id="rawLtv">—</div>
+          <div class="d">차감 전 금액</div>
+        </div>
+        <div class="metric">
+          <div class="k">방공제 차감</div>
+          <div class="v" id="deductAmt">—</div>
+          <div class="d">소액임차보증금 등</div>
+        </div>
+        <div class="metric">
+          <div class="k">LTV 한도</div>
+          <div class="v" id="ltvLimit">—</div>
+          <div class="d">기준가격 × LTV − 차감액</div>
+        </div>
+        <div class="metric">
+          <div class="k">상품 최대한도</div>
+          <div class="v" id="prodMax">—</div>
+          <div class="d" id="prodMaxWhy"></div>
+        </div>
+      </div>
+      <div id="warnBox" class="warnbox hidden"></div>
+    </section>
+
+    <footer class="sources">
+      <h2>이용 시 유의사항</h2>
+      <ul class="fine">
+        <li>이 계산기는 참고용입니다. 실제 대출 가능 여부·한도·금리는 은행·주택금융공사·주택도시기금 심사 결과와 다를 수 있습니다.</li>
+        <li>구입용도 보금자리론은 시세·감정평가액·매매가액 중 어느 하나라도 6억 원을 넘으면 취급할 수 없습니다. 디딤돌은 담보 평가액 5억 원(신혼·2자녀 이상 가구 6억 원) 이하입니다.</li>
+        <li>디딤돌 한도는 10만 원 단위, 보금자리론은 100만 원 단위로 맞춰 표시합니다.</li>
+        <li>선순위 채권, 기존 임대보증금, DTI·DSR, 소득·주택 수 요건은 이 앱에서 계산하지 않습니다.</li>
+        <li>방공제(최우선변제 소액임차보증금)는 지역·보증 가입 여부·주택 유형에 따라 달라지므로 직접 입력합니다. 아파트 보금자리론은 원칙적으로 방 공제를 하지 않는 경우가 많습니다.</li>
+      </ul>
+      <h2>출처 · 기준일</h2>
+      <ul class="fine">
+        <li>기준일: 2026년 11월 10일 (한국 시간, Asia/Seoul)</li>
+        <li>디딤돌 LTV·한도: 한국주택금융공사 상품소개 — 일반 최대 70%, 생애최초는 특례구입자금보증 가입 시 80%(수도권·규제지역은 70%), 한도 일반 2억·생애최초 2.4억·신혼·2자녀 이상 3.2억 원. <a href="https://hf.go.kr/ko/sub01/sub01_02_01.do" target="_blank" rel="noopener">hf.go.kr 디딤돌 상품소개</a></li>
+        <li>디딤돌 산식(평가액×LTV − 선순위채권 − 임대보증금 및 최우선변제소액임차보증금, 매매가격 이내): 마이홈포털 내집마련 디딤돌 대출 안내. <a href="https://www.myhome.go.kr/hws/portal/cont/selectSteppingStoneLoanView.do" target="_blank" rel="noopener">myhome.go.kr</a> · 주택도시기금 <a href="https://nhuf.molit.go.kr/FP/FP05/FP0503/FP05030101.jsp" target="_blank" rel="noopener">nhuf.molit.go.kr</a></li>
+        <li>보금자리론 LTV·한도: 아파트 최대 70%, 기타주택 65%, 규제지역 등에서 유형별 10%p 차감(생애최초·전세사기피해자·실수요자는 미차감). 한도 일반 3.6억·다자녀·전세사기피해자 4억·생애최초 4.2억 원. <a href="https://hf.go.kr/ko/sub01/sub01_01_01.do" target="_blank" rel="noopener">hf.go.kr 보금자리론 상품소개</a></li>
+        <li>KB부동산: <a href="https://kbland.kr/" target="_blank" rel="noopener">kbland.kr</a> · 이용약관(2025.6.24.) 제14조 제1항 제5호 — KB부동산 정보를 허락·제휴 없이 도용하는 행위(웹 크롤링 포함) 금지. <a href="http://img2.kbstar.com/obj/ocommon/250624_kbland_full.pdf" target="_blank" rel="noopener">약관 PDF</a></li>
+        <li>국토교통부 실거래가 공개시스템: <a href="https://rt.molit.go.kr/" target="_blank" rel="noopener">rt.molit.go.kr</a> · 아파트 GIS <a href="https://rt.molit.go.kr/pt/gis/gis.do?srhThingSecd=A" target="_blank" rel="noopener">바로가기</a></li>
+        <li>국토교통부 아파트 매매 실거래가 공공데이터 API는 서비스키(활용신청)가 필요하며, 법정동코드·계약년월 단위로 조회합니다. 이 오프라인 앱에는 키를 넣지 않았습니다. <a href="https://www.data.go.kr/data/15126469/openapi.do" target="_blank" rel="noopener">data.go.kr</a></li>
+      </ul>
+    </footer>
+    <div id="selftest" aria-hidden="true"></div>
+  </div>
+  <script>
+  (function () {
+    var $ = function (id) { return document.getElementById(id); };
+
+    function num(id) {
+      var raw = $(id).value;
+      if (raw === "" || raw === null) return null;
+      var n = Number(raw);
+      if (!isFinite(n) || n < 0) return null;
+      return n;
+    }
+
+    function pyeong(m2) {
+      if (m2 == null || m2 <= 0) return "";
+      return "약 " + (m2 / 3.3058).toFixed(1) + "평";
+    }
+
+    function formatMan(man) {
+      if (man == null || !isFinite(man)) return "—";
+      var n = Math.round(man);
+      var sign = n < 0 ? "−" : "";
+      n = Math.abs(n);
+      if (n >= 10000) {
+        var eok = Math.floor(n / 10000);
+        var rest = n % 10000;
+        if (rest === 0) return sign + eok + "억 원";
+        return sign + eok + "억 " + rest.toLocaleString("ko-KR") + "만 원";
+      }
+      return sign + n.toLocaleString("ko-KR") + "만 원";
+    }
+
+    function live(id, val) {
+      var el = $(id);
+      if (!el) return;
+      el.textContent = val == null ? "" : formatMan(val);
+    }
+
+    function floorUnit(man, unit) {
+      if (man == null) return null;
+      if (man < 0) return 0;
+      return Math.floor(man / unit) * unit;
+    }
+
+    function kbSelected() {
+      var which = $("kbWhich").value;
+      if (which === "low") return num("kbLow");
+      if (which === "high") return num("kbHigh");
+      return num("kbAvg");
+    }
+
+    function kbLabel() {
+      var which = $("kbWhich").value;
+      if (which === "low") return "KB 하한가";
+      if (which === "high") return "KB 상한가";
+      return "KB 일반가";
+    }
+
+    function productState() {
+      var p = $("product").value;
+      var metro = $("metro").checked;
+      var reg = $("regulated").checked;
+      var exempt = $("exempt").checked;
+      var ltv = null;
+      var why = "";
+      var max = null;
+      var maxWhy = "";
+      var unit = 1;
+      var houseCap = null;
+      var houseCapWhy = "";
+
+      if (p === "didim_general") {
+        ltv = 70;
+        why = "디딤돌 일반은 지역과 관계없이 LTV 70%입니다.";
+        max = 20000;
+        maxWhy = "디딤돌 일반 호당 한도 2억 원";
+        unit = 10;
+        houseCap = 50000;
+        houseCapWhy = "디딤돌 담보평가액 상한 5억 원";
+      } else if (p === "didim_first") {
+        if (metro || reg) {
+          ltv = 70;
+          why = "디딤돌 생애최초는 원칙적으로 80%이나, 수도권 또는 규제지역은 70%입니다.";
+        } else {
+          ltv = 80;
+          why = "디딤돌 생애최초 · 비수도권 · 비규제지역은 LTV 80%입니다(특례구입자금보증 가입 시).";
+        }
+        max = 24000;
+        maxWhy = "디딤돌 생애최초 호당 한도 2.4억 원";
+        unit = 10;
+        houseCap = 50000;
+        houseCapWhy = "디딤돌 담보평가액 상한 5억 원";
+      } else if (p === "didim_family") {
+        ltv = 70;
+        why = "디딤돌 신혼·2자녀 이상 가구는 LTV 70%, 호당 한도 3.2억 원입니다.";
+        max = 32000;
+        maxWhy = "디딤돌 신혼·2자녀 이상 호당 한도 3.2억 원";
+        unit = 10;
+        houseCap = 60000;
+        houseCapWhy = "디딤돌 신혼·2자녀 이상 담보평가액 상한 6억 원";
+      } else if (p === "bogeum_apt" || p === "bogeum_other") {
+        var base = p === "bogeum_apt" ? 70 : 65;
+        var kind = p === "bogeum_apt" ? "아파트" : "기타주택";
+        if (reg && !exempt) {
+          ltv = base - 10;
+          why = "보금자리론 " + kind + " 기본 " + base + "%에서 규제지역 10%p를 차감했습니다.";
+        } else if (reg && exempt) {
+          ltv = base;
+          why = "규제지역이지만 실수요자·생애최초·전세사기피해자 요건에 해당하면 차감하지 않습니다.";
+        } else {
+          ltv = base;
+          why = "보금자리론 " + kind + " 기본 LTV " + base + "%입니다.";
+        }
+        max = Number($("bogeumMax").value) || 36000;
+        maxWhy = "보금자리론 상품 최대한도 " + formatMan(max);
+        unit = 100;
+        houseCap = 60000;
+        houseCapWhy = "보금자리론은 시세·감정·매매가 중 하나라도 6억 원을 넘으면 취급 불가";
+      } else {
+        ltv = num("customLtv");
+        why = "직접 입력한 LTV를 적용합니다.";
+        max = num("customMax");
+        maxWhy = max == null ? "상품 최대한도를 입력하지 않았습니다" : "직접 입력한 상품 최대한도";
+        unit = 1;
+      }
+
+      return { p: p, ltv: ltv, why: why, max: max, maxWhy: maxWhy, unit: unit, houseCap: houseCap, houseCapWhy: houseCapWhy, metro: metro, reg: reg };
+    }
+
+    function updateProductUi() {
+      var p = $("product").value;
+      $("bogeumMaxWrap").classList.toggle("hidden", p !== "bogeum_apt" && p !== "bogeum_other");
+      $("customWrap").classList.toggle("hidden", p !== "custom");
+      $("exemptWrap").classList.toggle("hidden", p !== "bogeum_apt" && p !== "bogeum_other");
+    }
+
+    function calc() {
+      live("kbAvgLive", num("kbAvg"));
+      live("kbLowLive", num("kbLow"));
+      live("kbHighLive", num("kbHigh"));
+      live("dealLive", num("deal"));
+      live("deductLive", num("deduct"));
+      $("excluPyeong").textContent = pyeong(num("exclu"));
+      $("supplyPyeong").textContent = pyeong(num("supply"));
+
+      var st = productState();
+      $("ltvHint").textContent = st.why + (st.ltv != null ? " 지금 적용 LTV는 " + st.ltv + "%입니다." : " LTV를 입력해 주세요.");
+
+      var kb = kbSelected();
+      var deal = num("deal");
+      var deduct = num("deduct");
+      if (deduct == null) deduct = 0;
+
+      if (kb == null && deal == null) {
+        $("outEmpty").classList.remove("hidden");
+        $("outBox").classList.add("hidden");
+        return null;
+      }
+
+      var base, why;
+      if (kb != null && deal != null) {
+        if (kb < deal) {
+          base = kb;
+          why = kbLabel() + "이 실거래가보다 작습니다.";
+        } else if (deal < kb) {
+          base = deal;
+          why = "실거래가(매매가)가 " + kbLabel() + "보다 작습니다.";
+        } else {
+          base = kb;
+          why = kbLabel() + "와 실거래가가 같습니다.";
+        }
+      } else if (kb != null) {
+        base = kb;
+        why = "실거래가가 없어 " + kbLabel() + "만 사용합니다.";
+      } else {
+        base = deal;
+        why = "KB시세가 없어 실거래가(매매가)만 사용합니다.";
+      }
+
+      $("outEmpty").classList.add("hidden");
+      $("outBox").classList.remove("hidden");
+
+      if (st.ltv == null) {
+        $("baseAmt").textContent = formatMan(base);
+        $("baseWhy").textContent = why;
+        $("ltvPct").textContent = "—";
+        $("ltvWhy").textContent = "직접 입력 LTV를 넣어 주세요.";
+        $("rawLtv").textContent = "—";
+        $("deductAmt").textContent = formatMan(deduct);
+        $("ltvLimit").textContent = "—";
+        $("prodMax").textContent = st.max == null ? "제한 없음" : formatMan(st.max);
+        $("prodMaxWhy").textContent = st.maxWhy;
+        $("finalAmt").textContent = "—";
+        $("finalNote").textContent = "적용할 LTV를 입력하면 한도를 계산합니다.";
+        $("warnBox").classList.add("hidden");
+        return { base: base, why: why };
+      }
+
+      var raw = base * (st.ltv / 100);
+      var ltvLimit = raw - deduct;
+      if (ltvLimit < 0) ltvLimit = 0;
+
+      var candidates = [{ name: "LTV 한도", value: ltvLimit }];
+      if (st.max != null) candidates.push({ name: "상품 최대한도", value: st.max });
+      candidates.sort(function (a, b) { return a.value - b.value; });
+      var finalRaw = candidates[0].value;
+      var finalAmt = floorUnit(finalRaw, st.unit);
+      var ltvShown = floorUnit(ltvLimit, st.unit);
+
+      $("baseAmt").textContent = formatMan(base);
+      $("baseWhy").textContent = why;
+      $("ltvPct").textContent = st.ltv + "%";
+      $("ltvWhy").textContent = st.why;
+      $("rawLtv").textContent = formatMan(raw);
+      $("deductAmt").textContent = formatMan(deduct);
+      $("ltvLimit").textContent = formatMan(ltvShown);
+      $("prodMax").textContent = st.max == null ? "제한 없음" : formatMan(st.max);
+      $("prodMaxWhy").textContent = st.maxWhy;
+      $("finalAmt").textContent = formatMan(finalAmt);
+
+      var note = candidates[0].name + "가 더 작습니다.";
+      if (st.unit > 1) {
+        note += " " + (st.unit === 100 ? "보금자리론 100만 원" : "디딤돌 10만 원") + " 단위로 내림했습니다.";
+      }
+      if (kb != null && deal != null) {
+        note += " 기준가격 " + formatMan(base) + " = min(" + kbLabel() + " " + formatMan(kb) + ", 실거래가 " + formatMan(deal) + ").";
+      }
+      $("finalNote").textContent = note;
+
+      var warns = [];
+      if (st.houseCap != null) {
+        var kbAvg = num("kbAvg");
+        var over = [];
+        if (kb != null && kb > st.houseCap) over.push(kbLabel());
+        if (deal != null && deal > st.houseCap) over.push("실거래가");
+        if (kbAvg != null && kbAvg > st.houseCap && kb !== kbAvg) over.push("KB 일반가");
+        if (over.length) {
+          warns.push(st.houseCapWhy + ". 입력한 " + over.join("·") + "가 상한을 넘습니다. 실제 취급이 거절될 수 있습니다.");
+        }
+      }
+      if (st.p === "didim_first" && (st.metro || st.reg) === false) {
+        warns.push("생애최초 80%는 특례구입자금보증 가입이 가능할 때 적용됩니다. 가입이 안 되면 70%일 수 있습니다.");
+      }
+      if (deduct > 0 && (st.p === "bogeum_apt")) {
+        warns.push("보금자리론 아파트는 원칙적으로 방 공제를 하지 않는 경우가 많습니다. 임대차가 있으면 임대보증금은 별도로 반영됩니다.");
+      }
+      if (warns.length) {
+        $("warnBox").classList.remove("hidden");
+        $("warnBox").textContent = warns.join(" ");
+      } else {
+        $("warnBox").classList.add("hidden");
+      }
+
+      return {
+        base: base, baseWhy: why, kb: kb, deal: deal,
+        ltv: st.ltv, raw: raw, deduct: deduct,
+        ltvLimit: ltvLimit, ltvShown: ltvShown,
+        max: st.max, finalAmt: finalAmt, binder: candidates[0].name
+      };
+    }
+
+    function copyComplexThen(url) {
+      var name = $("complex").value.trim();
+      var areaBits = [];
+      var ex = num("exclu");
+      var su = num("supply");
+      if (ex != null) areaBits.push("전용 " + ex + "㎡");
+      if (su != null) areaBits.push("공급 " + su + "㎡");
+      var extra = areaBits.length ? " (" + areaBits.join(", ") + ")" : "";
+      var msgEl = $("copied");
+      function go() {
+        window.open(url, "_blank", "noopener");
+      }
+      if (name && navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(name).then(function () {
+          msgEl.textContent = "단지명 ‘" + name + "’" + extra + "을 복사했습니다. 열린 페이지 검색창에 붙여넣으세요.";
+          msgEl.classList.add("show");
+          go();
+        }).catch(function () {
+          msgEl.textContent = (name ? "검색어: " + name + extra + ". " : "") + "열린 페이지에서 단지명을 검색하세요.";
+          msgEl.classList.add("show");
+          go();
+        });
+      } else {
+        msgEl.textContent = (name ? "검색어: " + name + extra + ". " : "") + "열린 페이지에서 단지명을 검색하세요.";
+        msgEl.classList.add("show");
+        go();
+      }
+    }
+
+    $("btnKb").addEventListener("click", function () {
+      copyComplexThen("https://kbland.kr/");
+    });
+    $("btnMolit").addEventListener("click", function () {
+      copyComplexThen("https://rt.molit.go.kr/pt/gis/gis.do?srhThingSecd=A");
+    });
+
+    ["complex","exclu","supply","kbAvg","kbLow","kbHigh","kbWhich","deal","product","bogeumMax","customLtv","customMax","metro","regulated","exempt","deduct"].forEach(function (id) {
+      $(id).addEventListener("input", calc);
+      $(id).addEventListener("change", function () {
+        updateProductUi();
+        calc();
+      });
+    });
+
+    function applyDemo() {
+      $("complex").value = "예시아파트";
+      $("exclu").value = "84.98";
+      $("supply").value = "110.12";
+      $("kbAvg").value = "32500";
+      $("kbLow").value = "30000";
+      $("kbHigh").value = "35000";
+      $("kbWhich").value = "avg";
+      $("deal").value = "31200";
+      $("product").value = "bogeum_apt";
+      $("bogeumMax").value = "36000";
+      $("metro").checked = false;
+      $("regulated").checked = false;
+      $("deduct").value = "0";
+      updateProductUi();
+      return calc();
+    }
+
+    function runSelfTest() {
+      var r = applyDemo();
+      var expectBase = 31200;
+      var expectRaw = 31200 * 0.7;
+      var expectFinal = Math.floor(expectRaw / 100) * 100;
+      var ok = r && r.base === expectBase && r.ltv === 70 && r.raw === expectRaw && r.finalAmt === expectFinal && r.binder === "LTV 한도";
+
+      $("product").value = "didim_first";
+      $("metro").checked = false;
+      $("regulated").checked = false;
+      updateProductUi();
+      var r2 = calc();
+      var expect2 = Math.floor((31200 * 0.8) / 10) * 10;
+      var cap2 = 24000;
+      var final2 = Math.min(expect2, cap2);
+      ok = ok && r2.ltv === 80 && r2.finalAmt === final2;
+
+      $("metro").checked = true;
+      var r3 = calc();
+      var expect3raw = 31200 * 0.7;
+      var final3 = Math.min(Math.floor(expect3raw / 10) * 10, 24000);
+      ok = ok && r3.ltv === 70 && r3.finalAmt === final3;
+
+      $("deal").value = "";
+      var r4 = calc();
+      ok = ok && r4.base === 32500 && /KB 일반가만/.test(r4.baseWhy);
+
+      $("selftest").textContent = ok ? "SELFTEST_OK" : "SELFTEST_FAIL";
+      applyDemo();
+      return ok;
+    }
+
+    updateProductUi();
+    var params = new URLSearchParams(location.search);
+    if (params.get("demo") === "1") applyDemo();
+    else calc();
+    if (params.get("test") === "1") runSelfTest();
+  })();
+  </script>
+</body>
+</html>

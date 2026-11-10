@@ -1,0 +1,148 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-11-10T23:09:01+09:00",
+  "didimdolBaseDate": "2026-11-01",
+  "bogeumjariBaseDate": "2026-11-09",
+  "didimAsOf": "2026-11-01",
+  "bogeumAsOf": "2026-11-09",
+  "checkedOn": "2026-11-10",
+  "didimGeneral": {
+    "b20": {
+      "10": 2.85,
+      "15": 2.95,
+      "20": 3.05,
+      "30": 3.10
+    },
+    "b40": {
+      "10": 3.20,
+      "15": 3.30,
+      "20": 3.40,
+      "30": 3.45
+    },
+    "b70": {
+      "10": 3.55,
+      "15": 3.65,
+      "20": 3.75,
+      "30": 3.85
+    },
+    "b85": {
+      "10": 3.90,
+      "15": 4.00,
+      "20": 4.10,
+      "30": 4.15
+    }
+  },
+  "didimNewlyFirst": {
+    "b20": {
+      "10": 2.55,
+      "15": 2.65,
+      "20": 2.75,
+      "30": 2.80
+    },
+    "b40": {
+      "10": 2.90,
+      "15": 3.00,
+      "20": 3.10,
+      "30": 3.15
+    },
+    "b70": {
+      "10": 3.25,
+      "15": 3.35,
+      "20": 3.45,
+      "30": 3.50
+    },
+    "b85": {
+      "10": 3.60,
+      "15": 3.70,
+      "20": 3.80,
+      "30": 3.85
+    }
+  },
+  "bogeumE": {
+    "10": 5.00,
+    "15": 5.10,
+    "20": 5.15,
+    "30": 5.20,
+    "40": 5.25,
+    "50": 5.30
+  },
+  "bogeumU": {
+    "10": 5.10,
+    "15": 5.20,
+    "20": 5.25,
+    "30": 5.30,
+    "40": 5.35,
+    "50": 5.40
+  },
+  "didimFloor": 1.50,
+  "didimFloorNF": 1.20,
+  "didimCap": 0.50,
+  "didimCap3": 0.70,
+  "bogeumCap": 1.00,
+  "sources": {
+    "didimRate": "https://www.hf.go.kr/ko/sub01/sub01_02_03.do",
+    "didimProduct": "https://hf.go.kr/ko/sub01/sub01_02_01.do",
+    "bogeumRate": "https://www.hf.go.kr/ko/sub01/sub01_01_04.do",
+    "bogeumProduct": "https://hf.go.kr/ko/sub01/sub01_01_01.do",
+    "nhuf": "https://nhuf.molit.go.kr"
+  },
+  "didimPrefs": {
+    "household": {
+      "children3": 0.70,
+      "singleParent": 0.50,
+      "children2": 0.50,
+      "children1": 0.30,
+      "multiculturalOrDisabledOrFirstHomeOrNewlywed": 0.20
+    },
+    "stack": {
+      "subscription5": 0.30,
+      "subscription10": 0.40,
+      "subscription15": 0.50,
+      "eContract": 0.10,
+      "smallShare": 0.10,
+      "unsoldLocal": 0.20,
+      "prepay40": 0.20
+    },
+    "localDiscount": 0.20,
+    "typeAdj": {
+      "v5": 0.10,
+      "f10_term10": 0.30,
+      "f10_other": 0.20,
+      "fixed": 0.30
+    },
+    "specialNewlyAddOn": 0.30
+  },
+  "bogeumPrefs": {
+    "young": 0.10,
+    "newlywed": 0.30,
+    "newborn": 0.20,
+    "children3": 0.70,
+    "children2": 0.50,
+    "singleParent": 0.70,
+    "disabled": 0.70,
+    "multicultural": 0.70,
+    "greenBuild": 0.10,
+    "unsoldManaged": 0.20,
+    "fraudVictim": 1.00,
+    "akkimEEmbedded": 0.10,
+    "regulatedSurcharge": 0.20
+  },
+  "incomeLimits": {
+    "didim": {
+      "general": 6000,
+      "firstHomeOrChildren2": 7000,
+      "newlywed": 8500,
+      "singleParentPref": 6000,
+      "specialNewlyApplicant": 6000
+    },
+    "bogeum": {
+      "general": 7000,
+      "newlywed": 8500,
+      "children1": 9000,
+      "children2plus": 10000,
+      "prefYoungNewlywedNewbornSocialUnsold": 7000,
+      "prefChildren": 10000,
+      "specialNewlyApplicant": 7000
+    }
+  }
+}
