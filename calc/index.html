@@ -362,8 +362,8 @@
         <div class="table-wrap" id="tblDidim"></div>
       </div>
       <div class="card">
-        <h2>참고: 주금공 생애최초 신혼 전용표</h2>
-        <p class="hint">한국주택금융공사 금리안내에는 전용표가 남아 있으나, 이 계산은 주택도시기금 페이지를 따르므로 적용하지 않습니다. 단위 %.</p>
+        <h2>생애최초 신혼 전용금리</h2>
+        <p class="hint">신혼이면서 생애최초이면 공시 기본금리에서 0.30%p를 뺀 전용금리를 적용합니다(주금공 전용표와 동일). 이 0.30%p는 우대 상한 밖이고, 신혼·생애최초 가구우대 0.20%p와는 중복하지 않습니다. 단위 %.</p>
         <div class="table-wrap" id="tblDidimNF"></div>
       </div>
       <div class="card">
@@ -375,7 +375,7 @@
         <h2>우대조건 비교</h2>
         <ul class="fine">
           <li>우대 구조: 디딤돌 가구우대는 중복 불가(가장 큰 1개) + 청약·전자계약·30% 신청·중도상환(사후)·지방 미분양 중복. 보금자리론은 항목 중복, 최대 1.0%p(아낌e 0.1%p는 한도 밖).</li>
-          <li>상한·최저: 디딤돌 일반 0.5%p(다자녀 0.7%p), 최저 1.5%(주택도시기금). 보금자리론 상한 1.0%p, 공시에 최저금리 없음.</li>
+          <li>상한·최저: 디딤돌 가구·추가우대는 일반 0.5%p(다자녀 0.7%p). 신혼+생애최초 전용금리 0.30%p와 지방 0.20%p는 그 상한 밖이며, 전용·우대·지방 합계는 1.20%p를 넘지 않습니다. 최저 1.5%. 보금자리론 상한 1.0%p, 공시에 최저금리 없음.</li>
           <li>자녀: 둘 다 만 19세 미만. 디딤돌은 1/2/3명 0.3·0.5·0.7%p(택1, 자녀당 5년·최대 15년). 보금자리론은 2명 0.5%p·3명 이상 0.7%p(소득 1억 이하), 1자녀 우대 없음.</li>
           <li>한부모: 디딤돌 0.5%p·소득 6천만 이하(택1). 보금자리론 0.7%p·소득 7천만 이하(배려층 최대 2개).</li>
           <li>신혼: 디딤돌 0.2%p(택1, 혼인 7년 또는 3개월 내 결혼예정, 실행일부터 5년). 보금자리론 0.3%p(소득 7천만 이하, 혼인 7년). 자격 소득과 우대 소득이 다름.</li>
@@ -390,7 +390,7 @@
       <p>디딤돌 금리·우대는 주택도시기금 홈페이지 내집마련디딤돌대출 페이지를 2026년 11월 10일(서울 시간) 기준으로 확인했습니다. 보금자리론은 한국주택금융공사 상품소개·금리안내를 따릅니다.</p>
       <ul class="fine">
         <li>디딤돌 기본금리·금리유형 가산·가구우대(택1)·추가우대·상한 0.5%p(다자녀 0.7%p)·최저 1.5%는 주택도시기금 페이지 기준입니다. 4천만~7천만 원·30년 공시 기본금리는 연 3.80%입니다.</li>
-        <li>주금공 디딤돌 금리안내에는 생애최초 신혼 전용금리표(최저 1.2%)가 있으나, 기금 페이지에는 없어 이 계산에서는 적용하지 않습니다.</li>
+        <li>신혼+생애최초는 공시 기본금리 −0.30%p 전용금리를 적용합니다(주금공 전용표와 같음). 이 0.30%p는 우대 상한 밖이며 신혼·생애최초 가구우대 0.20%p와는 중복하지 않습니다. 우대 합계(전용·우대·지방)는 1.20%p를 넘지 않고, 최저금리는 1.5%입니다.</li>
         <li>국토교통부(molit.go.kr) 최신 보도자료 원문의 한도·소득 변경 여부는 이번에 재확인하지 못했습니다. 한도는 주금공 상품소개(일반 2억, 생애최초 2.4억, 신혼·2자녀 3.2억 원)를 따랐습니다.</li>
         <li>일반 디딤돌에 만 34세 이하 전용 우대금리는 확인되지 않았습니다. 보금자리론 저소득청년 우대는 만 40세 미만·소득 7천만 원 이하 0.1%p입니다.</li>
         <li>정책모기지 DSR 미적용의 금융위·금감원 고시 원문은 이번에 보지 못했습니다. 상품 안내는 DTI만 명시하므로 DSR은 참고용으로만 표시합니다.</li>
@@ -674,8 +674,11 @@
     if (input.singleParent && incomeMan <= 6000) opts.push({ v: 0.5, label: "한부모 0.50%p" });
     if (input.disabled) opts.push({ v: 0.2, label: "장애인 0.20%p" });
     if (input.multicultural) opts.push({ v: 0.2, label: "다문화 0.20%p" });
-    if (input.newlywed) opts.push({ v: 0.2, label: "신혼 0.20%p (최대 5년)" });
-    if (input.firstHome) opts.push({ v: 0.2, label: "생애최초 0.20%p (최대 5년)" });
+    var firstNewly = !!(input.newlywed && input.firstHome);
+    if (!firstNewly) {
+      if (input.newlywed) opts.push({ v: 0.2, label: "신혼 0.20%p (최대 5년)" });
+      if (input.firstHome) opts.push({ v: 0.2, label: "생애최초 0.20%p (최대 5년)" });
+    }
     if (input.children >= 3) opts.push({ v: 0.7, label: "다자녀 0.70%p" });
     else if (input.children === 2) opts.push({ v: 0.5, label: "2자녀 0.50%p" });
     else if (input.children === 1) opts.push({ v: 0.3, label: "1자녀 0.30%p" });
@@ -732,6 +735,12 @@
       }
     }
 
+    var firstNewly = !specialNewly && !!(input.firstHome && input.newlywed);
+    var tableCut = firstNewly ? 0.3 : 0;
+    if (firstNewly) {
+      notes.push("생애최초 신혼 전용금리는 공시 기본금리에서 0.30%p를 차감합니다. 이 0.30%p는 우대 상한 밖이며, 신혼·생애최초 가구우대 0.20%p와는 중복하지 않습니다.");
+    }
+
     var householdPref = 0;
     var householdBits = [];
     if (!specialNewly) {
@@ -759,14 +768,22 @@
     var prefRaw = householdPref + stackPref;
     var pref = specialNewly ? 0 : Math.min(prefRaw, prefCap);
     var localAdj = (!specialNewly && input.local) ? -0.2 : 0;
+    var localDeduction = localAdj ? 0.2 : 0;
     if (input.local && !specialNewly) notes.push("지방 소재 주택은 기준금리에서 0.2%p를 차감합니다 (2025.3.24. 이후 신규 접수분, 우대 상한과 별도).");
     if (!specialNewly && prefRaw > prefCap) notes.push("우대금리 상한 " + prefCap.toFixed(1) + "%p를 적용했습니다.");
+    var DIDIM_REDUCTION_CAP = 1.2;
+    var reductionRaw = specialNewly ? 0 : Number((tableCut + pref + localDeduction).toFixed(4));
+    var reduction = Math.min(reductionRaw, DIDIM_REDUCTION_CAP);
+    var reductionCapped = reductionRaw > DIDIM_REDUCTION_CAP;
+    var reductionBinds = reductionRaw >= DIDIM_REDUCTION_CAP && !specialNewly;
+    if (reductionCapped) notes.push("우대 합계(전용금리·우대·지방) 상한 1.20%p를 적용했습니다. (" + reductionRaw.toFixed(2) + "%p → 1.20%p)");
+    else if (reductionBinds) notes.push("우대 합계(전용금리·우대·지방)가 상한 1.20%p에 도달했습니다.");
     var rateType = input.rateType || "fixed";
     var typeAdj = typeAdjFor(rateType, input.years);
     var typeLabel = typeShortLabel(rateType);
     notes.push("금리유형 " + typeLabel + " 가산 " + typeAdj.toFixed(2) + "%p를 우대 상한·지방 차감과 별도로 더했습니다. (주택도시기금)");
     var floor = DIDIM_FLOOR;
-    var rate = baseRate == null ? null : Math.max(floor, Number((baseRate + localAdj + typeAdj - pref).toFixed(4)));
+    var rate = baseRate == null ? null : Math.max(floor, Number((baseRate + typeAdj - reduction).toFixed(4)));
 
     var productCap = 200000000;
     if (input.firstHome) productCap = 240000000;
@@ -784,8 +801,12 @@
     var dtiLimit = 0.6;
     var maxAnnual = input.income > 0 ? dtiLimit * input.income - input.existingAnnual : 0;
     var dtiCap = (rate != null && maxAnnual > 0) ? loanFromMonthly(maxAnnual / 12, rate, input.years) : 0;
-    var prefParts = householdBits.concat(stackBits);
-    var prefDetail = specialNewly ? "특례 가산만 반영 (우대 미적용)" : (prefParts.length > 0 ? prefParts.join(", ") + " → 적용 " + pref.toFixed(2) + "%p" : "우대 없음");
+    var prefParts = (tableCut ? ["생애최초 신혼 전용금리 0.30%p"] : []).concat(householdBits).concat(stackBits);
+    var prefDetail = specialNewly
+      ? "특례 가산만 반영 (우대 미적용)"
+      : (prefParts.length > 0
+        ? prefParts.join(", ") + " → 우대 " + pref.toFixed(2) + "%p" + (tableCut ? " · 전용 0.30%p" : "") + (localDeduction ? " · 지방 0.20%p" : "") + (reductionBinds ? " · 합계 상한 1.20%p" : "") + " → 차감 " + reduction.toFixed(2) + "%p"
+        : "우대 없음");
     if (prices.hasAny) {
       notes.push("LTV 한도 기준 금액은 " + prices.ltvBaseLabel + " " + formatWon(prices.ltvBase) + "입니다. 구입용도 담보평가액은 주금공 기준에 따라 시세정보(KB시세 일반평균가)와 매매가액 중 낮은 금액입니다.");
     }
@@ -797,7 +818,7 @@
     return finalize({
       eligible: reasons.length === 0 && rate != null && prices.hasAny,
       reasons: houseMissing ? ["KB시세 또는 매매가격을 입력해 주세요"] : reasons,
-      notes: notes, baseRate: baseRate, pref: pref, extraAdj: localAdj, typeAdj: typeAdj, typeLabel: typeLabel, prefDetail: prefDetail, rate: rate,
+      notes: notes, baseRate: baseRate, pref: pref, tableCut: tableCut, extraAdj: localAdj, reduction: reduction, reductionRaw: reductionRaw, reductionBinds: reductionBinds, typeAdj: typeAdj, typeLabel: typeLabel, prefDetail: prefDetail, rate: rate,
       productCap: productCap, ltv: ltv, ltvCap: ltvCap, ltvBase: prices.ltvBase,
       ltvBaseLabel: prices.hasAny ? prices.ltvBaseLabel : "-", dtiLimit: dtiLimit, dtiCap: dtiCap,
       limit: 0, binding: "-", monthly: 0, dtiRatio: null, dsrRatio: null
@@ -1115,6 +1136,11 @@
       amount: base.toFixed(2) + "%",
       note: "주택도시기금 공시 기본금리 · " + incomeLabel + " · " + years + "년"
     });
+    var firstNewly = !!(newlywed && firstHome);
+    var tableCut = firstNewly ? 0.3 : 0;
+    if (firstNewly) {
+      notes.push("생애최초 신혼 전용금리는 공시 기본금리에서 0.30%p를 차감합니다. 이 0.30%p는 우대 상한 밖이며, 신혼·생애최초 가구우대 0.20%p와는 중복하지 않습니다.");
+    }
     var hhInput = {
       singleParent: singleParent && (income === "b20" || income === "b40"),
       disabled: disabled,
@@ -1144,20 +1170,30 @@
     var prefRaw = household + stack;
     var pref = Math.min(prefRaw, prefCap);
     var extra = local ? -0.2 : 0;
+    var localDeduction = local ? 0.2 : 0;
     if (local) notes.push("지방 소재 주택은 기준금리에서 0.2%p를 차감합니다 (2025.3.24. 이후 신규 접수분, 우대 상한과 별도).");
     if (prefRaw > prefCap) notes.push("우대금리 상한 " + prefCap.toFixed(1) + "%p를 적용했습니다.");
+    var DIDIM_REDUCTION_CAP = 1.2;
+    var reductionRaw = Number((tableCut + pref + localDeduction).toFixed(4));
+    var reduction = Math.min(reductionRaw, DIDIM_REDUCTION_CAP);
+    var reductionCapped = reductionRaw > DIDIM_REDUCTION_CAP;
+    var reductionBinds = reductionRaw >= DIDIM_REDUCTION_CAP;
+    if (reductionCapped) notes.push("우대 합계(전용금리·우대·지방) 상한 1.20%p를 적용했습니다. (" + reductionRaw.toFixed(2) + "%p → 1.20%p)");
+    else if (reductionBinds) notes.push("우대 합계(전용금리·우대·지방)가 상한 1.20%p에 도달했습니다.");
     notes.push("금리유형 " + typeLabel + " 가산 " + typeAdj.toFixed(2) + "%p를 우대 상한·지방 차감과 별도로 더했습니다. (주택도시기금)");
+    if (tableCut) lines.push({ label: "전용금리 차감", amount: fmtPp(-tableCut), note: "생애최초 신혼 전용금리, 우대 상한과 별도" });
     lines.push({ label: "금리유형 가산", amount: fmtPp(typeAdj), note: typeLabel + " (우대 상한과 별도)" });
     if (extra !== 0) lines.push({ label: "지방 차감", amount: fmtPp(extra), note: "기준금리에서 차감, 우대 상한과 별도" });
     lines.push({ label: "가구 우대 (택1)", amount: household ? fmtPp(-household) : "0.00%p", note: householdNote });
     lines.push({ label: "중복 우대", amount: stack ? fmtPp(-stack) : "0.00%p", note: stackBits.length ? stackBits.join(", ") : "없음" });
     lines.push({ label: "적용 우대", amount: pref ? fmtPp(-pref) : "0.00%p", note: "상한 " + prefCap.toFixed(1) + "%p" });
+    lines.push({ label: "차감 합계", amount: fmtPp(-reduction), note: reductionBinds ? "상한 1.20%p" : "전용·우대·지방, 상한 1.20%p" });
     var floor = DIDIM_FLOOR;
-    var raw = Number((base + extra + typeAdj - pref).toFixed(4));
+    var raw = Number((base + typeAdj - reduction).toFixed(4));
     var rate = Math.max(floor, raw);
     if (raw < floor) notes.push("최저금리 " + floor.toFixed(1) + "%를 적용했습니다.");
     lines.push({ label: "최종금리", amount: rate.toFixed(2) + "%", note: "최저금리 1.5% (주택도시기금)" });
-    return { base: base, pref: pref, extra: extra, typeAdj: typeAdj, typeLabel: typeLabel, rate: rate, lines: lines, notes: notes, baseLabel: "공시 기본금리" };
+    return { base: base, pref: pref, extra: extra, tableCut: tableCut, reduction: reduction, reductionRaw: reductionRaw, reductionBinds: reductionBinds, typeAdj: typeAdj, typeLabel: typeLabel, rate: rate, lines: lines, notes: notes, baseLabel: "공시 기본금리" };
   }
 
   function lookupBogeumRate(income, years, product, young, newlywed, newborn, children, singleParent, disabled, multicultural, fraudVictim, regulated, greenBuild, unsoldManaged) {

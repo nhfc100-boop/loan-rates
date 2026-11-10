@@ -84,7 +84,7 @@
     }
     .dots i.on { background: #fff; }
     main {
-      padding: 18px 16px calc(var(--nav-h) + 36px + env(safe-area-inset-bottom));
+      padding: 14px 16px calc(var(--nav-h) + 36px + env(safe-area-inset-bottom));
       max-width: 480px;
       margin: 0 auto;
     }
@@ -101,10 +101,13 @@
       padding: 16px 16px 14px;
       margin-bottom: 12px;
     }
-    #page4 .card { padding: 12px 14px 10px; margin-bottom: 8px; }
-    #page4 .disclaimer { margin-top: 8px; padding: 10px 12px; font-size: 0.74rem; }
-    #page4 .field { margin-bottom: 10px; }
-    #page4 .seg button { font-size: 0.8rem; padding: 10px 4px; min-height: 42px; }
+    #page4 .card, #page4tables .card { padding: 10px 14px 8px; margin-bottom: 6px; }
+    #page4 .card h2 { margin-bottom: 8px; }
+    #page4 .field { margin-bottom: 6px; }
+    #page4 .field:last-of-type { margin-bottom: 4px; }
+    #page4 .seg button, #page4tables .seg button { font-size: 0.78rem; padding: 8px 4px; min-height: 38px; }
+    #page4 .hint { margin: 4px 0 0; }
+    #page4tables { margin-top: 8px; }
     .card h2 {
       margin: 0 0 14px;
       font-size: 1.02rem;
@@ -283,7 +286,7 @@
       gap: 8px;
       margin: 8px 0 12px;
     }
-    #page4 .finals { margin: 4px 0 10px; }
+    #page4 .finals { margin: 2px 0 4px; }
     .final {
       background: var(--paper);
       box-shadow: var(--shadow);
@@ -361,9 +364,11 @@
     }
     footer.legal {
       max-width: 480px;
-      margin: 8px auto 0;
+      margin: 4px auto 0;
       padding: 0 2px;
     }
+    footer.legal .disclaimer { margin-top: 0; padding: 8px 12px; font-size: 0.74rem; }
+    footer.legal .footnote { margin-top: 4px; }
   </style>
 </head>
 <body>
@@ -492,16 +497,6 @@
 
     <section class="page" id="page4" data-page="4">
       <div class="card">
-        <h2>기간별 기본금리<small>Rate Table</small></h2>
-        <p class="hint" id="tblHint"></p>
-        <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;">
-          <table id="tblDidim"></table>
-        </div>
-        <div style="overflow-x:auto;margin-top:14px;-webkit-overflow-scrolling:touch;">
-          <table id="tblBogeum"></table>
-        </div>
-      </div>
-      <div class="card">
         <h2>대출 기간 · 금리유형<small>Term &amp; Rate Type</small></h2>
         <div class="field">
           <span class="lbl">대출 기간</span>
@@ -514,15 +509,26 @@
         <p class="hint" id="typeHint">순수 고정 +0.3%p. 가산은 우대 상한·지방 차감과 별도입니다. 보금자리론은 고정금리입니다.</p>
       </div>
       <div class="finals" id="out4"></div>
-      <p class="disclaimer">(본 금리는 참고용이며 정확한 금리는 직접 신청해야 알 수 있습니다)</p>
-      <p class="footnote" id="asOfNote"></p>
     </section>
 
     <footer class="legal">
       <p class="disclaimer">(본 금리는 참고용이며 정확한 금리는 직접 신청해야 알 수 있습니다)</p>
-      <p class="footnote">디딤돌 금리는 주택도시기금, 보금자리론 금리는 한국주택금융공사에서 확인하여 업데이트합니다</p>
+      <p class="footnote">디딤돌 금리는 주택도시기금, 보금자리론 금리는 한국주택금융공사에서 매월 1일 확인하여 업데이트합니다</p>
       <p class="footnote" id="asOfFoot"></p>
     </footer>
+
+    <section class="page" id="page4tables" data-page="4">
+      <div class="card">
+        <h2>기간별 기본금리<small>Rate Table</small></h2>
+        <p class="hint" id="tblHint"></p>
+        <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;">
+          <table id="tblDidim"></table>
+        </div>
+        <div style="overflow-x:auto;margin-top:14px;-webkit-overflow-scrolling:touch;">
+          <table id="tblBogeum"></table>
+        </div>
+      </div>
+    </section>
   </main>
 
   <nav class="nav">
@@ -553,7 +559,7 @@
 
   /* ============================================================
    * 금리 데이터 (매월 1일 업데이트)
-   * 디딤돌: 주택도시기금 2026-11-01, 2.85~4.15% (계산은 기금 페이지 기준, 전용표 미사용)
+   * 디딤돌: 주택도시기금 2026-11-01, 2.85~4.15%. 신혼+생애최초는 공시 기본 −0.30%p 전용금리(가구우대 0.20%p와 미중복), 우대 합계 상한 1.20%p
    * 보금자리론 아낌e: 주금공 2026-11-09, 10년 5.00% ~ 50년 5.30%
    * ============================================================ */
   var DEFAULT_RATES = {
@@ -646,11 +652,9 @@
   }
 
   function refreshAsOf() {
-    var asOf = "금리 기준일: 디딤돌 " + RATES.didimAsOf + " (주택도시기금), 보금자리론 " + RATES.bogeumAsOf + " (주금공)";
+    var asOf = "금리 기준일: 디딤돌 " + RATES.didimAsOf + " (주택도시기금), 보금자리론 " + RATES.bogeumAsOf + " (주금공). 토지임대부 최고구간 초과 +0.3%p는 미반영.";
     var foot = document.getElementById("asOfFoot");
-    if (foot) {
-      foot.textContent = asOf + ". 디딤돌은 주택도시기금 홈페이지 기준입니다.";
-    }
+    if (foot) foot.textContent = asOf;
   }
 
   function loadCachedRates() {
@@ -809,8 +813,11 @@
     if (s.singleParent && man <= 6000) opts.push({ v: 0.5, label: "한부모 0.50%p" });
     if (s.disabled) opts.push({ v: 0.2, label: "장애인 0.20%p" });
     if (s.multicultural) opts.push({ v: 0.2, label: "다문화 0.20%p" });
-    if (s.newlywed) opts.push({ v: 0.2, label: "신혼 0.20%p (최대 5년)" });
-    if (s.firstHome) opts.push({ v: 0.2, label: "생애최초 0.20%p (최대 5년)" });
+    var firstNewly = !!(s.newlywed && s.firstHome);
+    if (!firstNewly) {
+      if (s.newlywed) opts.push({ v: 0.2, label: "신혼 0.20%p (최대 5년)" });
+      if (s.firstHome) opts.push({ v: 0.2, label: "생애최초 0.20%p (최대 5년)" });
+    }
     if (s.children >= 3) opts.push({ v: 0.7, label: "다자녀 0.70%p" });
     else if (s.children === 2) opts.push({ v: 0.5, label: "2자녀 0.50%p" });
     else if (s.children === 1) opts.push({ v: 0.3, label: "1자녀 0.30%p" });
@@ -843,6 +850,13 @@
       notes.push("신혼 합산 8,500만 원 초과이면서 신청인 1인 소득이 6,000만 원 이하이면 만기별 최고금리에 0.3%p를 가산합니다. 이 앱은 신청인 1인 소득을 묻지 않아 그 특례 금리는 계산하지 않습니다.");
     }
 
+    var firstNewly = !!(s.firstHome && s.newlywed);
+    var tableCut = firstNewly ? 0.3 : 0;
+    var tableCutLabel = firstNewly ? "생애최초 신혼 전용금리 −0.3%p" : "";
+    if (firstNewly) {
+      notes.push("생애최초 신혼 전용금리는 공시 기본금리에서 0.30%p를 차감합니다. 이 0.30%p는 우대 상한 밖이며, 신혼·생애최초 가구우대 0.20%p와는 중복하지 않습니다.");
+    }
+
     var hh = pickDidimHousehold(s, man);
     var household = hh.v;
     var householdLabel = hh.label;
@@ -870,7 +884,19 @@
     if (capped) notes.push("우대 상한 " + prefCap.toFixed(1) + "%p를 적용했습니다.");
 
     var localAdj = s.local ? -0.2 : 0;
+    var localDeduction = s.local ? 0.2 : 0;
     if (s.local) notes.push("지방 소재 주택은 기준금리에서 0.2%p를 차감합니다 (우대 상한과 별도).");
+
+    var DIDIM_REDUCTION_CAP = 1.2;
+    var reductionRaw = round4(tableCut + pref + localDeduction);
+    var reduction = Math.min(reductionRaw, DIDIM_REDUCTION_CAP);
+    var reductionCapped = reductionRaw > DIDIM_REDUCTION_CAP;
+    var reductionBinds = reductionRaw >= DIDIM_REDUCTION_CAP;
+    if (reductionCapped) {
+      notes.push("우대 합계(전용금리·우대·지방) 상한 1.20%p를 적용했습니다. (" + reductionRaw.toFixed(2) + "%p → 1.20%p)");
+    } else if (reductionBinds) {
+      notes.push("우대 합계(전용금리·우대·지방)가 상한 1.20%p에 도달했습니다.");
+    }
 
     var bracket = didimBracket(man);
     var bases = RATES.didimGeneral[bracket];
@@ -881,7 +907,7 @@
     function rateFor(years) {
       if (bases[years] == null) return null;
       var t = typeAdjFor(rateType, years);
-      var raw = round4(bases[years] + localAdj + t - pref);
+      var raw = round4(bases[years] + t - reduction);
       return Math.max(floor, raw);
     }
 
@@ -894,6 +920,9 @@
       bracketLabel: bracketLabel(bracket),
       tableName: "주택도시기금 공시 기본금리",
       bases: bases,
+      firstNewly: firstNewly,
+      tableCut: tableCut,
+      tableCutLabel: tableCutLabel,
       household: household,
       householdLabel: householdLabel,
       stack: stack,
@@ -901,9 +930,14 @@
       prefRaw: prefRaw,
       prefCap: prefCap,
       pref: pref,
-      displayPref: pref,
+      displayPref: round4(tableCut + pref),
       capped: capped,
       localAdj: localAdj,
+      reductionRaw: reductionRaw,
+      reduction: reduction,
+      reductionCap: DIDIM_REDUCTION_CAP,
+      reductionCapped: reductionCapped,
+      reductionBinds: reductionBinds,
       rateType: rateType,
       typeAdj: typeAdj,
       floor: floor,
@@ -1020,8 +1054,8 @@
       extra = '<div class="meta">추가 ' + fmtPp(result.added) + '</div>' +
               '<div class="meta">' + esc(result.addLabel || "") + '</div>';
     } else if (mode === 3) {
-      var bits3 = (result.household ? [result.householdLabel] : []).concat(result.stackBits || []);
-      extra = '<div class="meta">상한 ' + fmtPp(result.prefCap) + (result.capped ? " · 상한 적용" : "") + '</div>' +
+      var bits3 = (result.tableCut ? [result.tableCutLabel] : []).concat(result.household ? [result.householdLabel] : []).concat(result.stackBits || []);
+      extra = '<div class="meta">우대 상한 ' + fmtPp(result.prefCap) + (result.capped ? " · 상한 적용" : "") + (result.reductionBinds ? " · 합계 상한 1.20%p" : "") + '</div>' +
               '<div class="meta">' + esc(bits3.join(", ") || "우대 없음") + '</div>';
     }
     if (!result.eligible) {
@@ -1054,8 +1088,9 @@
   function page1Detail(name, result) {
     if (name.indexOf("디딤돌") === 0) {
       var parts = [result.bracketLabel];
+      if (result.tableCut) parts.push(result.tableCutLabel || "생애최초 신혼 전용금리 −0.3%p");
       if (result.household > 0) parts.push(result.householdLabel);
-      else parts.push("해당 우대 없음");
+      else if (!result.tableCut) parts.push("해당 우대 없음");
       parts.push("가구우대는 중복 불가, 가장 큰 1개 적용");
       return parts.join(" · ");
     }
@@ -1076,7 +1111,7 @@
     var added = 0;
     var label = "";
     if (curr.ready && prev.ready) {
-      added = round4(curr.pref - prev.pref);
+      added = round4((curr.displayPref != null ? curr.displayPref : curr.pref) - (prev.displayPref != null ? prev.displayPref : prev.pref));
       if (curr.household !== prev.household && curr.householdLabel) {
         label = curr.householdLabel;
       }
@@ -1106,9 +1141,10 @@
     var notes = [];
     if (d.ready && d.capped) notes.push("디딤돌: 합계 " + fmtPp(d.prefRaw) + " → 상한 " + fmtPp(d.prefCap) + " 적용.");
     if (b.ready && b.capped) notes.push("보금자리론: 합계 " + fmtPp(b.prefRaw) + " → 상한 " + fmtPp(b.prefCap) + " 적용. 아낌e·규제 가산은 상한 밖.");
-    if (d.ready && d.localAdj) notes.push("디딤돌 지방 차감 0.20%p는 상한과 별도입니다.");
+    if (d.ready && d.tableCut) notes.push("디딤돌 생애최초 신혼 전용금리 0.30%p는 우대 상한과 별도입니다.");
+    if (d.ready && d.localAdj) notes.push("디딤돌 지방 차감 0.20%p는 우대 상한과 별도입니다.");
+    if (d.ready && d.reductionBinds) notes.push("우대 합계(전용금리·우대·지방) 상한 1.20%p에 도달했습니다.");
     if (b.ready && b.addOn) notes.push("보금자리론 규제지역 가산 +0.20%p는 상한과 별도입니다.");
-    if (d.ready && d.capped) { /* already added */ }
 
     var el = document.getElementById("capNote");
     if (notes.length) {
@@ -1128,7 +1164,10 @@
     var typeHint = document.getElementById("typeHint");
     if (typeHint) typeHint.textContent = typeHintText(state.rateType, state.years);
     var hint = "디딤돌 " + RATES.didimAsOf + " (주택도시기금) · 보금자리론 " + RATES.bogeumAsOf + " (주금공)";
-    if (d.ready) hint += " · " + d.bracketLabel + " · " + typeShortLabel(state.rateType) + " 가산 포함";
+    if (d.ready) {
+      hint += " · " + d.bracketLabel + " · " + typeShortLabel(state.rateType) + " 가산 포함";
+      if (d.tableCut) hint += " · 생애최초 신혼 전용금리 −0.3%p";
+    }
     document.getElementById("tblHint").textContent = hint;
 
     var hd = "<thead><tr><th>디딤돌</th>" + ysD.map(function (y) { return "<th>" + y + "년</th>"; }).join("") + "</tr></thead><tbody>";
@@ -1137,7 +1176,7 @@
       var cls = state.years === y ? ' class="hl"' : "";
       var cell = "-";
       if (d.ready && d.bases[y] != null) {
-        var shown = d.bases[y] + typeAdjFor(state.rateType, y) + (d.localAdj || 0) - (d.pref || 0);
+        var shown = d.bases[y] + typeAdjFor(state.rateType, y) - (d.reduction || 0);
         shown = Math.max(d.floor, round4(shown));
         cell = shown.toFixed(2);
       }
@@ -1156,8 +1195,6 @@
     document.getElementById("tblBogeum").innerHTML = hb;
 
     document.getElementById("out4").innerHTML = finalCard("디딤돌대출", d) + finalCard("보금자리론", b);
-    document.getElementById("asOfNote").textContent =
-      "금리 기준일: 디딤돌 " + RATES.didimAsOf + " (주택도시기금), 보금자리론 " + RATES.bogeumAsOf + " (주금공). 디딤돌은 주택도시기금 홈페이지 기준입니다. 토지임대부 분양주택으로 최고 소득구간을 넘는 경우는 +0.3%p 가산이 있을 수 있어 이 앱에서는 다루지 않습니다";
   }
 
   function finalCard(name, result) {
@@ -1174,13 +1211,15 @@
     }
     var rate = result.rateFor(years);
     var parts = [fmt(base)];
+    if (result.tableCut) parts.push("− " + fmtPp(result.tableCut));
     if (result.pref) parts.push("− " + fmtPp(result.pref));
     if (result.localAdj) parts.push("− " + fmtPp(Math.abs(result.localAdj)));
     if (result.typeAdj) parts.push("+ " + fmtPp(result.typeAdj));
     if (result.addOn) parts.push("+ " + fmtPp(result.addOn));
     var how = parts.join(" ") + " = " + fmt(rate);
     if (name.indexOf("디딤돌") === 0) {
-      var raw = round4(base + (result.localAdj || 0) + (result.typeAdj || 0) - result.pref);
+      var raw = round4(base + (result.typeAdj || 0) - (result.reduction != null ? result.reduction : ((result.tableCut || 0) + (result.pref || 0) + Math.abs(result.localAdj || 0))));
+      if (result.reductionBinds) how += " · 합계 상한 1.20%p";
       if (raw < result.floor) how += " · 최저금리 " + fmt(result.floor) + " 적용";
       how += " · " + typeShortLabel(state.rateType) + " (주택도시기금)";
     } else {
