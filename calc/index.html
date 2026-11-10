@@ -4,22 +4,30 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#F26A3D">
-  <meta name="application-name" content="디딤돌·보금자리론 계산기">
+  <meta name="application-name" content="디딤돌대출 보금자리론 금리 계산기">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-title" content="디딤돌·보금자리론 계산기">
+  <meta name="apple-mobile-web-app-title" content="디딤돌대출 보금자리론 금리 계산기">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="description" content="디딤돌대출과 보금자리론의 금리·한도를 참고용으로 계산합니다. 실제 심사 결과와 다를 수 있습니다.">
   <link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAADB0lEQVR4nO3c0XHbRhRA0VXGfbiBtOBC0oIbc0NuIC24gnzY48iULgVRILAEzvmkfnbwLpcgd4SnH1+/DHjNX3svgHmJgyQOkjhI4iCJgyQOkjhI4iCJgyQOkjhI4iCJgyQOkjhI4iCJgyQOkjhI4iCJgyQOkjhI4iCJgyQOkjhI4iCJgyQOkjhI4iCJgyQOkjhI4iCJgyQOkjhI4iCJgyQOkjhIn/ZewPj87fvFK//+8/cqf+WD7BwkcZDEsamXn4MzE8d2fpbxQH2IYyPPm3iUPsSxhZc1PEQf4ri76mD+PsRxX9cLmLwPcdzRktnP3Ic47mX51KftQxx38d55z9mHONZ326Qn7EMcs5jwyFAcK7ttA5iwjCGOdR2pjCGOFR2sjCGOtRyvjCGOVRyyjCGOjztqGUMcHzThjxMrEsftbi7jIbaNIY6bHb6MMcbTj69f9l7D4zlDGcPOcYOTlDHE8V7nKWOI411OVcYQx3JnK2OIY6ETljHEscQ5yxjieNNpyxjiuJMDlDHEcd2BD9WWEEc6eRlDHOXYx60L7f/Yp1Usn+WSd/aZb0Kfs3NcUsZv4viDMp4Tx/+UcUEcvyjjJXGMoYwgDmWk/b/KXsxm4yuujCt23jn2fZKaMq7bM459n6SmjDftFse+T1JTxhJnvCFVxkKni0MZy50uDpYTxyIn3DbGjnFcv9xTDWOqxWxpz52jLvpUw5hqMRvb+WPl5aWfahhTLWZ7+/98Pu0Apl3YZtyQvk4ZQxyvUsZP4rikjN/E8QdlPLf/DelU1v0Xh0dn5yCJgyQOkjhI4iCJgyQOkjhI4iCJgyQOkjhI4iAd5FT2DGek27NzkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRB+g8mHbl1jBMXaQAAAABJRU5ErkJggg==">
   <link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAADB0lEQVR4nO3c0XHbRhRA0VXGfbiBtOBC0oIbc0NuIC24gnzY48iULgVRILAEzvmkfnbwLpcgd4SnH1+/DHjNX3svgHmJgyQOkjhI4iCJgyQOkjhI4iCJgyQOkjhI4iCJgyQOkjhI4iCJgyQOkjhI4iCJgyQOkjhI4iCJgyQOkjhI4iCJgyQOkjhI4iCJgyQOkjhI4iCJgyQOkjhI4iCJgyQOkjhIn/ZewPj87fvFK//+8/cqf+WD7BwkcZDEsamXn4MzE8d2fpbxQH2IYyPPm3iUPsSxhZc1PEQf4ri76mD+PsRxX9cLmLwPcdzRktnP3Ic47mX51KftQxx38d55z9mHONZ326Qn7EMcs5jwyFAcK7ttA5iwjCGOdR2pjCGOFR2sjCGOtRyvjCGOVRyyjCGOjztqGUMcHzThjxMrEsftbi7jIbaNIY6bHb6MMcbTj69f9l7D4zlDGcPOcYOTlDHE8V7nKWOI411OVcYQx3JnK2OIY6ETljHEscQ5yxjieNNpyxjiuJMDlDHEcd2BD9WWEEc6eRlDHOXYx60L7f/Yp1Usn+WSd/aZb0Kfs3NcUsZv4viDMp4Tx/+UcUEcvyjjJXGMoYwgDmWk/b/KXsxm4yuujCt23jn2fZKaMq7bM459n6SmjDftFse+T1JTxhJnvCFVxkKni0MZy50uDpYTxyIn3DbGjnFcv9xTDWOqxWxpz52jLvpUw5hqMRvb+WPl5aWfahhTLWZ7+/98Pu0Apl3YZtyQvk4ZQxyvUsZP4rikjN/E8QdlPLf/DelU1v0Xh0dn5yCJgyQOkjhI4iCJgyQOkjhI4iCJgyQOkjhI4iAd5FT2DGek27NzkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRB+g8mHbl1jBMXaQAAAABJRU5ErkJggg==">
   <link rel="manifest" href="data:application/manifest+json,%7B%22name%22%3A%22%EB%94%94%EB%94%A4%EB%8F%8C%C2%B7%EB%B3%B4%EA%B8%88%EC%9E%90%EB%A6%AC%EB%A1%A0%20%EA%B3%84%EC%82%B0%EA%B8%B0%22%2C%22short_name%22%3A%22%EB%94%94%EB%94%A4%EB%8F%8C%EA%B3%84%EC%82%B0%EA%B8%B0%22%2C%22description%22%3A%22%EB%94%94%EB%94%A4%EB%8F%8C%EB%8C%80%EC%B6%9C%EA%B3%BC%20%EB%B3%B4%EA%B8%88%EC%9E%90%EB%A6%AC%EB%A1%A0%EC%9D%98%20%EA%B8%88%EB%A6%AC%C2%B7%ED%95%9C%EB%8F%84%20%EC%B0%B8%EA%B3%A0%20%EA%B3%84%EC%82%B0%EA%B8%B0%22%2C%22start_url%22%3A%22.%22%2C%22scope%22%3A%22.%22%2C%22display%22%3A%22standalone%22%2C%22orientation%22%3A%22portrait%22%2C%22background_color%22%3A%22%23F26A3D%22%2C%22theme_color%22%3A%22%23F26A3D%22%2C%22lang%22%3A%22ko%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22data%3Aimage%2Fpng%3Bbase64%2CiVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAADB0lEQVR4nO3c0XHbRhRA0VXGfbiBtOBC0oIbc0NuIC24gnzY48iULgVRILAEzvmkfnbwLpcgd4SnH1%2B%2FDHjNX3svgHmJgyQOkjhI4iCJgyQOkjhI4iCJgyQOkjhI4iCJgyQOkjhI4iCJgyQOkjhI4iCJgyQOkjhI4iCJgyQOkjhI4iCJgyQOkjhI4iCJgyQOkjhI4iCJgyQOkjhI4iCJgyQOkjhIn%2FZewPj87fvFK%2F%2F%2B8%2Fcqf%2BWD7BwkcZDEsamXn4MzE8d2fpbxQH2IYyPPm3iUPsSxhZc1PEQf4ri76mD%2BPsRxX9cLmLwPcdzRktnP3Ic47mX51KftQxx38d55z9mHONZ326Qn7EMcs5jwyFAcK7ttA5iwjCGOdR2pjCGOFR2sjCGOtRyvjCGOVRyyjCGOjztqGUMcHzThjxMrEsftbi7jIbaNIY6bHb6MMcbTj69f9l7D4zlDGcPOcYOTlDHE8V7nKWOI411OVcYQx3JnK2OIY6ETljHEscQ5yxjieNNpyxjiuJMDlDHEcd2BD9WWEEc6eRlDHOXYx60L7f%2FYp1Usn%2BWSd%2FaZb0Kfs3NcUsZv4viDMp4Tx%2F%2BUcUEcvyjjJXGMoYwgDmWk%2Fb%2FKXsxm4yuujCt23jn2fZKaMq7bM459n6SmjDftFse%2BT1JTxhJnvCFVxkKni0MZy50uDpYTxyIn3DbGjnFcv9xTDWOqxWxpz52jLvpUw5hqMRvb%2BWPl5aWfahhTLWZ7%2B%2F98Pu0Apl3YZtyQvk4ZQxyvUsZP4rikjN%2FE8QdlPLf%2FDelU1v0Xh0dn5yCJgyQOkjhI4iCJgyQOkjhI4iCJgyQOkjhI4iAd5FT2DGek27NzkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRB%2Bg8mHbl1jBMXaQAAAABJRU5ErkJggg%3D%3D%22%2C%22sizes%22%3A%22180x180%22%2C%22type%22%3A%22image%2Fpng%22%2C%22purpose%22%3A%22any%22%7D%5D%7D">
-  <title>디딤돌·보금자리론 계산기</title>
+  <title>디딤돌대출 보금자리론 금리 계산기</title>
   <style>
 
     @font-face {
       font-family: "Poster Display";
       src: url(data:font/woff;base64,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) format("woff");
       font-weight: 900;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "Poster KR";
+      src: url(data:font/woff;base64,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) format("woff");
+      font-weight: 400;
       font-style: normal;
       font-display: swap;
     }
@@ -51,66 +59,26 @@
       padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
       overflow-x: hidden;
     }
-    .wrap { max-width: 480px; margin: 0 auto; padding: 16px 16px 0; }
-    header.appbar { position: relative; padding: 10px 0 22px; }
-    .poster-deco { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
-    .poster-deco .d-bars {
-      position: absolute; top: 2px; left: 0;
-      font-family: "Poster Display", "Arial Black", sans-serif;
-      font-weight: 900; font-size: 0.95rem; letter-spacing: 0.18em; color: #111;
-      line-height: 1;
-    }
-    .poster-deco .d-slashes {
-      position: absolute; top: 52%; right: 8px;
-      font-family: "Poster Display", "Arial Black", sans-serif;
-      font-weight: 900; font-size: 1.05rem; letter-spacing: 0.08em; color: #111;
-      transform: translateY(-50%);
-    }
-    .poster-deco .d-dot {
-      position: absolute; width: 7px; height: 7px; background: #111; border-radius: 50%;
-    }
-    .poster-deco .d-dot-1 { top: 8px; right: 86px; }
-    .poster-deco .d-dot-2 { top: 38%; right: 44px; }
-    .poster-deco .d-x {
-      position: absolute; top: 0; right: 36px;
-      font-family: "Poster Display", "Arial Black", sans-serif;
-      font-weight: 900; font-size: 1.15rem; color: #111; line-height: 1;
-    }
-    .poster-deco .d-burst {
-      position: absolute; top: 4px; right: 0; width: 28px; height: 28px;
-    }
-    .poster-deco .d-arrow {
-      position: absolute; right: 4px; bottom: 8px; width: 86px; height: 86px;
-    }
+    .wrap { max-width: 480px; margin: 0 auto; padding: 16px 16px 0; overflow-x: hidden; }
+    header.appbar { position: relative; padding: 4px 0 14px; }
     .headline {
       position: relative; z-index: 1;
-      font-family: "Poster Display", "Arial Black", Impact, sans-serif;
-      font-weight: 900;
-      font-size: clamp(2.7rem, 13.6vw, 3.85rem);
-      line-height: 0.78;
-      letter-spacing: -0.03em;
-      text-transform: uppercase;
+      font-family: "Poster KR", "Black Han Sans", "Apple SD Gothic Neo", "Noto Sans KR", "Noto Sans CJK KR", sans-serif;
+      font-weight: 400;
+      font-size: clamp(2.25rem, 11.2vw, 2.8rem);
+      line-height: 1.14;
+      letter-spacing: -0.04em;
       color: #111;
-      margin: 18px 0 12px;
+      margin: 4px 0 12px;
+      padding: 0 0 14px;
+      border-bottom: 5px solid #111;
+      word-break: keep-all;
     }
     .headline span { display: block; }
-    header.appbar h1 {
-      position: relative; z-index: 1;
-      font-size: 1.12rem; margin: 0 0 2px; letter-spacing: -0.02em;
-      color: #111; font-weight: 800;
-    }
-    header.appbar .kicker {
-      position: relative; z-index: 1;
-      margin: 0 0 12px;
-      font-size: 0.68rem; font-weight: 700;
-      letter-spacing: 0.22em; text-transform: uppercase;
-      color: #FFF8F0;
-    }
     header.appbar #asOfLine,
     header.appbar p#asOfLine {
       position: relative; z-index: 1;
-      margin: 0; color: #111; font-size: 0.82rem; font-weight: 600;
-      padding-right: 96px;
+      margin: 0; color: #111; font-size: 0.88rem; font-weight: 700;
       word-break: keep-all;
     }
     .tabs {
@@ -120,8 +88,8 @@
     }
     .tabs button {
       flex: 1; border: 0; border-right: 2px solid #111; background: var(--paper); color: #111;
-      font: inherit; font-weight: 800; font-size: 0.88rem;
-      padding: 11px 8px; border-radius: 0; cursor: pointer;
+      font: inherit; font-weight: 800; font-size: 0.95rem;
+      min-height: 48px; padding: 12px 8px; border-radius: 0; cursor: pointer;
     }
     .tabs button:last-child { border-right: 0; }
     .tabs button[aria-selected="true"] {
@@ -138,58 +106,49 @@
       border-radius: 0; padding: 16px; margin-bottom: 12px;
     }
     .card h2, h2 {
-      font-size: 1.05rem; margin: 0 0 4px; color: #111; font-weight: 800;
+      font-size: 1.2rem; margin: 0 0 12px; color: #111; font-weight: 800;
+      display: flex; align-items: center; gap: 8px;
+      letter-spacing: -0.03em; word-break: keep-all;
     }
-    h2 small, .en-sub {
-      display: block;
-      font-size: 0.62rem; font-weight: 700;
-      letter-spacing: 0.22em; text-transform: uppercase;
-      color: #111; margin: 2px 0 12px;
-      font-family: "Poster Display", "Arial Black", sans-serif;
+    .step-num {
+      display: inline-flex; align-items: center; justify-content: center;
+      flex: 0 0 28px; width: 28px; height: 28px;
+      background: #111; color: var(--orange);
+      font-size: 0.9rem; font-weight: 800; line-height: 1;
     }
-    #didimDetail > h2::after,
-    #bogeumDetail > h2::after,
-    #lookupBreakdown > h2::after {
-      display: block;
-      font-size: 0.62rem; font-weight: 700;
-      letter-spacing: 0.22em; text-transform: uppercase;
-      color: #111; margin: 2px 0 12px;
-      font-family: "Poster Display", "Arial Black", sans-serif;
-    }
-    #didimDetail > h2::after { content: "DIDIMDOL DETAIL"; }
-    #bogeumDetail > h2::after { content: "BOGEUMJARI DETAIL"; }
-    #lookupBreakdown > h2::after { content: "PREFERENCE BREAKDOWN"; }
     label.field { display: block; margin: 0 0 12px; }
     label.field span.lbl {
-      display: block; font-size: 0.8rem; color: var(--muted); margin-bottom: 6px; font-weight: 700;
+      display: block; font-size: 0.86rem; color: var(--muted); margin-bottom: 6px; font-weight: 700;
     }
     input[type="number"], select {
       width: 100%; font: inherit; color: var(--ink);
       background: #fff; border: 1.5px solid #111; border-radius: 0;
-      padding: 11px 12px; appearance: none; -webkit-appearance: none;
+      min-height: 48px; padding: 12px 12px; appearance: none; -webkit-appearance: none;
     }
     input[type="number"]:focus, select:focus {
       outline: 2px solid #111; outline-offset: 1px;
     }
     .toggle {
-      display: flex; align-items: flex-start; gap: 10px;
-      margin: 0 0 10px; font-size: 0.92rem;
+      display: flex; align-items: center; gap: 10px;
+      margin: 0 0 10px; font-size: 0.95rem;
+      min-height: 44px;
     }
-    .toggle input { margin-top: 3px; width: 18px; height: 18px; accent-color: #111; }
+    .toggle input { margin: 0; width: 22px; height: 22px; flex: 0 0 22px; accent-color: #111; }
     .seg {
       display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px;
     }
     .seg button {
       border: 1.5px solid #111; background: #fff; color: #111;
-      font: inherit; font-size: 0.86rem; font-weight: 700;
-      padding: 8px 12px; border-radius: 0; cursor: pointer;
+      font: inherit; font-size: 0.92rem; font-weight: 700;
+      min-height: 44px; padding: 8px 14px; border-radius: 0; cursor: pointer;
     }
     .seg button[aria-pressed="true"] {
       background: #111; color: var(--orange); border-color: #111;
     }
-    .actions { display: flex; gap: 8px; margin-top: 4px; }
+    .actions { display: flex; gap: 8px; margin-top: 8px; }
     .actions button {
-      font: inherit; font-weight: 800; border-radius: 0; padding: 11px 14px; cursor: pointer;
+      font: inherit; font-weight: 800; border-radius: 0;
+      min-height: 48px; padding: 12px 16px; cursor: pointer;
       border: 2px solid #111; background: #fff; color: #111;
     }
     .actions button.primary,
@@ -200,14 +159,13 @@
       background: var(--charcoal);
       color: var(--white);
       margin: 8px -16px 16px;
-      padding: 20px 16px 22px;
+      padding: 22px 16px 24px;
     }
     .results-band h2 {
       color: var(--white);
-      font-size: 1.12rem;
-      margin: 0 0 4px;
+      font-size: 1.25rem;
+      margin: 0 0 8px;
     }
-    .results-band h2 small { color: var(--orange); margin-bottom: 10px; }
     .results-band .hint { color: #C8C4BE; }
     .results-band .disclaimer {
       color: var(--white);
@@ -216,20 +174,63 @@
       margin: 14px 0 10px;
       word-break: keep-all;
     }
-    .metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin-bottom: 12px; border-top: 1px solid #444; }
+    .metrics {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      margin: 12px 0 14px;
+      border: 1px solid #555;
+    }
     .metric {
-      background: transparent; border: 0; border-bottom: 1px solid #444;
-      border-right: 1px solid #444; border-radius: 0; padding: 12px 10px;
+      background: transparent; border: 0;
+      border-right: 1px solid #555;
+      border-radius: 0;
+      padding: 14px 10px 16px;
+      min-width: 0;
     }
-    .metric:nth-child(2n) { border-right: 0; }
+    .metric:last-child { border-right: 0; }
     .metric .k {
-      font-size: 0.66rem; color: var(--orange); margin-bottom: 4px;
-      font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+      font-family: "Poster KR", "Black Han Sans", "Apple SD Gothic Neo", "Noto Sans KR", "Noto Sans CJK KR", sans-serif;
+      font-weight: 400;
+      font-size: clamp(1.5rem, 6.7vw, 1.75rem); /* 24–28px */
+      line-height: 1.15;
+      letter-spacing: -0.04em;
+      color: var(--orange);
+      margin-bottom: 6px;
+      word-break: keep-all;
     }
-    .metric .v { font-size: 1.08rem; font-weight: 800; letter-spacing: -0.02em; color: var(--white); }
-    .metric .d { font-size: 0.75rem; color: #C8C4BE; margin-top: 4px; word-break: keep-all; }
+    .metric .v {
+      font-family: "Poster Display", "Arial Black", Impact, sans-serif;
+      font-size: clamp(2.75rem, 12.6vw, 3.25rem); /* 44–52px */
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 0.95;
+      color: #fff;
+      margin: 2px 0 10px;
+      word-break: keep-all;
+    }
+    .metric .limit {
+      display: flex; flex-direction: column; gap: 2px;
+      margin-bottom: 8px;
+    }
+    .metric .limit-k {
+      font-size: clamp(1.25rem, 5.6vw, 1.5rem); /* 20–24px */
+      font-weight: 800;
+      color: var(--orange);
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+    .metric .limit-v {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.03em;
+      line-height: 1.25;
+      word-break: keep-all;
+    }
+    .metric .d { font-size: 0.75rem; color: #C8C4BE; margin-top: 2px; word-break: keep-all; }
     .metric.bad .v { color: #FF9A90; }
-    .metric.ok .v { color: var(--white); }
+    .metric.ok .v { color: #fff; }
     table {
       width: 100%; border-collapse: collapse; font-size: 0.8rem;
       background: var(--paper); border-radius: 0; overflow: hidden;
@@ -238,8 +239,9 @@
     th, td { border-bottom: 1px solid #ddd4c6; padding: 8px 6px; text-align: right; vertical-align: top; }
     th:first-child, td:first-child { text-align: left; word-break: keep-all; }
     th {
-      color: var(--orange); font-weight: 700; background: #111;
-      letter-spacing: 0.08em; font-size: 0.72rem;
+      color: var(--orange); font-weight: 800; background: #111;
+      letter-spacing: -0.02em; font-size: 1rem;
+      word-break: keep-all;
     }
     td.ok { color: #1b6b43; font-weight: 700; }
     td.bad { color: var(--bad); font-weight: 700; }
@@ -249,7 +251,14 @@
       background: transparent; border: 1px solid #444; color: var(--white);
     }
     .results-band th, .results-band td { border-bottom: 1px solid #444; }
-    .results-band th { background: transparent; color: var(--orange); }
+    .results-band th {
+      background: transparent;
+      color: var(--orange);
+      font-size: clamp(1rem, 4.4vw, 1.2rem); /* ~16–19px, readable, no overflow */
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      padding: 10px 6px;
+    }
     .results-band td.ok { color: #C8F5D0; }
     .results-band td.bad { color: #FF9A90; }
     .results-band .hl { background: #3A3A3A; }
@@ -258,49 +267,56 @@
       border-radius: 0; padding: 16px; margin: 0 0 14px;
     }
     .lookup-out > div:first-child {
-      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.18em;
-      text-transform: uppercase; color: var(--orange); margin-bottom: 4px;
+      font-size: clamp(1.5rem, 6.7vw, 1.75rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      color: var(--orange); margin-bottom: 6px;
+      word-break: keep-all;
     }
-    .lookup-out .big { font-size: 1.7rem; font-weight: 800; letter-spacing: -0.03em; color: #fff; }
+    .lookup-out .big {
+      font-family: "Poster Display", "Arial Black", Impact, sans-serif;
+      font-size: clamp(2.75rem, 12.6vw, 3.25rem);
+      font-weight: 900; letter-spacing: -0.04em; line-height: 0.95; color: #fff;
+    }
     .lookup-out p { margin: 6px 0 0; font-size: 0.86rem; opacity: 1; color: #C8C4BE; }
     .pref-group { margin-top: 2px; }
     .pref-group .hint { margin-bottom: 10px; }
     #lookupBreakdown td:nth-child(2) { white-space: nowrap; }
-    ul.fine { margin: 8px 0 0; padding-left: 1.15em; color: var(--muted); font-size: 0.84rem; }
-    ul.fine li { margin: 0 0 6px; }
+    ul.fine { margin: 8px 0 0; padding-left: 1.15em; color: var(--muted); font-size: 0.84rem; overflow-wrap: anywhere; }
+    ul.fine li { margin: 0 0 6px; overflow-wrap: anywhere; word-break: break-word; }
     footer.sources {
       font-size: 0.8rem; color: #C8C4BE;
       background: var(--charcoal); border: 0; border-radius: 0;
       margin: 8px -16px 0; padding: 22px 16px 40px;
     }
-    footer.sources a { color: var(--orange); word-break: break-all; }
-    footer.sources h2 { font-size: 0.98rem; color: var(--white); }
-    footer.sources h2 small { color: var(--orange); }
+    footer.sources a { color: var(--orange); word-break: break-all; overflow-wrap: anywhere; }
+    footer.sources h2 { font-size: 1.05rem; color: var(--white); }
     footer.sources ul.fine { color: #C8C4BE; }
     footer.sources .wordmark {
-      font-family: "Poster Display", "Arial Black", Impact, sans-serif;
-      font-weight: 900;
-      font-size: clamp(2.15rem, 11.5vw, 3.1rem);
-      line-height: 0.8;
-      letter-spacing: -0.03em;
-      text-transform: uppercase;
+      font-family: "Poster KR", "Black Han Sans", "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+      font-weight: 400;
+      font-size: clamp(1.7rem, 8.4vw, 2.2rem);
+      line-height: 1.12;
+      letter-spacing: -0.04em;
       color: var(--orange);
-      margin: 28px 0 4px;
+      margin: 28px 0 6px;
+      word-break: keep-all;
     }
     footer.sources .wordmark-sub {
-      font-size: 0.66rem; font-weight: 700;
-      letter-spacing: 0.2em; text-transform: uppercase;
+      font-size: 0.88rem; font-weight: 700;
+      letter-spacing: -0.02em;
       color: var(--white); margin: 0;
+      word-break: keep-all;
     }
     .hint { font-size: 0.8rem; color: var(--muted); margin: 0 0 12px; }
     .rate-status {
       position: relative; z-index: 1;
       margin: 4px 0 0;
-      font-size: 0.78rem;
+      font-size: 0.8rem;
       color: #111;
       word-break: keep-all;
       font-weight: 600;
-      padding-right: 96px;
     }
     .rate-status.ok { color: #111; }
     .rate-status.off { color: #111; }
@@ -310,27 +326,7 @@
 <body>
   <div class="wrap">
     <header class="appbar">
-      <div class="poster-deco" aria-hidden="true">
-        <span class="d-bars">| | |</span>
-        <span class="d-slashes">/ / /</span>
-        <span class="d-dot d-dot-1"></span>
-        <span class="d-dot d-dot-2"></span>
-        <span class="d-x">×</span>
-        <svg class="d-burst" viewBox="0 0 28 28" fill="none" stroke="#111" stroke-width="1.4">
-          <line x1="14" y1="1" x2="14" y2="7"/><line x1="14" y1="21" x2="14" y2="27"/>
-          <line x1="1" y1="14" x2="7" y2="14"/><line x1="21" y1="14" x2="27" y2="14"/>
-          <line x1="4.5" y1="4.5" x2="8.5" y2="8.5"/><line x1="19.5" y1="19.5" x2="23.5" y2="23.5"/>
-          <line x1="23.5" y1="4.5" x2="19.5" y2="8.5"/><line x1="8.5" y1="19.5" x2="4.5" y2="23.5"/>
-        </svg>
-        <svg class="d-arrow" viewBox="0 0 86 86" fill="none" stroke="#111" stroke-width="7" stroke-linecap="square" stroke-linejoin="miter">
-          <line x1="72" y1="10" x2="18" y2="64"/>
-          <line x1="18" y1="64" x2="18" y2="26"/>
-          <line x1="18" y1="64" x2="56" y2="64"/>
-        </svg>
-      </div>
-      <p class="headline" aria-hidden="true"><span>LOAN</span><span>RATE</span><span>CALCULATOR</span></p>
-      <h1>디딤돌·보금자리론 계산기</h1>
-      <p class="kicker">POLICY MORTGAGE GUIDE</p>
+      <h1 class="headline"><span>디딤돌대출</span><span>보금자리론</span><span>금리 계산기</span></h1>
       <p id="asOfLine">금리 기준일: 디딤돌 2026-11-01 · 보금자리론 2026-11-09</p>
       <p class="rate-status" id="rateStatus" role="status"></p>
     </header>
@@ -347,7 +343,7 @@
 
     <section class="panel" id="panel-calc" role="tabpanel" aria-labelledby="tab-calc">
       <div class="card">
-        <h2>가구와 소득<small aria-hidden="true">HOUSEHOLD &amp; INCOME</small></h2>
+        <h2><span class="step-num">1</span>소득·가구</h2>
         <label class="field"><span class="lbl">만 나이</span>
           <input id="age" type="number" inputmode="numeric" min="0" max="120" value="35">
         </label>
@@ -379,7 +375,7 @@
       </div>
 
       <div class="card">
-        <h2>주택과 기간<small aria-hidden="true">PROPERTY &amp; TERM</small></h2>
+        <h2><span class="step-num">2</span>주택·대출</h2>
         <p class="hint">디딤돌 만기는 10·15·20·30년, 보금자리론은 40·50년도 가능하되 연령 제한이 있습니다. KB시세와 매매가격을 모두 넣으면 LTV 한도는 둘 중 작은 금액×LTV입니다. 하나만 넣으면 그 값을 씁니다.</p>
         <div class="seg" id="periodSeg" role="group" aria-label="대출 기간"></div>
         <label class="field"><span class="lbl">KB시세 (만 원, 일반평균가)</span>
@@ -414,7 +410,7 @@
       </div>
 
       <div class="card">
-        <h2>우대금리 항목<small aria-hidden="true">PREFERENTIAL RATE</small></h2>
+        <h2><span class="step-num">3</span>우대조건</h2>
         <p class="hint">자녀 수, 나이, 신혼, 생애최초, 소득으로 자동 판단되는 우대는 결과에 바로 반영됩니다.</p>
         <label class="field"><span class="lbl">청약(종합)저축 납입 (디딤돌 중복 우대, 예금·부금 제외, 실행일부터 5년)</span>
           <select id="subscription">
@@ -448,7 +444,7 @@
       </div>
 
       <section class="results-band" aria-label="계산 결과">
-      <h2>계산 결과<small aria-hidden="true">RESULTS</small></h2>
+      <h2>계산 결과</h2>
       <p class="hint">추정 한도는 상품 최대한도, LTV×(입력된 KB시세·매매가격 중 작은 금액), DTI 역산 가능액 중 가장 작은 금액입니다. 월상환액은 그 한도를 원리금균등으로 갚는다고 가정했습니다.</p>
       <div class="metrics" id="metrics"></div>
       <div class="table-wrap">
@@ -463,7 +459,7 @@
 
     <section class="panel" id="panel-rate" role="tabpanel" aria-labelledby="tab-rate" hidden>
       <div class="card">
-        <h2>바로 찾기<small aria-hidden="true">QUICK LOOKUP</small></h2>
+        <h2>바로 찾기</h2>
         <div class="seg" id="lookupProduct" role="group" aria-label="상품">
           <button type="button" data-p="didim" aria-pressed="true">디딤돌</button>
           <button type="button" data-p="bogeum" aria-pressed="false">보금자리론</button>
@@ -541,22 +537,22 @@
       <div class="card" id="lookupBreakdown"></div>
 
       <div class="card">
-        <h2>디딤돌 공시 기본금리<small aria-hidden="true">DIDIMDOL BASE RATE</small></h2>
+        <h2>디딤돌 공시 기본금리</h2>
         <p class="hint">주택도시기금 기준, 공시일 2026년 11월 1일, 단위 %. 아래 표는 공시 기본금리이며, 선택한 금리유형 가산(5년 변동 +0.1%p, 10년 고정 후 변동 +0.2%p, 기간 10년이면 +0.3%p, 순수 고정 +0.3%p)은 별도입니다.</p>
         <div class="table-wrap" id="tblDidim"></div>
       </div>
       <div class="card">
-        <h2>생애최초 신혼 전용금리<small aria-hidden="true">NEWLYWED FIRST-HOME RATE</small></h2>
+        <h2>생애최초 신혼 전용금리</h2>
         <p class="hint">신혼이면서 생애최초이면 공시 기본금리에서 0.30%p를 뺀 전용금리를 적용합니다(주금공 전용표와 동일). 이 0.30%p는 우대 상한 밖이고, 신혼·생애최초 가구우대 0.20%p와는 중복하지 않습니다. 단위 %.</p>
         <div class="table-wrap" id="tblDidimNF"></div>
       </div>
       <div class="card">
-        <h2>보금자리론 기준금리<small aria-hidden="true">BOGEUMJARI BASE RATE</small></h2>
+        <h2>보금자리론 기준금리</h2>
         <p class="hint">고정금리. 공시일 2026년 11월 9일, 단위 %.</p>
         <div class="table-wrap" id="tblBogeum"></div>
       </div>
       <div class="card">
-        <h2>우대조건 비교<small aria-hidden="true">PREFERENCE COMPARE</small></h2>
+        <h2>우대조건 비교</h2>
         <ul class="fine">
           <li>우대 구조: 디딤돌 가구우대는 중복 불가(가장 큰 1개) + 청약·전자계약·30% 신청·중도상환(사후)·지방 미분양 중복. 보금자리론은 항목 중복, 최대 1.0%p(아낌e 0.1%p는 한도 밖).</li>
           <li>상한·최저: 디딤돌 가구·추가우대는 일반 0.5%p(다자녀 0.7%p). 신혼+생애최초 전용금리 0.30%p와 지방 0.20%p는 그 상한 밖이며, 전용·우대·지방 합계는 1.20%p를 넘지 않습니다. 최저 1.5%. 보금자리론 상한 1.0%p, 공시에 최저금리 없음.</li>
@@ -570,7 +566,7 @@
     </section>
 
     <footer class="sources card">
-      <h2>확인하지 못한 항목과 출처<small aria-hidden="true">NOTES &amp; SOURCES</small></h2>
+      <h2>확인하지 못한 항목과 출처</h2>
       <p>디딤돌 금리·우대는 주택도시기금 홈페이지 내집마련디딤돌대출 페이지를 2026년 11월 10일(서울 시간) 기준으로 확인했습니다. 보금자리론은 한국주택금융공사 상품소개·금리안내를 따릅니다.</p>
       <ul class="fine">
         <li>디딤돌 기본금리·금리유형 가산·가구우대(택1)·추가우대·상한 0.5%p(다자녀 0.7%p)·최저 1.5%는 주택도시기금 페이지 기준입니다. 4천만~7천만 원·30년 공시 기본금리는 연 3.80%입니다.</li>
@@ -592,7 +588,7 @@
         <li>보금자리론 일반 상품소개 https://hf.go.kr/ko/sub01/sub01_01_01.do</li>
         <li>11월 보금자리론 금리 0.10%p 인상 (2026-11-02) https://www.hf.go.kr/_custom/hf/_common/board/index/21.do?articleNo=600738&mode=view</li>
       </ul>
-          <p class="wordmark">DIDIMDOL<br>CALC</p>
+          <p class="wordmark">디딤돌대출<br>보금자리론<br>금리 계산기</p>
       <p class="wordmark-sub">별그림 디딤돌 보금자리론 연구소</p>
     </footer>
   </div>
@@ -1147,8 +1143,8 @@
     };
   }
 
-  function metricHtml(label, value, detail, bad) {
-    return '<div class="metric' + (bad ? " bad" : " ok") + '"><div class="k">' + label + '</div><div class="v">' + value + '</div><div class="d">' + (detail || "") + '</div></div>';
+  function metricHtml(label, value, detail, bad, limit) {
+    return '<div class="metric' + (bad ? " bad" : " ok") + '"><div class="k">' + label + '</div><div class="v">' + value + '</div><div class="limit"><span class="limit-k">한도</span><span class="limit-v">' + (limit || "") + '</span></div><div class="d">' + (detail || "") + '</div></div>';
   }
   function esc(s) {
     return String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
@@ -1159,10 +1155,8 @@
     var d = computeDidim(input);
     var b = computeBogeum(input);
     el("metrics").innerHTML =
-      metricHtml("디딤돌 적용금리", d.eligible ? formatRate(d.rate) : "불가", d.eligible ? ((d.typeLabel || "순수 고정") + (d.prefDetail ? " · " + d.prefDetail : "")) : d.reasons[0], !d.eligible) +
-      metricHtml("디딤돌 추정 한도", d.eligible ? formatWon(d.limit) : "불가", d.eligible ? d.binding : d.reasons[0], !d.eligible) +
-      metricHtml("보금자리론 적용금리", b.eligible ? formatRate(b.rate) : "불가", b.eligible ? ("고정금리" + (b.prefDetail ? " · " + b.prefDetail : "")) : b.reasons[0], !b.eligible) +
-      metricHtml("보금자리론 추정 한도", b.eligible ? formatWon(b.limit) : "불가", b.eligible ? b.binding : b.reasons[0], !b.eligible);
+      metricHtml("디딤돌대출", d.eligible ? formatRate(d.rate) : "불가", d.eligible ? ((d.typeLabel || "순수 고정") + (d.prefDetail ? " · " + d.prefDetail : "") + (d.binding ? " · " + d.binding : "")) : d.reasons[0], !d.eligible, d.eligible ? formatWon(d.limit) : "불가") +
+      metricHtml("보금자리론", b.eligible ? formatRate(b.rate) : "불가", b.eligible ? ("고정금리" + (b.prefDetail ? " · " + b.prefDetail : "") + (b.binding ? " · " + b.binding : "")) : b.reasons[0], !b.eligible, b.eligible ? formatWon(b.limit) : "불가");
 
     var rows = [
       ["자격", d.eligible ? "가능" : ("불가 · " + (d.reasons[0] || "")), b.eligible ? "가능" : ("불가 · " + (b.reasons[0] || "")), d.eligible, b.eligible],
