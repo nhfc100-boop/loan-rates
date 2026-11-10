@@ -441,11 +441,6 @@
           <span class="lbl">지방 소재 주택</span>
           <div class="yn" data-key="local"></div>
         </div>
-        <div class="field">
-          <span class="lbl">금리유형 가산</span>
-          <div class="seg" id="segType"></div>
-        </div>
-
         <p class="sec">보금자리론 추가</p>
         <div class="row">
           <span class="lbl">아낌e 전자약정</span>
@@ -516,6 +511,9 @@
   <script>
 (function () {
   "use strict";
+
+  var DIDIM_FIXED_ADD = 0.3; // 주택도시기금 순수 고정금리 가산, 우대 상한·지방 차감과 별도
+  var DIDIM_FIXED_LABEL = "고정금리 기준(주택도시기금 순수 고정 +0.3%p 포함)";
 
   /* ============================================================
    * 금리 데이터 (매월 1일 업데이트)
@@ -695,7 +693,6 @@
       unsoldLocal: false,
       prepay40: false,
       local: false,
-      rateType: "none",
       productE: true,
       young: false,
       newborn: false,
@@ -755,7 +752,6 @@
       s.unsoldLocal = state.unsoldLocal;
       s.prepay40 = state.prepay40;
       s.local = state.local;
-      s.rateType = state.rateType;
       s.productE = state.productE;
       s.young = state.young;
       s.newborn = state.newborn;
@@ -831,17 +827,12 @@
     var bases = table[bracket];
     var floor = useSpecialTable ? RATES.didimFloorNF : RATES.didimFloor;
 
-    function typeAdjFor(years) {
-      if (s.rateType === "v5") return 0.1;
-      if (s.rateType === "f10") return years === 10 ? 0.3 : 0.2;
-      if (s.rateType === "fixed") return 0.3;
-      return 0;
-    }
+    var typeAdj = DIDIM_FIXED_ADD;
+    notes.push("고정금리 기준(주택도시기금 순수 고정 +0.3%p 포함). 우대 상한·지방 차감과 별도입니다.");
 
     function rateFor(years) {
       if (bases[years] == null) return null;
-      var t = typeAdjFor(years);
-      var raw = round4(bases[years] + localAdj + t - pref);
+      var raw = round4(bases[years] + localAdj + typeAdj - pref);
       return Math.max(floor, raw);
     }
 
@@ -864,7 +855,7 @@
       pref: pref,
       capped: capped,
       localAdj: localAdj,
-      typeAdj: typeAdjFor(s.years),
+      typeAdj: typeAdj,
       floor: floor,
       rate: rateFor(s.years),
       rateFor: rateFor,
@@ -989,10 +980,11 @@
   function bandText(result) {
     if (!result.bases) return "-";
     if (result.bases[10] != null && result.bases[30] != null && result.bases[50] == null) {
-      return result.tableName + " " + fmt(result.bases[10]) + " ~ " + fmt(result.bases[30]);
+      return result.tableName + " · " + DIDIM_FIXED_LABEL + " " +
+        fmt(round4(result.bases[10] + DIDIM_FIXED_ADD)) + " ~ " + fmt(round4(result.bases[30] + DIDIM_FIXED_ADD));
     }
     if (result.bases[10] != null && result.bases[50] != null) {
-      return result.tableName + " " + fmt(result.bases[10]) + " ~ " + fmt(result.bases[50]);
+      return "고정금리 · " + result.tableName + " " + fmt(result.bases[10]) + " ~ " + fmt(result.bases[50]);
     }
     return result.tableName || "";
   }
@@ -1074,18 +1066,20 @@
     var ysB = [10, 15, 20, 30, 40, 50];
     var hint = "디딤돌 " + RATES.didimAsOf + " · 보금자리론 " + RATES.bogeumAsOf;
     if (d.ready) hint += " · " + d.tableName + " · " + d.bracketLabel;
+    hint += " · " + DIDIM_FIXED_LABEL;
     document.getElementById("tblHint").textContent = hint;
 
     var hd = "<thead><tr><th>디딤돌</th>" + ysD.map(function (y) { return "<th>" + y + "년</th>"; }).join("") + "</tr></thead><tbody>";
-    hd += "<tr" + (ysD.indexOf(state.years) >= 0 ? ' class="hl"' : "") + "><td>기본금리</td>";
+    hd += "<tr><td>고정금리</td>";
     ysD.forEach(function (y) {
-      hd += "<td>" + (d.ready && d.bases[y] != null ? d.bases[y].toFixed(2) : "-") + "</td>";
+      var cls = state.years === y ? ' class="hl"' : "";
+      hd += "<td" + cls + ">" + (d.ready && d.bases[y] != null ? round4(d.bases[y] + DIDIM_FIXED_ADD).toFixed(2) : "-") + "</td>";
     });
     hd += "</tr></tbody>";
     document.getElementById("tblDidim").innerHTML = hd;
 
-    var hb = "<thead><tr><th>보금자리론</th>" + ysB.map(function (y) { return "<th>" + y + "년</th>"; }).join("") + "</tr></thead><tbody>";
-    hb += "<tr" + (ysB.indexOf(state.years) >= 0 ? "" : "") + "><td>" + esc(b.ready ? b.tableName : "아낌e") + "</td>";
+    var hb = "<thead><tr><th>보금자리론 (고정금리)</th>" + ysB.map(function (y) { return "<th>" + y + "년</th>"; }).join("") + "</tr></thead><tbody>";
+    hb += "<tr><td>" + esc(b.ready ? b.tableName : "아낌e") + "</td>";
     ysB.forEach(function (y) {
       var cls = state.years === y ? ' class="hl"' : "";
       hb += "<td" + cls + ">" + (b.ready && b.bases[y] != null ? b.bases[y].toFixed(2) : "-") + "</td>";
@@ -1120,6 +1114,9 @@
     if (name.indexOf("디딤돌") === 0) {
       var raw = round4(base + (result.localAdj || 0) + (result.typeAdj || 0) - result.pref);
       if (raw < result.floor) how += " · 최저금리 " + fmt(result.floor) + " 적용";
+      how += " · " + DIDIM_FIXED_LABEL;
+    } else {
+      how += " · 고정금리";
     }
     return '<div class="final"><div class="pname">' + esc(name) + '</div><div class="rate">' + fmt(rate) + '</div><div class="how">' + esc(how) + '</div></div>';
   }
@@ -1198,10 +1195,6 @@
       [["none", "없음"], ["5", "5년"], ["10", "10년"], ["15", "15년"]],
       function () { return state.subscription; },
       function (v) { state.subscription = v; });
-    fillSeg(document.getElementById("segType"),
-      [["none", "없음"], ["v5", "5년변동"], ["f10", "10년후변동"], ["fixed", "만기고정"]],
-      function () { return state.rateType; },
-      function (v) { state.rateType = v; });
     fillSeg(document.getElementById("segYears"),
       [[10, "10년"], [15, "15년"], [20, "20년"], [30, "30년"], [40, "40년"], [50, "50년"]],
       function () { return state.years; },
