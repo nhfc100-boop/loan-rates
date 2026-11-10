@@ -442,7 +442,7 @@
           <div class="yn" data-key="local"></div>
         </div>
         <div class="field">
-          <span class="lbl">금리유형 가산 <span class="need">확인 필요</span></span>
+          <span class="lbl">금리유형 가산</span>
           <div class="seg" id="segType"></div>
         </div>
 
@@ -529,7 +529,7 @@
     didimGeneral: {
       b20: { 10: 2.85, 15: 2.95, 20: 3.05, 30: 3.10 },
       b40: { 10: 3.20, 15: 3.30, 20: 3.40, 30: 3.45 },
-      b70: { 10: 3.55, 15: 3.65, 20: 3.75, 30: 3.85 },
+      b70: { 10: 3.55, 15: 3.65, 20: 3.75, 30: 3.80 },
       b85: { 10: 3.90, 15: 4.00, 20: 4.10, 30: 4.15 }
     },
     didimNewlyFirst: {
@@ -614,7 +614,7 @@
     var asOf = "금리 기준일: 디딤돌 " + RATES.didimAsOf + " (주택도시기금·주금공), 보금자리론 " + RATES.bogeumAsOf + " (주금공)";
     var foot = document.getElementById("asOfFoot");
     if (foot) {
-      foot.textContent = asOf + ". 4천만~7천만 원·30년 칸은 주금공 공시 3.85%입니다(일부 2차 자료 3.80%와 차이, 기금 포털 표는 확인 필요).";
+      foot.textContent = asOf + ". 주택도시기금 금리표 기준입니다.";
     }
   }
 
@@ -1114,7 +1114,7 @@
     var parts = [fmt(base)];
     if (result.pref) parts.push("− " + fmtPp(result.pref));
     if (result.localAdj) parts.push("− " + fmtPp(Math.abs(result.localAdj)));
-    if (result.typeAdj) parts.push("+ " + fmtPp(result.typeAdj) + " (확인 필요)");
+    if (result.typeAdj) parts.push("+ " + fmtPp(result.typeAdj));
     if (result.addOn) parts.push("+ " + fmtPp(result.addOn));
     var how = parts.join(" ") + " = " + fmt(rate);
     if (name.indexOf("디딤돌") === 0) {
