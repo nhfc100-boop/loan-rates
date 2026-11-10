@@ -3,32 +3,43 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#1f4e3d">
+  <meta name="theme-color" content="#F26A3D">
   <meta name="application-name" content="디딤돌·보금자리론 계산기">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="디딤돌·보금자리론 계산기">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="description" content="디딤돌대출과 보금자리론의 금리·한도를 참고용으로 계산합니다. 실제 심사 결과와 다를 수 있습니다.">
-  <link rel="icon" href="data:image/png;base64,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">
-  <link rel="apple-touch-icon" href="data:image/png;base64,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">
-  <link rel="manifest" href="data:application/manifest+json,%7B%22name%22%3A%22%EB%94%94%EB%94%A4%EB%8F%8C%C2%B7%EB%B3%B4%EA%B8%88%EC%9E%90%EB%A6%AC%EB%A1%A0%20%EA%B3%84%EC%82%B0%EA%B8%B0%22%2C%22short_name%22%3A%22%EB%94%94%EB%94%A4%EB%8F%8C%EA%B3%84%EC%82%B0%EA%B8%B0%22%2C%22description%22%3A%22%EB%94%94%EB%94%A4%EB%8F%8C%EB%8C%80%EC%B6%9C%EA%B3%BC%20%EB%B3%B4%EA%B8%88%EC%9E%90%EB%A6%AC%EB%A1%A0%EC%9D%98%20%EA%B8%88%EB%A6%AC%C2%B7%ED%95%9C%EB%8F%84%20%EC%B0%B8%EA%B3%A0%20%EA%B3%84%EC%82%B0%EA%B8%B0%22%2C%22start_url%22%3A%22.%22%2C%22scope%22%3A%22.%22%2C%22display%22%3A%22standalone%22%2C%22orientation%22%3A%22portrait%22%2C%22background_color%22%3A%22%23f4efe6%22%2C%22theme_color%22%3A%22%231f4e3d%22%2C%22lang%22%3A%22ko%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22data%3Aimage%2Fpng%3Bbase64%2CiVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAAF%2FUlEQVR4nO2dPY7cOBBGNQvHzpwZ8D0W8BV8oI0m8tF8EmfOfAIHXAgNjUtNkVWsV5rvxUKrfh6LbHX3zMuXb183If7GP9kBCC6SQ5hIDmEiOYSJ5BAmkkOYSA5hIjmEieQQJpJDmEgOYSI5hInkECYfsgP4n4%2BfP2WHwOL3z1%2FZIeTJIRvOOdQnxZXVcsiJMfa6rbRknRzSwoVWxjWKrJBDWrizRpFYOaRFKNGKBL6VlRlriKtzlBwyYyVB1fbfVqRFChFbjPPkkBm5%2BNbfUw6ZQcCxC25yyAwOXr3wkUNm0HDpiIMcMoPJfF%2F0kb0wmZVDY4PMZHem5JAZfGZ6NC6HzKjCcKd05hAmg3JobNRirF%2BaHMJkRA6NjYoMdE2TQ5hclkNjoy5Xe0f53cp6frx%2B77%2F439f%2F4iLB8nL1T03WnRyXbDinriuXvg10TY6KZjg68ZaKlvT7cVs5Qp14SyFL3rUci7V4pIQi71SORC0egSvy7uSAaPEIVpEQOZhmALV4hKlIpx%2B15Zg0o7Nza%2B6ykpvLMdYwlz4l3tqLO8txtT39jfnx%2Bv3SxUFhRHNbOeIeezczLvkRGk8cnXJU%2Bmylvw0re7Dfqye8dg1EkaeUmRydZgzX%2FXFgXB0eh9fpuSzXj87JUeP7HMsqPv%2FGeM07oDUUmBw9dZzUYj9t7K82Mzz213x6Tdb8uMnkWFbixxu5LOueqODzAy3HGjOsu6zZYsh%2BVHq3cqDEmb8FSTbgBO7kOC%2Bolxnnd%2FFq6nm0WHWgchDM6L%2Bmh4p%2BEOXgmHH1ynPK%2BUGU44T1Zoxdb1HinLSDk2PBAhq7BTawOFhyLNhQZhqw4PkHyg%2BWHCekm%2BH1CludzQX0%2BPyk7oQPTQ6EhhRtz00en7sQMatR8z8Iihxxyyiui3HfLYWYR5HDAmuGy%2BvDDx8IOYJauGb9lQ7%2BHIQcFjMLa2VxZ%2B5FHh75ctzjtHiPLA7ky%2BFOVk3Te%2BkOV46xeZvboRv83umRZDl8e0lYu3fKCDo5BhYTwYzGQCTM4QGV4yocMxq0eMbIlMOrgsxO3CA74uSI%2B6nqYir%2BjPYRohz9kM1o8CM8obAcVepeJc63VJWjVsVrRbuTJkf61%2FUWUzFf3OR4ei6raEbjaeS0MylOjnPqmtGoFX8lOWpV1qJQFmXkKFTTp1TJpcCv7KuU8hIl%2FjgYfXLc0owdeHZoOeC1c4GcI1cOctV8wWYKlQNbryCY%2BRLlYFYqGmDWODmANVoGLXecHIKD5BAmkkOYpMkBfziIIqtWxMfnf60F7bA2SYkcta0IE8khTIhy0KbrGoBZZ8qhM2kPiVUiTg4BASoHcMaGwsw3WQ7tLOfk1gc6OTbqYooAmylXDpFOvhzaWSzSK5MvxwnYeesIOUeEHOlLBAihJgg5TiAvrHng2VHk4P%2BVeHcS%2F6VGJxQ5zrmfHyUyAskBWS7pcOoAkkPQYMnBWTRZoCrAkmODVWcxtNxxcggORDloC2gNwKyJcmzISoXCzBcqx0atVwTYTLlyiHTQcmCXlCPkHNFybOzazQPPji7Hhq%2FgMPy8CsixVajjVUpkVEMOkYLkECaSQ5hIDmEiOYSJ5BAmkkOYvHz59rXz0o%2BfP4WGMg%2FkW7v8Zxi%2Ff%2F7quexWcjQSFeFr0Xi%2FcjQWK1JFi4a%2FHFs1PxqhltRyotFpxvYe5NhxtKSiEzuS4zmXXCltwwHJIUz65dBzDmFyTY5%2B6QSTSx3U5BAmkkOYXJZDO0tdrvZOk0OYjMih4VGRga5pcgiTQTk0PGox1i9NDmEyLoeGRxWGOzU1OeQHn5kezW4r8oPMZHd05hAmDnJoeDCZ74vP5JAfNFw64ratyA8OXr3wPHPIDwKOXXA%2BkMqPXHzr%2F8HxtRotPn3bdDERyzLqraxGyEqCqh34nEN%2BrCGuzv7byiPaYkKJXn6xcjSkiDtrpvIKORpSxIWVm%2FU6ORp7brLkEikHuNVy7ByylSsHCMf5NDkOEGohDugje2EiOYSJ5BAmkkOYSA5hIjmEieQQJpJDmEgOYSI5hInkECaSQ5j8AcJhgRozVtptAAAAAElFTkSuQmCC%22%2C%22sizes%22%3A%22180x180%22%2C%22type%22%3A%22image%2Fpng%22%2C%22purpose%22%3A%22any%22%7D%5D%7D">
+  <link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAADB0lEQVR4nO3c0XHbRhRA0VXGfbiBtOBC0oIbc0NuIC24gnzY48iULgVRILAEzvmkfnbwLpcgd4SnH1+/DHjNX3svgHmJgyQOkjhI4iCJgyQOkjhI4iCJgyQOkjhI4iCJgyQOkjhI4iCJgyQOkjhI4iCJgyQOkjhI4iCJgyQOkjhI4iCJgyQOkjhI4iCJgyQOkjhI4iCJgyQOkjhI4iCJgyQOkjhIn/ZewPj87fvFK//+8/cqf+WD7BwkcZDEsamXn4MzE8d2fpbxQH2IYyPPm3iUPsSxhZc1PEQf4ri76mD+PsRxX9cLmLwPcdzRktnP3Ic47mX51KftQxx38d55z9mHONZ326Qn7EMcs5jwyFAcK7ttA5iwjCGOdR2pjCGOFR2sjCGOtRyvjCGOVRyyjCGOjztqGUMcHzThjxMrEsftbi7jIbaNIY6bHb6MMcbTj69f9l7D4zlDGcPOcYOTlDHE8V7nKWOI411OVcYQx3JnK2OIY6ETljHEscQ5yxjieNNpyxjiuJMDlDHEcd2BD9WWEEc6eRlDHOXYx60L7f/Yp1Usn+WSd/aZb0Kfs3NcUsZv4viDMp4Tx/+UcUEcvyjjJXGMoYwgDmWk/b/KXsxm4yuujCt23jn2fZKaMq7bM459n6SmjDftFse+T1JTxhJnvCFVxkKni0MZy50uDpYTxyIn3DbGjnFcv9xTDWOqxWxpz52jLvpUw5hqMRvb+WPl5aWfahhTLWZ7+/98Pu0Apl3YZtyQvk4ZQxyvUsZP4rikjN/E8QdlPLf/DelU1v0Xh0dn5yCJgyQOkjhI4iCJgyQOkjhI4iCJgyQOkjhI4iAd5FT2DGek27NzkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRB+g8mHbl1jBMXaQAAAABJRU5ErkJggg==">
+  <link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAADB0lEQVR4nO3c0XHbRhRA0VXGfbiBtOBC0oIbc0NuIC24gnzY48iULgVRILAEzvmkfnbwLpcgd4SnH1+/DHjNX3svgHmJgyQOkjhI4iCJgyQOkjhI4iCJgyQOkjhI4iCJgyQOkjhI4iCJgyQOkjhI4iCJgyQOkjhI4iCJgyQOkjhI4iCJgyQOkjhI4iCJgyQOkjhI4iCJgyQOkjhI4iCJgyQOkjhIn/ZewPj87fvFK//+8/cqf+WD7BwkcZDEsamXn4MzE8d2fpbxQH2IYyPPm3iUPsSxhZc1PEQf4ri76mD+PsRxX9cLmLwPcdzRktnP3Ic47mX51KftQxx38d55z9mHONZ326Qn7EMcs5jwyFAcK7ttA5iwjCGOdR2pjCGOFR2sjCGOtRyvjCGOVRyyjCGOjztqGUMcHzThjxMrEsftbi7jIbaNIY6bHb6MMcbTj69f9l7D4zlDGcPOcYOTlDHE8V7nKWOI411OVcYQx3JnK2OIY6ETljHEscQ5yxjieNNpyxjiuJMDlDHEcd2BD9WWEEc6eRlDHOXYx60L7f/Yp1Usn+WSd/aZb0Kfs3NcUsZv4viDMp4Tx/+UcUEcvyjjJXGMoYwgDmWk/b/KXsxm4yuujCt23jn2fZKaMq7bM459n6SmjDftFse+T1JTxhJnvCFVxkKni0MZy50uDpYTxyIn3DbGjnFcv9xTDWOqxWxpz52jLvpUw5hqMRvb+WPl5aWfahhTLWZ7+/98Pu0Apl3YZtyQvk4ZQxyvUsZP4rikjN/E8QdlPLf/DelU1v0Xh0dn5yCJgyQOkjhI4iCJgyQOkjhI4iCJgyQOkjhI4iAd5FT2DGek27NzkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRB+g8mHbl1jBMXaQAAAABJRU5ErkJggg==">
+  <link rel="manifest" href="data:application/manifest+json,%7B%22name%22%3A%22%EB%94%94%EB%94%A4%EB%8F%8C%C2%B7%EB%B3%B4%EA%B8%88%EC%9E%90%EB%A6%AC%EB%A1%A0%20%EA%B3%84%EC%82%B0%EA%B8%B0%22%2C%22short_name%22%3A%22%EB%94%94%EB%94%A4%EB%8F%8C%EA%B3%84%EC%82%B0%EA%B8%B0%22%2C%22description%22%3A%22%EB%94%94%EB%94%A4%EB%8F%8C%EB%8C%80%EC%B6%9C%EA%B3%BC%20%EB%B3%B4%EA%B8%88%EC%9E%90%EB%A6%AC%EB%A1%A0%EC%9D%98%20%EA%B8%88%EB%A6%AC%C2%B7%ED%95%9C%EB%8F%84%20%EC%B0%B8%EA%B3%A0%20%EA%B3%84%EC%82%B0%EA%B8%B0%22%2C%22start_url%22%3A%22.%22%2C%22scope%22%3A%22.%22%2C%22display%22%3A%22standalone%22%2C%22orientation%22%3A%22portrait%22%2C%22background_color%22%3A%22%23F26A3D%22%2C%22theme_color%22%3A%22%23F26A3D%22%2C%22lang%22%3A%22ko%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22data%3Aimage%2Fpng%3Bbase64%2CiVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAADB0lEQVR4nO3c0XHbRhRA0VXGfbiBtOBC0oIbc0NuIC24gnzY48iULgVRILAEzvmkfnbwLpcgd4SnH1%2B%2FDHjNX3svgHmJgyQOkjhI4iCJgyQOkjhI4iCJgyQOkjhI4iCJgyQOkjhI4iCJgyQOkjhI4iCJgyQOkjhI4iCJgyQOkjhI4iCJgyQOkjhI4iCJgyQOkjhI4iCJgyQOkjhI4iCJgyQOkjhIn%2FZewPj87fvFK%2F%2F%2B8%2Fcqf%2BWD7BwkcZDEsamXn4MzE8d2fpbxQH2IYyPPm3iUPsSxhZc1PEQf4ri76mD%2BPsRxX9cLmLwPcdzRktnP3Ic47mX51KftQxx38d55z9mHONZ326Qn7EMcs5jwyFAcK7ttA5iwjCGOdR2pjCGOFR2sjCGOtRyvjCGOVRyyjCGOjztqGUMcHzThjxMrEsftbi7jIbaNIY6bHb6MMcbTj69f9l7D4zlDGcPOcYOTlDHE8V7nKWOI411OVcYQx3JnK2OIY6ETljHEscQ5yxjieNNpyxjiuJMDlDHEcd2BD9WWEEc6eRlDHOXYx60L7f%2FYp1Usn%2BWSd%2FaZb0Kfs3NcUsZv4viDMp4Tx%2F%2BUcUEcvyjjJXGMoYwgDmWk%2Fb%2FKXsxm4yuujCt23jn2fZKaMq7bM459n6SmjDftFse%2BT1JTxhJnvCFVxkKni0MZy50uDpYTxyIn3DbGjnFcv9xTDWOqxWxpz52jLvpUw5hqMRvb%2BWPl5aWfahhTLWZ7%2B%2F98Pu0Apl3YZtyQvk4ZQxyvUsZP4rikjN%2FE8QdlPLf%2FDelU1v0Xh0dn5yCJgyQOkjhI4iCJgyQOkjhI4iCJgyQOkjhI4iAd5FT2DGek27NzkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRB%2Bg8mHbl1jBMXaQAAAABJRU5ErkJggg%3D%3D%22%2C%22sizes%22%3A%22180x180%22%2C%22type%22%3A%22image%2Fpng%22%2C%22purpose%22%3A%22any%22%7D%5D%7D">
   <title>디딤돌·보금자리론 계산기</title>
   <style>
+
+    @font-face {
+      font-family: "Poster Display";
+      src: url(data:font/woff;base64,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) format("woff");
+      font-weight: 900;
+      font-style: normal;
+      font-display: swap;
+    }
     :root {
-      --bg: #f4efe6;
-      --paper: #fffdf8;
-      --ink: #1c241f;
-      --muted: #5c675f;
-      --line: #ddd4c6;
-      --brand: #1f4e3d;
-      --brand-2: #2d6a52;
-      --accent: #c46b2d;
-      --ok: #1b6b43;
-      --bad: #b42318;
-      --chip: #e8f0eb;
-      --shadow: 0 1px 0 rgba(28,36,31,.04);
-      --radius: 16px;
+      --bg: #F26A3D;
+      --bg-2: #EE6B3F;
+      --paper: #FFF8F0;
+      --cream: #FFF4E8;
+      --ink: #111111;
+      --muted: #3A3A3A;
+      --line: #111111;
+      --brand: #111111;
+      --orange: #F26A3D;
+      --charcoal: #2B2B2B;
+      --white: #FFF8F0;
+      --ok: #111111;
+      --bad: #B42318;
+      --chip: #FFF8F0;
+      --shadow: none;
+      --radius: 0px;
     }
     * { box-sizing: border-box; }
     html, body { margin: 0; padding: 0; }
@@ -38,118 +49,288 @@
       color: var(--ink);
       line-height: 1.5;
       padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+      overflow-x: hidden;
     }
-    .wrap { max-width: 480px; margin: 0 auto; padding: 16px 16px 48px; }
-    header.appbar { padding: 8px 0 12px; }
+    .wrap { max-width: 480px; margin: 0 auto; padding: 16px 16px 0; }
+    header.appbar { position: relative; padding: 10px 0 22px; }
+    .poster-deco { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
+    .poster-deco .d-bars {
+      position: absolute; top: 2px; left: 0;
+      font-family: "Poster Display", "Arial Black", sans-serif;
+      font-weight: 900; font-size: 0.95rem; letter-spacing: 0.18em; color: #111;
+      line-height: 1;
+    }
+    .poster-deco .d-slashes {
+      position: absolute; top: 52%; right: 8px;
+      font-family: "Poster Display", "Arial Black", sans-serif;
+      font-weight: 900; font-size: 1.05rem; letter-spacing: 0.08em; color: #111;
+      transform: translateY(-50%);
+    }
+    .poster-deco .d-dot {
+      position: absolute; width: 7px; height: 7px; background: #111; border-radius: 50%;
+    }
+    .poster-deco .d-dot-1 { top: 8px; right: 86px; }
+    .poster-deco .d-dot-2 { top: 38%; right: 44px; }
+    .poster-deco .d-x {
+      position: absolute; top: 0; right: 36px;
+      font-family: "Poster Display", "Arial Black", sans-serif;
+      font-weight: 900; font-size: 1.15rem; color: #111; line-height: 1;
+    }
+    .poster-deco .d-burst {
+      position: absolute; top: 4px; right: 0; width: 28px; height: 28px;
+    }
+    .poster-deco .d-arrow {
+      position: absolute; right: 4px; bottom: 8px; width: 86px; height: 86px;
+    }
+    .headline {
+      position: relative; z-index: 1;
+      font-family: "Poster Display", "Arial Black", Impact, sans-serif;
+      font-weight: 900;
+      font-size: clamp(2.7rem, 13.6vw, 3.85rem);
+      line-height: 0.78;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+      color: #111;
+      margin: 18px 0 12px;
+    }
+    .headline span { display: block; }
     header.appbar h1 {
-      font-size: 1.25rem; margin: 0 0 4px; letter-spacing: -0.02em; color: var(--brand);
+      position: relative; z-index: 1;
+      font-size: 1.12rem; margin: 0 0 2px; letter-spacing: -0.02em;
+      color: #111; font-weight: 800;
     }
-    header.appbar p { margin: 0; color: var(--muted); font-size: 0.88rem; }
+    header.appbar .kicker {
+      position: relative; z-index: 1;
+      margin: 0 0 12px;
+      font-size: 0.68rem; font-weight: 700;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: #FFF8F0;
+    }
+    header.appbar #asOfLine,
+    header.appbar p#asOfLine {
+      position: relative; z-index: 1;
+      margin: 0; color: #111; font-size: 0.82rem; font-weight: 600;
+      padding-right: 96px;
+      word-break: keep-all;
+    }
     .tabs {
-      display: flex; gap: 6px; background: #e7e0d4; padding: 4px; border-radius: 999px; margin: 16px 0 18px;
+      display: flex; gap: 0; background: transparent;
+      padding: 0; border: 2px solid #111; border-radius: 0; margin: 16px 0 18px;
+      overflow: hidden;
     }
     .tabs button {
-      flex: 1; border: 0; background: transparent; color: var(--muted);
-      font: inherit; font-weight: 600; font-size: 0.92rem;
-      padding: 10px 8px; border-radius: 999px; cursor: pointer;
+      flex: 1; border: 0; border-right: 2px solid #111; background: var(--paper); color: #111;
+      font: inherit; font-weight: 800; font-size: 0.88rem;
+      padding: 11px 8px; border-radius: 0; cursor: pointer;
     }
+    .tabs button:last-child { border-right: 0; }
     .tabs button[aria-selected="true"] {
-      background: var(--paper); color: var(--brand); box-shadow: var(--shadow);
+      background: #111; color: var(--orange); box-shadow: none;
     }
     .panel[hidden] { display: none; }
     .note {
-      background: #eef5f0; border: 1px solid #d4e4da; color: #244536;
-      border-radius: var(--radius); padding: 12px 14px; font-size: 0.86rem; margin-bottom: 16px;
+      background: var(--paper); border: 2px solid #111; color: #111;
+      border-radius: 0; padding: 12px 14px; font-size: 0.86rem; margin-bottom: 16px;
     }
     .note strong { display: block; margin-bottom: 4px; }
     .card {
-      background: var(--paper); border: 1px solid var(--line);
-      border-radius: var(--radius); padding: 14px; margin-bottom: 12px;
+      background: var(--paper); border: 2px solid #111;
+      border-radius: 0; padding: 16px; margin-bottom: 12px;
     }
-    .card h2 {
-      font-size: 0.98rem; margin: 0 0 12px; color: var(--brand);
+    .card h2, h2 {
+      font-size: 1.05rem; margin: 0 0 4px; color: #111; font-weight: 800;
     }
+    h2 small, .en-sub {
+      display: block;
+      font-size: 0.62rem; font-weight: 700;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: #111; margin: 2px 0 12px;
+      font-family: "Poster Display", "Arial Black", sans-serif;
+    }
+    #didimDetail > h2::after,
+    #bogeumDetail > h2::after,
+    #lookupBreakdown > h2::after {
+      display: block;
+      font-size: 0.62rem; font-weight: 700;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: #111; margin: 2px 0 12px;
+      font-family: "Poster Display", "Arial Black", sans-serif;
+    }
+    #didimDetail > h2::after { content: "DIDIMDOL DETAIL"; }
+    #bogeumDetail > h2::after { content: "BOGEUMJARI DETAIL"; }
+    #lookupBreakdown > h2::after { content: "PREFERENCE BREAKDOWN"; }
     label.field { display: block; margin: 0 0 12px; }
     label.field span.lbl {
-      display: block; font-size: 0.8rem; color: var(--muted); margin-bottom: 6px; font-weight: 600;
+      display: block; font-size: 0.8rem; color: var(--muted); margin-bottom: 6px; font-weight: 700;
     }
     input[type="number"], select {
       width: 100%; font: inherit; color: var(--ink);
-      background: #fff; border: 1px solid var(--line); border-radius: 12px;
+      background: #fff; border: 1.5px solid #111; border-radius: 0;
       padding: 11px 12px; appearance: none; -webkit-appearance: none;
     }
     input[type="number"]:focus, select:focus {
-      outline: 2px solid var(--brand-2); outline-offset: 1px;
+      outline: 2px solid #111; outline-offset: 1px;
     }
     .toggle {
       display: flex; align-items: flex-start; gap: 10px;
       margin: 0 0 10px; font-size: 0.92rem;
     }
-    .toggle input { margin-top: 3px; width: 18px; height: 18px; accent-color: var(--brand); }
+    .toggle input { margin-top: 3px; width: 18px; height: 18px; accent-color: #111; }
     .seg {
       display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px;
     }
     .seg button {
-      border: 1px solid var(--line); background: #fff; color: var(--ink);
-      font: inherit; font-size: 0.86rem; padding: 8px 12px; border-radius: 999px; cursor: pointer;
+      border: 1.5px solid #111; background: #fff; color: #111;
+      font: inherit; font-size: 0.86rem; font-weight: 700;
+      padding: 8px 12px; border-radius: 0; cursor: pointer;
     }
     .seg button[aria-pressed="true"] {
-      background: var(--brand); color: #fff; border-color: var(--brand);
+      background: #111; color: var(--orange); border-color: #111;
     }
     .actions { display: flex; gap: 8px; margin-top: 4px; }
     .actions button {
-      font: inherit; font-weight: 600; border-radius: 12px; padding: 11px 14px; cursor: pointer;
-      border: 1px solid var(--line); background: #fff; color: var(--ink);
+      font: inherit; font-weight: 800; border-radius: 0; padding: 11px 14px; cursor: pointer;
+      border: 2px solid #111; background: #fff; color: #111;
     }
-    .actions button.primary { background: var(--brand); color: #fff; border-color: var(--brand); }
-    .metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px; }
+    .actions button.primary,
+    #resetBtn {
+      background: #111; color: var(--orange); border-color: #111;
+    }
+    .results-band {
+      background: var(--charcoal);
+      color: var(--white);
+      margin: 8px -16px 16px;
+      padding: 20px 16px 22px;
+    }
+    .results-band h2 {
+      color: var(--white);
+      font-size: 1.12rem;
+      margin: 0 0 4px;
+    }
+    .results-band h2 small { color: var(--orange); margin-bottom: 10px; }
+    .results-band .hint { color: #C8C4BE; }
+    .results-band .disclaimer {
+      color: var(--white);
+      font-size: 0.86rem;
+      font-weight: 700;
+      margin: 14px 0 10px;
+      word-break: keep-all;
+    }
+    .metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin-bottom: 12px; border-top: 1px solid #444; }
     .metric {
-      background: var(--paper); border: 1px solid var(--line); border-radius: 14px; padding: 12px;
+      background: transparent; border: 0; border-bottom: 1px solid #444;
+      border-right: 1px solid #444; border-radius: 0; padding: 12px 10px;
     }
-    .metric .k { font-size: 0.75rem; color: var(--muted); margin-bottom: 4px; }
-    .metric .v { font-size: 1.05rem; font-weight: 700; letter-spacing: -0.02em; }
-    .metric .d { font-size: 0.75rem; color: var(--muted); margin-top: 4px; word-break: keep-all; }
-    .metric.bad .v { color: var(--bad); }
-    .metric.ok .v { color: var(--ok); }
+    .metric:nth-child(2n) { border-right: 0; }
+    .metric .k {
+      font-size: 0.66rem; color: var(--orange); margin-bottom: 4px;
+      font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+    }
+    .metric .v { font-size: 1.08rem; font-weight: 800; letter-spacing: -0.02em; color: var(--white); }
+    .metric .d { font-size: 0.75rem; color: #C8C4BE; margin-top: 4px; word-break: keep-all; }
+    .metric.bad .v { color: #FF9A90; }
+    .metric.ok .v { color: var(--white); }
     table {
       width: 100%; border-collapse: collapse; font-size: 0.8rem;
-      background: var(--paper); border-radius: 12px; overflow: hidden;
+      background: var(--paper); border-radius: 0; overflow: hidden;
+      border: 1.5px solid #111;
     }
-    th, td { border-bottom: 1px solid var(--line); padding: 8px 6px; text-align: right; vertical-align: top; }
-    th:first-child, td:first-child { text-align: left; }
-    th { color: var(--muted); font-weight: 600; background: #f7f2ea; }
-    td.ok { color: var(--ok); font-weight: 700; }
+    th, td { border-bottom: 1px solid #ddd4c6; padding: 8px 6px; text-align: right; vertical-align: top; }
+    th:first-child, td:first-child { text-align: left; word-break: keep-all; }
+    th {
+      color: var(--orange); font-weight: 700; background: #111;
+      letter-spacing: 0.08em; font-size: 0.72rem;
+    }
+    td.ok { color: #1b6b43; font-weight: 700; }
     td.bad { color: var(--bad); font-weight: 700; }
     .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 12px; }
-    .hl { background: #e7f3ec; font-weight: 700; }
-    .lookup-out {
-      background: var(--brand); color: #fff; border-radius: 14px; padding: 14px; margin: 0 0 14px;
+    .hl { background: #FFE0D0; font-weight: 700; }
+    .results-band table {
+      background: transparent; border: 1px solid #444; color: var(--white);
     }
-    .lookup-out .big { font-size: 1.6rem; font-weight: 750; letter-spacing: -0.03em; }
-    .lookup-out p { margin: 6px 0 0; font-size: 0.86rem; opacity: .92; }
+    .results-band th, .results-band td { border-bottom: 1px solid #444; }
+    .results-band th { background: transparent; color: var(--orange); }
+    .results-band td.ok { color: #C8F5D0; }
+    .results-band td.bad { color: #FF9A90; }
+    .results-band .hl { background: #3A3A3A; }
+    .lookup-out {
+      background: var(--charcoal); color: var(--white);
+      border-radius: 0; padding: 16px; margin: 0 0 14px;
+    }
+    .lookup-out > div:first-child {
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--orange); margin-bottom: 4px;
+    }
+    .lookup-out .big { font-size: 1.7rem; font-weight: 800; letter-spacing: -0.03em; color: #fff; }
+    .lookup-out p { margin: 6px 0 0; font-size: 0.86rem; opacity: 1; color: #C8C4BE; }
     .pref-group { margin-top: 2px; }
     .pref-group .hint { margin-bottom: 10px; }
     #lookupBreakdown td:nth-child(2) { white-space: nowrap; }
     ul.fine { margin: 8px 0 0; padding-left: 1.15em; color: var(--muted); font-size: 0.84rem; }
     ul.fine li { margin: 0 0 6px; }
-    footer.sources { font-size: 0.8rem; color: var(--muted); margin-top: 8px; }
-    footer.sources a { color: var(--brand); word-break: break-all; }
-    footer.sources h2 { font-size: 0.95rem; color: var(--brand); }
+    footer.sources {
+      font-size: 0.8rem; color: #C8C4BE;
+      background: var(--charcoal); border: 0; border-radius: 0;
+      margin: 8px -16px 0; padding: 22px 16px 40px;
+    }
+    footer.sources a { color: var(--orange); word-break: break-all; }
+    footer.sources h2 { font-size: 0.98rem; color: var(--white); }
+    footer.sources h2 small { color: var(--orange); }
+    footer.sources ul.fine { color: #C8C4BE; }
+    footer.sources .wordmark {
+      font-family: "Poster Display", "Arial Black", Impact, sans-serif;
+      font-weight: 900;
+      font-size: clamp(2.15rem, 11.5vw, 3.1rem);
+      line-height: 0.8;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin: 28px 0 4px;
+    }
+    footer.sources .wordmark-sub {
+      font-size: 0.66rem; font-weight: 700;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--white); margin: 0;
+    }
     .hint { font-size: 0.8rem; color: var(--muted); margin: 0 0 12px; }
     .rate-status {
+      position: relative; z-index: 1;
       margin: 4px 0 0;
       font-size: 0.78rem;
-      color: var(--muted);
+      color: #111;
       word-break: keep-all;
+      font-weight: 600;
+      padding-right: 96px;
     }
-    .rate-status.ok { color: var(--ok); }
-    .rate-status.off { color: var(--muted); }
+    .rate-status.ok { color: #111; }
+    .rate-status.off { color: #111; }
+
   </style>
 </head>
 <body>
   <div class="wrap">
     <header class="appbar">
+      <div class="poster-deco" aria-hidden="true">
+        <span class="d-bars">| | |</span>
+        <span class="d-slashes">/ / /</span>
+        <span class="d-dot d-dot-1"></span>
+        <span class="d-dot d-dot-2"></span>
+        <span class="d-x">×</span>
+        <svg class="d-burst" viewBox="0 0 28 28" fill="none" stroke="#111" stroke-width="1.4">
+          <line x1="14" y1="1" x2="14" y2="7"/><line x1="14" y1="21" x2="14" y2="27"/>
+          <line x1="1" y1="14" x2="7" y2="14"/><line x1="21" y1="14" x2="27" y2="14"/>
+          <line x1="4.5" y1="4.5" x2="8.5" y2="8.5"/><line x1="19.5" y1="19.5" x2="23.5" y2="23.5"/>
+          <line x1="23.5" y1="4.5" x2="19.5" y2="8.5"/><line x1="8.5" y1="19.5" x2="4.5" y2="23.5"/>
+        </svg>
+        <svg class="d-arrow" viewBox="0 0 86 86" fill="none" stroke="#111" stroke-width="7" stroke-linecap="square" stroke-linejoin="miter">
+          <line x1="72" y1="10" x2="18" y2="64"/>
+          <line x1="18" y1="64" x2="18" y2="26"/>
+          <line x1="18" y1="64" x2="56" y2="64"/>
+        </svg>
+      </div>
+      <p class="headline" aria-hidden="true"><span>LOAN</span><span>RATE</span><span>CALCULATOR</span></p>
       <h1>디딤돌·보금자리론 계산기</h1>
+      <p class="kicker">POLICY MORTGAGE GUIDE</p>
       <p id="asOfLine">금리 기준일: 디딤돌 2026-11-01 · 보금자리론 2026-11-09</p>
       <p class="rate-status" id="rateStatus" role="status"></p>
     </header>
@@ -166,7 +347,7 @@
 
     <section class="panel" id="panel-calc" role="tabpanel" aria-labelledby="tab-calc">
       <div class="card">
-        <h2>가구와 소득</h2>
+        <h2>가구와 소득<small aria-hidden="true">HOUSEHOLD &amp; INCOME</small></h2>
         <label class="field"><span class="lbl">만 나이</span>
           <input id="age" type="number" inputmode="numeric" min="0" max="120" value="35">
         </label>
@@ -198,7 +379,7 @@
       </div>
 
       <div class="card">
-        <h2>주택과 기간</h2>
+        <h2>주택과 기간<small aria-hidden="true">PROPERTY &amp; TERM</small></h2>
         <p class="hint">디딤돌 만기는 10·15·20·30년, 보금자리론은 40·50년도 가능하되 연령 제한이 있습니다. KB시세와 매매가격을 모두 넣으면 LTV 한도는 둘 중 작은 금액×LTV입니다. 하나만 넣으면 그 값을 씁니다.</p>
         <div class="seg" id="periodSeg" role="group" aria-label="대출 기간"></div>
         <label class="field"><span class="lbl">KB시세 (만 원, 일반평균가)</span>
@@ -233,7 +414,7 @@
       </div>
 
       <div class="card">
-        <h2>우대금리 항목</h2>
+        <h2>우대금리 항목<small aria-hidden="true">PREFERENTIAL RATE</small></h2>
         <p class="hint">자녀 수, 나이, 신혼, 생애최초, 소득으로 자동 판단되는 우대는 결과에 바로 반영됩니다.</p>
         <label class="field"><span class="lbl">청약(종합)저축 납입 (디딤돌 중복 우대, 예금·부금 제외, 실행일부터 5년)</span>
           <select id="subscription">
@@ -266,20 +447,23 @@
         </div>
       </div>
 
-      <h2 style="font-size:1rem;margin:8px 0 10px">계산 결과</h2>
+      <section class="results-band" aria-label="계산 결과">
+      <h2>계산 결과<small aria-hidden="true">RESULTS</small></h2>
       <p class="hint">추정 한도는 상품 최대한도, LTV×(입력된 KB시세·매매가격 중 작은 금액), DTI 역산 가능액 중 가장 작은 금액입니다. 월상환액은 그 한도를 원리금균등으로 갚는다고 가정했습니다.</p>
       <div class="metrics" id="metrics"></div>
       <div class="table-wrap">
         <table id="compareTable"></table>
       </div>
+      <p class="disclaimer">(본 금리는 참고용이며 정확한 금리는 직접 신청해야 알 수 있습니다)</p>
       <p class="hint">정책모기지(디딤돌·보금자리론)는 상품 안내에 DTI 한도만 명시되어 있으며, 은행권 DSR 산정 대상에서 제외되는 것이 일반적인 운용입니다. 위 DSR은 본건 연간 원리금과 입력하신 기존 부채 연간 원리금을 연소득으로 나눈 참고치입니다. 공식 DTI는 기타부채를 이자만 반영하는 경우가 있어, 이 계산기는 입력값 기준의 보수적 추정치입니다.</p>
+      </section>
       <div class="card" id="didimDetail"></div>
       <div class="card" id="bogeumDetail"></div>
     </section>
 
     <section class="panel" id="panel-rate" role="tabpanel" aria-labelledby="tab-rate" hidden>
       <div class="card">
-        <h2>바로 찾기</h2>
+        <h2>바로 찾기<small aria-hidden="true">QUICK LOOKUP</small></h2>
         <div class="seg" id="lookupProduct" role="group" aria-label="상품">
           <button type="button" data-p="didim" aria-pressed="true">디딤돌</button>
           <button type="button" data-p="bogeum" aria-pressed="false">보금자리론</button>
@@ -357,22 +541,22 @@
       <div class="card" id="lookupBreakdown"></div>
 
       <div class="card">
-        <h2>디딤돌 공시 기본금리</h2>
+        <h2>디딤돌 공시 기본금리<small aria-hidden="true">DIDIMDOL BASE RATE</small></h2>
         <p class="hint">주택도시기금 기준, 공시일 2026년 11월 1일, 단위 %. 아래 표는 공시 기본금리이며, 선택한 금리유형 가산(5년 변동 +0.1%p, 10년 고정 후 변동 +0.2%p, 기간 10년이면 +0.3%p, 순수 고정 +0.3%p)은 별도입니다.</p>
         <div class="table-wrap" id="tblDidim"></div>
       </div>
       <div class="card">
-        <h2>생애최초 신혼 전용금리</h2>
+        <h2>생애최초 신혼 전용금리<small aria-hidden="true">NEWLYWED FIRST-HOME RATE</small></h2>
         <p class="hint">신혼이면서 생애최초이면 공시 기본금리에서 0.30%p를 뺀 전용금리를 적용합니다(주금공 전용표와 동일). 이 0.30%p는 우대 상한 밖이고, 신혼·생애최초 가구우대 0.20%p와는 중복하지 않습니다. 단위 %.</p>
         <div class="table-wrap" id="tblDidimNF"></div>
       </div>
       <div class="card">
-        <h2>보금자리론 기준금리</h2>
+        <h2>보금자리론 기준금리<small aria-hidden="true">BOGEUMJARI BASE RATE</small></h2>
         <p class="hint">고정금리. 공시일 2026년 11월 9일, 단위 %.</p>
         <div class="table-wrap" id="tblBogeum"></div>
       </div>
       <div class="card">
-        <h2>우대조건 비교</h2>
+        <h2>우대조건 비교<small aria-hidden="true">PREFERENCE COMPARE</small></h2>
         <ul class="fine">
           <li>우대 구조: 디딤돌 가구우대는 중복 불가(가장 큰 1개) + 청약·전자계약·30% 신청·중도상환(사후)·지방 미분양 중복. 보금자리론은 항목 중복, 최대 1.0%p(아낌e 0.1%p는 한도 밖).</li>
           <li>상한·최저: 디딤돌 가구·추가우대는 일반 0.5%p(다자녀 0.7%p). 신혼+생애최초 전용금리 0.30%p와 지방 0.20%p는 그 상한 밖이며, 전용·우대·지방 합계는 1.20%p를 넘지 않습니다. 최저 1.5%. 보금자리론 상한 1.0%p, 공시에 최저금리 없음.</li>
@@ -386,7 +570,7 @@
     </section>
 
     <footer class="sources card">
-      <h2>확인하지 못한 항목과 출처</h2>
+      <h2>확인하지 못한 항목과 출처<small aria-hidden="true">NOTES &amp; SOURCES</small></h2>
       <p>디딤돌 금리·우대는 주택도시기금 홈페이지 내집마련디딤돌대출 페이지를 2026년 11월 10일(서울 시간) 기준으로 확인했습니다. 보금자리론은 한국주택금융공사 상품소개·금리안내를 따릅니다.</p>
       <ul class="fine">
         <li>디딤돌 기본금리·금리유형 가산·가구우대(택1)·추가우대·상한 0.5%p(다자녀 0.7%p)·최저 1.5%는 주택도시기금 페이지 기준입니다. 4천만~7천만 원·30년 공시 기본금리는 연 3.80%입니다.</li>
@@ -408,6 +592,8 @@
         <li>보금자리론 일반 상품소개 https://hf.go.kr/ko/sub01/sub01_01_01.do</li>
         <li>11월 보금자리론 금리 0.10%p 인상 (2026-11-02) https://www.hf.go.kr/_custom/hf/_common/board/index/21.do?articleNo=600738&mode=view</li>
       </ul>
+          <p class="wordmark">DIDIMDOL<br>CALC</p>
+      <p class="wordmark-sub">별그림 디딤돌 보금자리론 연구소</p>
     </footer>
   </div>
   <script>
