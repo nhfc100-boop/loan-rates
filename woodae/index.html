@@ -71,9 +71,10 @@
       gap: 12px;
     }
     .progress .step-label {
-      font-size: 12px;
+      font-size: 0.98rem;
+      font-weight: 700;
       letter-spacing: -0.01em;
-      opacity: 0.92;
+      opacity: 1;
     }
     .dots { display: flex; gap: 6px; }
     .dots i {
@@ -104,17 +105,17 @@
     #page4 .disclaimer { margin-top: 8px; padding: 10px 12px; font-size: 0.74rem; }
     .card h2 {
       margin: 0 0 14px;
-      font-size: 0.78rem;
+      font-size: 1.02rem;
       color: var(--red);
       letter-spacing: -0.01em;
-      font-weight: 700;
+      font-weight: 750;
     }
     .card h2 small {
       display: block;
       margin-top: 3px;
       color: var(--muted);
       font-weight: 400;
-      font-size: 0.72rem;
+      font-size: 0.75rem;
       letter-spacing: 0.04em;
     }
     .field { margin: 0 0 14px; }
@@ -208,22 +209,29 @@
       min-height: 148px;
     }
     .box .pname {
-      font-size: 0.72rem;
-      font-weight: 700;
+      font-size: 1.02rem;
+      font-weight: 750;
       color: var(--red);
-      letter-spacing: -0.01em;
+      letter-spacing: -0.02em;
       margin-bottom: 8px;
     }
     .box .status {
-      font-size: 0.78rem;
+      font-size: 0.9rem;
       font-weight: 700;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
+      word-break: keep-all;
     }
-    .box .status.ok { color: #1a7a3a; }
-    .box .status.bad { color: var(--red); }
+    .box .status.ok {
+      color: var(--red);
+      font-size: 1.12rem;
+      font-weight: 800;
+      margin-bottom: 2px;
+    }
+    .box .status.bad { color: var(--red); font-size: 0.95rem; }
+    .box .status.wait { color: var(--red); font-size: 0.98rem; margin-top: 6px; }
     .box .big {
-      font-size: 1.55rem;
-      font-weight: 750;
+      font-size: 1.7rem;
+      font-weight: 800;
       letter-spacing: -0.04em;
       line-height: 1.1;
       margin: 2px 0 6px;
@@ -235,14 +243,16 @@
     }
     .box .meta + .meta { margin-top: 4px; }
     .rate-status {
-      margin: 8px 0 0;
-      font-size: 0.78rem;
-      color: var(--muted);
+      margin: 10px 0 0;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #fff;
       letter-spacing: -0.01em;
       word-break: keep-all;
+      opacity: 0.95;
     }
-    .rate-status.ok { color: #1b6b43; }
-    .rate-status.off { color: var(--muted); }
+    .rate-status.ok { color: #fff; opacity: 1; }
+    .rate-status.off { color: #fff; opacity: 0.88; }
     .capnote {
       background: #fff;
       border-left: 3px solid var(--red);
@@ -269,8 +279,9 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 8px;
-      margin: 12px 0;
+      margin: 8px 0 12px;
     }
+    #page4 .finals { margin: 4px 0 10px; }
     .final {
       background: var(--paper);
       box-shadow: var(--shadow);
@@ -278,7 +289,7 @@
       padding: 14px 10px 12px;
       text-align: center;
     }
-    .final .pname { color: var(--red); font-size: 0.72rem; font-weight: 700; }
+    .final .pname { color: var(--red); font-size: 1.02rem; font-weight: 750; letter-spacing: -0.02em; }
     .final .rate {
       font-size: 1.85rem;
       font-weight: 750;
@@ -334,15 +345,15 @@
     .nav button:disabled { opacity: .35; }
     .sec {
       margin: 16px 0 8px;
-      font-size: 0.72rem;
-      font-weight: 700;
+      font-size: 0.9rem;
+      font-weight: 750;
       color: var(--red);
       letter-spacing: 0.02em;
     }
     .need {
       display: inline-block;
       margin-left: 6px;
-      font-size: 0.68rem;
+      font-size: 0.8rem;
       color: var(--red);
       font-weight: 700;
     }
@@ -384,7 +395,7 @@
           <span class="lbl">생애최초 주택구입</span>
           <div class="yn" data-key="firstHome"></div>
         </div>
-        <p class="hint">신혼은 혼인신고 7년 이내 또는 3개월 이내 결혼예정입니다.</p>
+        <p class="hint">신혼은 혼인신고 7년 이내 또는 3개월 이내 결혼예정입니다. 디딤돌 가구우대는 택1이며, 신혼이면서 생애최초이면 전용 금리표를 적용합니다. 보금자리론 생애최초는 한도 상향이고 별도의 금리 우대는 없습니다.</p>
       </div>
       <div class="compare" id="out1"></div>
     </section>
@@ -491,8 +502,8 @@
         <h2>대출 기간 선택<small>Select Term</small></h2>
         <div class="seg" id="segYears"></div>
       </div>
-      <p class="disclaimer">(본 금리는 참고용이며 정확한 금리는 직접 신청해야 알 수 있습니다)</p>
       <div class="finals" id="out4"></div>
+      <p class="disclaimer">(본 금리는 참고용이며 정확한 금리는 직접 신청해야 알 수 있습니다)</p>
       <p class="footnote" id="asOfNote"></p>
     </section>
 
@@ -705,7 +716,9 @@
   }
 
   function incomeMan() {
-    var n = Number(String(state.incomeRaw || "").replace(/,/g, "").trim());
+    var raw = String(state.incomeRaw || "").replace(/,/g, "").trim();
+    if (!raw) return null;
+    var n = Number(raw);
     if (!isFinite(n) || n < 0) return null;
     return n;
   }
@@ -775,7 +788,7 @@
     if (s.firstHome || s.children >= 2) incomeCap = 7000;
     if (s.newlywed) incomeCap = 8500;
     var eligible = man <= incomeCap;
-    var reason = eligible ? "신청 가능" : "신청 불가 · 소득 한도 " + incomeCap.toLocaleString("ko-KR") + "만 원 초과";
+    var reason = eligible ? "우대금리" : "신청 불가 · 소득 한도 " + incomeCap.toLocaleString("ko-KR") + "만 원 초과";
     if (!eligible && s.newlywed && man > 8500) {
       notes.push("신혼 합산 8,500만 원 초과·신청인 1인 6,000만 원 이하 특례는 이 앱에서 다루지 않습니다. 우대·지방 차감 적용 여부는 확인 필요.");
     }
@@ -798,7 +811,7 @@
       else householdLabel = "택1 · 신혼 0.20%p";
     }
     if (useSpecialTable) {
-      notes.push("생애최초 신혼은 전용 금리표를 쓰며, 자녀·청약·전자계약·30% 이하 신청·중도상환·지방 미분양만 추가합니다.");
+      notes.push("생애최초 신혼은 전용 금리표를 쓰며, 일반표 대비 차이(통상 0.30%p)를 우대로 표시합니다. 최종 금리는 전용표를 기준으로 계산하므로 이 차이를 다시 빼지 않습니다. 자녀·청약·전자계약·30% 이하 신청·중도상환·지방 미분양만 전용표 위에 추가합니다.");
     }
     if (s.singleParent && man > 6000) {
       notes.push("디딤돌 한부모 우대는 연소득 6천만 원 이하일 때 적용됩니다.");
@@ -827,6 +840,17 @@
     var bases = table[bracket];
     var floor = useSpecialTable ? RATES.didimFloorNF : RATES.didimFloor;
 
+    var tablePref = 0;
+    var tablePrefLabel = "";
+    if (useSpecialTable) {
+      var gBase = RATES.didimGeneral[bracket][s.years];
+      var sBase = RATES.didimNewlyFirst[bracket][s.years];
+      if (gBase != null && sBase != null) {
+        tablePref = round4(gBase - sBase);
+        tablePrefLabel = fmtPp(tablePref) + " (생애최초 신혼 전용금리표)";
+      }
+    }
+
     var typeAdj = DIDIM_FIXED_ADD;
     notes.push("고정금리 기준(주택도시기금 순수 고정 +0.3%p 포함). 우대 상한·지방 차감과 별도입니다.");
 
@@ -853,6 +877,9 @@
       prefRaw: prefRaw,
       prefCap: prefCap,
       pref: pref,
+      displayPref: round4(tablePref + pref),
+      tablePref: tablePref,
+      tablePrefLabel: tablePrefLabel,
       capped: capped,
       localAdj: localAdj,
       typeAdj: typeAdj,
@@ -875,7 +902,7 @@
     if (s.children === 1) incomeCap = Math.max(incomeCap, 9000);
     if (s.children >= 2) incomeCap = Math.max(incomeCap, 10000);
     var eligible = man <= incomeCap;
-    var reason = eligible ? "신청 가능" : "신청 불가 · 소득 한도 " + incomeCap.toLocaleString("ko-KR") + "만 원 초과";
+    var reason = eligible ? "우대금리" : "신청 불가 · 소득 한도 " + incomeCap.toLocaleString("ko-KR") + "만 원 초과";
     if (!eligible && s.newlywed && man > 8500 && s.children < 1) {
       notes.push("신혼 합산 기준 초과·채무자 1인 7,000만 원 이하 특례는 이 앱에서 다루지 않습니다.");
     }
@@ -943,20 +970,25 @@
       prefRaw: prefRaw,
       prefCap: RATES.bogeumCap,
       pref: prefCapped,
+      displayPref: prefCapped,
       capped: capped,
       addOn: addOn,
       rate: rateFor(s.years),
       rateFor: rateFor,
       notes: notes,
-      firstHomeNote: s.firstHome ? "생애최초는 한도 상향만 있고 금리 우대는 없습니다." : ""
+      firstHomeNote: s.firstHome
+        ? (s.newlywed
+          ? "신혼 금리우대와 생애최초 한도 상향은 함께 받을 수 있으나, 생애최초 자체 금리 우대는 없습니다."
+          : "생애최초는 한도 상향만 있고 금리 우대 항목은 없습니다.")
+        : ""
     };
   }
 
   function boxHtml(name, result, mode) {
     if (!result.ready) {
-      return '<div class="box"><div class="pname">' + esc(name) + '</div><div class="status">' + esc(result.reason) + '</div></div>';
+      return '<div class="box"><div class="pname">' + esc(name) + '</div><div class="status wait">' + esc(result.reason) + '</div></div>';
     }
-    var statusCls = result.eligible ? "ok" : "bad";
+    var shownPref = result.displayPref != null ? result.displayPref : result.pref;
     var extra = "";
     if (mode === 1) {
       extra = '<div class="meta">기본금리 ' + bandText(result) + '</div>' +
@@ -965,13 +997,23 @@
       extra = '<div class="meta">추가 ' + fmtPp(result.added) + '</div>' +
               '<div class="meta">' + esc(result.addLabel || "") + '</div>';
     } else if (mode === 3) {
-      extra = '<div class="meta">상한 ' + fmtPp(result.prefCap) + (result.capped ? " · 상한 적용" : "") + '</div>' +
-              '<div class="meta">' + esc((result.bits || []).concat(result.stackBits || []).join(", ") || result.householdLabel || "") + '</div>';
+      var bits3 = (result.bits || []).concat(result.stackBits || []);
+      if (result.tablePrefLabel) bits3 = [result.tablePrefLabel].concat(bits3);
+      extra = '<div class="meta">상한 ' + fmtPp(result.prefCap) + (result.capped ? " · 상한 적용" : "") +
+              (result.tablePref ? " · 전용표 차이는 상한 밖" : "") + '</div>' +
+              '<div class="meta">' + esc(bits3.join(", ") || result.householdLabel || "") + '</div>';
+    }
+    if (!result.eligible) {
+      return '<div class="box">' +
+        '<div class="pname">' + esc(name) + '</div>' +
+        '<div class="status bad">' + esc(result.reason) + '</div>' +
+        extra +
+        '</div>';
     }
     return '<div class="box">' +
       '<div class="pname">' + esc(name) + '</div>' +
-      '<div class="status ' + statusCls + '">' + esc(result.reason) + '</div>' +
-      '<div class="big">' + (result.eligible ? fmtPp(result.pref) : "—") + '</div>' +
+      '<div class="status ok">우대금리</div>' +
+      '<div class="big">' + fmtPp(shownPref) + '</div>' +
       '<div class="meta">' + (mode === 1 ? "1차 우대" : mode === 2 ? "누적 우대" : "최종 우대") + '</div>' +
       extra +
       '</div>';
@@ -992,9 +1034,9 @@
   function page1Detail(name, result) {
     if (name.indexOf("디딤돌") === 0) {
       var parts = [result.tableName, result.bracketLabel];
+      if (result.tablePrefLabel) parts.push(result.tablePrefLabel);
       if (result.household > 0) parts.push(result.householdLabel);
-      else if (result.useSpecialTable) parts.push("전용표 적용 · 가구우대 0.00%p");
-      else parts.push("해당 우대 없음");
+      else if (!result.useSpecialTable) parts.push("해당 우대 없음");
       return parts.join(" · ");
     }
     var parts2 = [];
@@ -1115,6 +1157,7 @@
       var raw = round4(base + (result.localAdj || 0) + (result.typeAdj || 0) - result.pref);
       if (raw < result.floor) how += " · 최저금리 " + fmt(result.floor) + " 적용";
       how += " · " + DIDIM_FIXED_LABEL;
+      if (result.tablePref) how += " · 전용표 적용(일반 대비 " + fmtPp(result.tablePref) + ", 중복 차감 없음)";
     } else {
       how += " · 고정금리";
     }
